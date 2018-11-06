@@ -1,0 +1,30 @@
+#edit-event-form {
+  display: block;
+  width: 350px;
+  margin: 80px auto;
+}
+
+#edit-event-form h2 {
+  font-family: 'arial';
+  font-size: 18px;
+  text-align: center;
+}
+
+#edit-event-form input {
+  width: 350px;
+  margin: 10px 0px 20px 0px;
+}
+
+#edit-event-form textarea {
+  width: 350px;
+  resize: vertical;
+}
+
+#edit-event-form button {
+  display: block;
+  margin: 20px auto;
+}
+
+#file-upload-button {
+  border: none;
+}

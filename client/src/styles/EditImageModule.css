@@ -1,0 +1,10 @@
+.edit-image-module {
+  display: block;
+  margin: 40px 0px;
+}
+
+.edit-image-module img {
+  display: block;
+  width: 400px;
+  height: 200px;
+}

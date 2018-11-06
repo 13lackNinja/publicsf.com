@@ -7,19 +7,16 @@ import './styles/FeaturedEvents.css'
 class FeaturedEvents extends Component {
   render() {
     if (this.props.events) {
-        const featuredEvents = this.props.events.map((e) => {
+        const featuredEvents = this.props.events.map((event) => {
         return (
           <FeaturedEventModule
-            key={e.id}
-            id={e.id}
-            name={e.name.text}
-            date={
-              new Date(e.start.local).toDateString()
-            }
-            image={e.logo.original.url}
-            url={e.url}
-            backupImage={e.logo.url}
-            description={e.description.text}
+            key={event.id}
+            id={event.id}
+            name={event.name}
+            date={new Date(event.start).toDateString()}
+            image={event.imageURL}
+            url={event.ticketURL}
+            description={event.description}
           />
         )
       });

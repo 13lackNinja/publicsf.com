@@ -1,65 +1,30 @@
-#staff {
-  background: #111111;
-  overflow: hidden;
+#login {
   min-height: calc(100vh - 50px);
-  padding-top: 80px;
+  background: #e75e26;
 }
 
-#staff h1 {
-  margin: 40px;
+#login h1 {
+  color: #111111;
+  font-size: 54px;
+  margin-bottom: 20px;
 }
 
-@media (max-width: 700px) {
-  #staff h1 {
-    font-size: 36px;
-    letter-spacing: -1px;
-  }
+#login div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-#staff button {
-  display: block;
-  margin: 40px auto;
+/* Dashboard */
+#dashboard {
+  background: #111111;
 }
 
-#carousel-image-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-}
-
-.image-chooser {
-  margin: 0px 20px 80px 20px;
-  width: 300px;
-  height: 250px;
-}
-
-.image-chooser img {
-  display: block;
-  width: 100%;
-  background: salmon;
-  margin-bottom: 40px;
-  border-radius: 5px;
-  border: 2px #ededed solid;
-}
-
-.image-chooser label {
-  font-family: 'Oswald';
-  font-size: 18px;
-  text-transform: uppercase;
-  display: block;
-  text-align: center;
-  margin: 20px;
-}
-
-.image-chooser input {
-  display: none;
-}
-
-.image-chooser button {
-  margin-top: 80px;
-}
-
-#submit-button-staff {
-  font-size: 24px;
+#log-out-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100px;
+  height: 20px;
 }

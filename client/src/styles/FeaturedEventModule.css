@@ -1,69 +1,25 @@
-
-/* Container */
-.featured-event-module-container {
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  margin: 100px auto;
-  background: #111111;
-  cursor: pointer;
+.featured-event-module {
+  display: block;
+  width: 600px;
+  margin: 80px auto;
 }
 
-@media (max-width: 700px) {
-  .featured-event-module-container {
-    width: calc(100% - 80px);
-    margin: 100px 40px;
-  }
-}
-
-/* Top */
-.featured-event-module-top {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
-.featured-event-module-image {
+.featured-event-module img {
   width: 100%;
-  margin-right: 20px;
+  height: 300px;
 }
 
-.featured-event-module-text {
-  margin: 20px 0px;
+.featured-event-module h3 {
   color: #ededed;
-}
-
-.featured-event-module-date {
   font-family: 'Oswald';
-  font-size: 24px;
-  text-transform: uppercase;
 }
 
-.featured-event-module-promoter {
-  font-family: 'Rajdhani';
-  font-size: 18px;
-  text-transform: uppercase;
-}
-
-.featured-event-module-artists {
+.featured-event-module h2 {
   font-family: 'Oswald';
-  font-size: 30px;
   text-transform: uppercase;
 }
 
-/* Bottom */
-.featured-event-module-bottom {
-  position: relative;
-  height: 20px;
-  grid-row: 2 / 3;
-}
-
-.featured-event-module-bottom button {
+.featured-event-module button {
   width: 100%;
-  height: 40px;
-}
-
-/* Misc */
-.featured-event-module-link {
-  text-decoration: none;
+  margin-top: 20px;
 }

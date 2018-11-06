@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
+import { database } from './firebase'
 import Carousel from './Carousel'
 import Marquee from './Marquee'
 import FeaturedEvents from './FeaturedEvents'
 import NewsletterSignUp from './NewsletterSignUp'
 import Grit from './Grit'
 import TypeLogo from './TypeLogo'
-import eventRequest from './eventRequest'
-
-import image1 from './images/pw_djhands.jpg'
-import image2 from './images/pw_mainroomparty.jpg'
-import image3 from './images/pwhome.jpg'
 
 import './styles/Home.css'
 
@@ -29,36 +25,54 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstEventName: null,
-      firstEventId: null,
-      featuredEvents: null
+      events: [],
+      image1: '',
+      image2: '',
+      image3: ''
     }
   }
 
   componentDidMount() {
-    fetch(eventRequest.base, eventRequest.headers)
-      .then(res => res.json())
-      .then((resJSON) => {
-        const eventData = resJSON.events.sort((a, b) => {
-          const dateA = new Date(a.start.utc);
-          const dateB = new Date(b.start.utc);
+    const carouselRef = database.ref('carousel');
+    carouselRef.once('value', (snapshot) => {
+      const images = snapshot.val();
+      this.setState({
+        events: [],
+        image1: images.image1,
+        image2: images.image2,
+        image3: images.image3
+      });
+    });
 
-          return dateA.getTime() - dateB.getTime();
-        });
+    const eventsRef = database.ref('events').orderByChild('start').limitToLast(3);
+    eventsRef.once('value', (snapshot) => {
+      const eventsData = snapshot.val()
+      let events = [];
 
-        this.setState({
-          firstEventName: eventData[0].name.text,
-          firstEventURL: eventData[0].url,
-          featuredEvents: eventData.slice(0, 3)
-        });
-      }).catch((err) => console.log(err.message));
+      for (let key in eventsData) {
+        eventsData[key].id = key;
+        events.push(eventsData[key]);
+      }
+
+      this.setState({
+        events: events
+      });
+    });
+
+    const marqueeRef = database.ref('marquee');
+    marqueeRef.once('value', (snapshot) => {
+      this.setState({
+        marqueeText: snapshot.val().text,
+        marqueeURL: snapshot.val().url
+      });
+    });
   }
 
   render() {
     let images = [
-      image1,
-      image2,
-      image3
+      this.state.image1,
+      this.state.image2,
+      this.state.image3
     ];
 
     return (
@@ -67,11 +81,14 @@ class Home extends Component {
           images={images}
         />
         <Marquee
-          text={`Coming Up! ${this.state.firstEventName}`}
-          url={this.state.firstEventURL}
+          text={this.state.marqueeText}
+          url={this.state.marqueeURL}
         />
         <AboutStatement />
-        <FeaturedEvents events={this.state.featuredEvents}/>
+        <FeaturedEvents events={
+          this.state.events[0] ?
+            this.state.events : null
+        }/>
         <NewsletterSignUp />
         <Grit />
       </div>

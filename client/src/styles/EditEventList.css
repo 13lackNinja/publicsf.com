@@ -1,0 +1,11 @@
+
+
+#edit-event-list a {
+  display: block;
+  font-family: 'Oswald';
+  font-size: 28px;
+  color: #ededed;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+}

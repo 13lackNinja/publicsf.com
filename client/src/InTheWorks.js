@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, Route } from 'react-router-dom'
-import EventModule from './EventModule'
-import EventPage from './EventPage'
-import eventRequest from './eventRequest'
+import { database } from './firebase'
 import Carousel from './Carousel'
 import EventList from './EventList'
 import NewsletterSignUp from './NewsletterSignUp'
@@ -10,158 +7,55 @@ import Grit from './Grit'
 
 import './styles/InTheWorks.css'
 
-const AllEvents = (props) => {
-  const images = props.eventData.slice(0, 3).map((e) => {
-    return e.logo.original.url
-  })
-  return(
-    <React.Fragment>
-      <Carousel images={images}/>
-      <EventList events={props.events}/>
-      <NewsletterSignUp />
-      <Grit/>
-    </React.Fragment>
-  )
-}
 
 class InTheWorks extends Component {
   constructor(props) {
     super(props);
-    this.loadMoreEvents = this.loadMoreEvents.bind(this);
     this.state = {
-      eventData: [],
-      displayedEvents: [],
-      constinuationKey: null
+      events: [],
+      images: [],
     }
   }
 
   componentDidMount() {
-    fetch(eventRequest.base, eventRequest.headers)
-      .then(res => res.json())
-      .then((resJSON) => {
-        let continuationKey = null;
-        if (resJSON.pagination.has_more_items) {
-          continuationKey = resJSON.pagination.continuation;
-        }
-        let eventData = resJSON.events;
+    const today = new Date();
+    const todayUnixStamp = today.getTime();
+    const eventsRef = database.ref('events').orderByChild('start').startAt(todayUnixStamp);
 
-        // Sort event data by date
-        let eventDataSorted = eventData.sort((a, b) => {
-          const dateA = new Date(a.start.utc);
-          const dateB = new Date(b.start.utc);
+    // Get Events
+    eventsRef.on('value', (snapshot) => {
+      const eventsData = snapshot.val();
+      let events = [];
 
-          return dateA.getTime() - dateB.getTime();
-        });
-
-        let eventMarkup = this.collectEvents(eventDataSorted);
-        this.displayEvents(eventMarkup, eventDataSorted, continuationKey);
-      }).catch(err => console.log(err.message));
-  }
-
-  collectEvents(eventDataSorted) {
-    let events = eventDataSorted.map((e) => {
-
-      let price = '';
-
-      if (e.description.text.startsWith('http')) {
-        price = '';
-      } else if (e.ticket_availability.is_sold_out) {
-        price = 'sold out';
-      } else if (e.ticket_availability.has_available_tickets) {
-        const minPrice = e.ticket_availability.minimum_ticket_price.major_value;
-        const maxPrice = e.ticket_availability.maximum_ticket_price.major_value;
-
-        price = `$${parseInt(minPrice, 10)} - $${parseInt(maxPrice, 10)}`;
+      for (let key in eventsData) {
+        eventsData[key].id = key;
+        events.push(eventsData[key]);
       }
 
-      return (
-        <EventModule
-          price={price}
-          key={e.id}
-          id={e.id}
-          name={e.name.text}
-          date={new Date(e.start.local).toDateString()}
-          image={e.logo.original.url}
-          backupImage={e.logo.url}
-          url={e.url}
-          description={e.description.text}
-          time={e.start.local}
-        />
-      );
-    });
-    return events
-  }
+      events = events.sort((a, b) => {
+        return a.start - b.start;
+      });
 
-  displayEvents(eventMarkup, eventData, continuationKey) {
-    let currentlyDisplayed = this.state.displayedEvents;
-    this.setState({
-      eventData: eventData,
-      displayedEvents: currentlyDisplayed.concat(eventMarkup),
-      continuationKey: continuationKey
-    });
-  }
+      const images = events.slice(0, 3).map((event) => {
+        return event.imageURL;
+      });
 
-  loadMoreEvents(continuationKey) {
-    fetch(eventRequest.base + `/?continuation=${this.state.continuationKey}`, eventRequest.headers)
-      .then(res => res.json())
-      .then((resJSON) => {
-        if (resJSON.pagination.has_more_items) {
-          this.setState({
-            continuationKey: resJSON.pagination.continuation
-          })
-        } else {
-          this.setState({
-            continuationKey: null
-          })
-        }
-        let events = this.collectEvents(resJSON);
-        this.displayEvents(events);
-      }).catch(err => console.log(err.message));
+      this.setState({
+        events: events,
+        images: images
+      });
+    });
+
+
   }
 
   render() {
     return (
       <div id="in-the-works">
-        <Switch>
-          <Route exact path='/intheworks' render={
-            () => (
-              <AllEvents
-                eventData={this.state.eventData}
-                events={this.state.displayedEvents}
-              />
-            )
-          }/>
-          <Route path='/intheworks/:eventId' render={
-            ({ match }) => {
-              const events = this.state.eventData;
-              const event = events.find((event) => {
-                return event.id === match.params.eventId;
-              });
-
-              if (event) {
-                return (
-                  <EventPage
-                    loaded={true}
-                    id={match.params.eventId}
-                    name={event.name.text}
-                    date={
-                      new Date(event.start.local).toDateString()}
-                    image={event.logo.original.url}
-                    description={event.description.text}
-                    url={event.url}
-                  />
-                )
-              }
-
-              return (
-                <EventPage
-                  loaded={false}
-                  id={match.params.eventId}
-                />
-              )
-            }
-          }/>
-        </Switch>
+        <Carousel images={this.state.images}/>
+        <EventList events={this.state.events}/>
+        <NewsletterSignUp />
+        <Grit/>
       </div>
     )
   }

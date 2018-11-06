@@ -1,0 +1,13 @@
+#update-carousel-page {
+  position: relative;
+  min-height: 150vh;
+}
+
+#update-carousel-module {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  width: 400px;
+}

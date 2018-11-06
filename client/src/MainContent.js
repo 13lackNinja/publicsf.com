@@ -7,6 +7,7 @@ import PrivateEvents from './PrivateEvents'
 import Connect from './Connect'
 import Specs from './Specs'
 import Booking from './Booking'
+import Staff from './Staff'
 
 import './styles/MainContent.css'
 
@@ -20,6 +21,7 @@ const MainContent = () => (
       <Route path="/connect" component={Connect}></Route>
       <Route path="/specs" component={Specs}></Route>
       <Route path="/booking" component={Booking}></Route>
+      <Route path="/staff" component={Staff}></Route>
     </Switch>
   </div>
 )

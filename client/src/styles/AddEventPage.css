@@ -1,0 +1,11 @@
+#add-event-page {
+  position: relative;
+  overflow: hidden;
+}
+
+#back-button-staff-dashboard {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  margin: 20px 60px;
+}

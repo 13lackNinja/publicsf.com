@@ -1,0 +1,39 @@
+#update-marquee-page {
+  position: relative;
+  min-height: 100vh;
+}
+
+#update-marquee-module {
+  position: absolute;
+  width: 100vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#update-marquee-module input {
+  display: block;
+  margin: auto;
+  width: 400px;
+  height: 70px;
+  border: none;
+  color: #ededed;
+  font-family: 'Oswald';
+  font-size: 36px;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1em;
+  background: #111111;
+  caret-color: #ededed;
+  width: 100%;
+}
+
+#update-marquee-module button {
+  display: block;
+  visibility: hidden;
+  margin: 20px auto;
+}
+
+#marquee-text-2 {
+  margin: 0px;
+}

@@ -175,7 +175,7 @@ class ContactForm extends Component {
       if (this.readyState === 4 && this.status === 200) {
         form.lastChild.style.display = 'none';
         dropdown.style.display = 'none';
-        form.innerHTML = '<h2>Message Recieved!</h2>';
+        form.innerHTML = '<h2>Message Received!</h2>';
         console.log(this.responseText);
       }
     }

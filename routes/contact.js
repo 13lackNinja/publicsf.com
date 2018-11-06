@@ -111,7 +111,8 @@ router.post('/', upload.array(), (req, res) => {
 
   const mailerOptions = {
     from: 'pwcontactbox@gmail.com',
-    to: 'pwsfinfo@publicsf.com',
+    // to: 'pwsfinfo@publicsf.com',
+    to: 'jonathan@publicsf.com',
     subject: `new ${formType} form submission: ${new Date().toLocaleString('en-GB')}`,
     html: html
   };

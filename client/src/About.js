@@ -36,7 +36,7 @@ const AboutDescription = () => (
     </p>
     <div
       className="about-description-image"
-      style={{ 'background-image': `url(${miraImage})`}}
+      style={{ 'backgroundImage': `url(${miraImage})`}}
     >
     </div>
     <p>
@@ -44,7 +44,7 @@ const AboutDescription = () => (
     </p>
     <div
       className="about-description-image"
-      style={{ 'background-image': `url(${crowd4Image})`}}
+      style={{ 'backgroundImage': `url(${crowd4Image})`}}
     >
     </div>
     <p>
