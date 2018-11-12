@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { database, storage } from './firebase';
+import firebase, { database, storage } from './firebase';
+import DateTime from 'react-datetime'
 import ActionButton from './ActionButton';
 
 import './styles/EditEventModule.css'
@@ -8,13 +9,14 @@ class EditEventModule extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-    this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleStartChange = this.handleStartChange.bind(this);
+    this.handleEndChange = this.handleEndChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       name: props.name,
       start: props.start,
       end: props.end,
-      artists: props.end,
+      artists: props.artists,
       room: props.room,
       price: props.price,
       ticketURL: props.price,
@@ -28,36 +30,83 @@ class EditEventModule extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+    this.toggleButtonDisplay('initial');
   }
 
-  handleDateChange(e) {
-    const newDate = new Date(e.target.value);
-    const newUnixStamp = newDate.getTime();
+  handleStartChange(moment) {
     this.setState({
-      [e.target.name]: newUnixStamp
+      start: moment.toDate().getTime()
     });
+    this.toggleButtonDisplay('initial');
+  }
+
+  handleEndChange(moment) {
+    this.setState({
+      end: moment.toDate().getTime()
+    });
+    this.toggleButtonDisplay('initial');
   }
 
   handleSubmit(e) {
     e.preventDefault();
 
+    const submitButton = document.getElementById('submit-button-dashboard');
+    const progressBar = document.getElementById('progress-bar');
     const newData = this.state;
     const eventRef = database.ref(`/events/${this.state.id}`);
-    const newImageRef = storage.refFromURL(this.state.imageURL);
     const newImageFile = document.getElementById('file-upload-button').files[0];
 
     if (newImageFile) {
-      newImageRef.put(newImageFile);
+      const oldImageRef = storage.refFromURL(this.state.imageURL);
+      const newImageRef = storage.ref('event-images').child(newImageFile.name);
+
+      oldImageRef.delete().catch(err => console.log(err.message));
+
+      const imageUploadTask = newImageRef.put(newImageFile);
+
+      const next = (snapshot) => {
+        const uploadPercent = snapshot.bytesTransferred / snapshot.totalBytes * 100;
+        submitButton.style.display = 'none';
+        progressBar.style.width = `${uploadPercent}%`;
+      };
+
+      const error = (error) => { console.log(error.message) };
+
+      const complete = () => {
+        submitButton.style.display = 'initial';
+        progressBar.style.width = '0px';
+      };
+
+      imageUploadTask.then(() => {
+        newImageRef.getDownloadURL().then((url) => {
+          newData.imageURL = url;
+          eventRef.set(newData);
+        });
+      });
+
+      imageUploadTask.on(
+        firebase.storage.TaskEvent.STATE_CHANGED,
+        next,
+        error,
+        complete
+      );
+    } else {
+      eventRef.set(newData);
     }
 
-    eventRef.set(newData);
+    this.toggleButtonDisplay('none');
+  }
+
+  toggleButtonDisplay(option) {
+    const submitButton = document.getElementById('submit-button-dashboard');
+    submitButton.style.display = option;
   }
 
   render() {
     return (
       <div id="edit-event-module">
         <form id="edit-event-form">
-          <h2>{this.props.name}</h2>
+          <h2>Edit Event</h2>
           <div>
             <label htmlFor="name">Name</label>
             <input type="text" name="name" defaultValue={this.props.name} onInput={this.handleChange} required/>
@@ -65,12 +114,22 @@ class EditEventModule extends Component {
 
           <div>
             <label htmlFor="start">Start</label>
-            <input type="datetime-local" name="start" defaultValue={this.props.start} onBlur={this.handleDateChange} required/>
+            <DateTime
+              defaultValue={this.props.start}
+              onBlur={this.handleStartChange}
+              inputProps={{ name: "start" }}
+              utc
+              required/>
           </div>
 
           <div>
             <label htmlFor="end">End</label>
-            <input type="datetime-local" name="end" defaultValue={this.props.end} onChange={this.handleDateChange} required/>
+            <DateTime
+              defaultValue={this.props.end}
+              onBlur={this.handleEndChange}
+              inputProps={{ name: "end" }}
+              utc
+              required/>
           </div>
 
           <div>
@@ -80,7 +139,11 @@ class EditEventModule extends Component {
 
           <div>
             <label htmlFor="room">Room</label>
-            <input type="text" name="room" defaultValue={this.props.room} onChange={this.handleChange} required/>
+            <select name="room" id='room-dropdown' onChange={this.handleChange} defaultValue={this.props.room}>
+              <option value="">Full Space</option>
+              <option value="Main Room">Main Room</option>
+              <option value="Loft">Loft</option>
+            </select>
           </div>
 
           <div>
@@ -94,8 +157,8 @@ class EditEventModule extends Component {
           </div>
 
           <div>
-            <label htmlFor="image">Upload Image</label>
-            <input id="file-upload-button" type="file" required/>
+            <label htmlFor="image">Replace Image</label>
+            <input id="file-upload-button" type="file" onChange={() => this.toggleButtonDisplay('initial')}/>
           </div>
 
           <div>
@@ -111,13 +174,18 @@ class EditEventModule extends Component {
             />
           </div>
 
-          <ActionButton
-            text="submit"
-            location="dashboard"
-            color="white"
-            type="submit"
-            submit={this.handleSubmit}
-          />
+          <div id="progress-bar-container">
+            <div id="progress-bar">
+              <ActionButton
+                text="submit"
+                location="dashboard"
+                color="white"
+                type="submit"
+                submit={this.handleSubmit}
+              />
+            </div>
+          </div>
+
         </form>
       </div>
     )

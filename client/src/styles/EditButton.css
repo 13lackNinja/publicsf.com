@@ -1,0 +1,15 @@
+.edit-button {
+  padding: 5px;
+  background: #e75e26;
+  margin-left: 5px;
+  transition: fill .7s, background-color .3s;
+  cursor: pointer;
+}
+
+.edit-button:hover {
+  background: #111111;
+}
+
+.path {
+  transition: fill
+}

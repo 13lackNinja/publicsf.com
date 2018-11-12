@@ -1,24 +1,63 @@
-import React from 'react';
-import EditEventLink from './EditEventLink';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
+import { database, storage } from './firebase';
+import DeleteButton from './DeleteButton';
+import EditButton from './EditButton';
 
 import './styles/EditEventList.css'
 
-const EditEventList = (props) => {
-  let eventList = null;
+class EditEventList extends Component {
+  constructor(props) {
+    super(props);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
 
-  if (props.events) {
-    eventList = props.events.map((e) => {
-      return (
-        <EditEventLink name={e.name} key={e.id} id={e.id}/>
-      );
+  handleDelete(id) {
+    const eventRef = database.ref('events').child(id);
+
+    eventRef.once('value', (snapshot) => {
+      const imageURL = snapshot.val().imageURL;
+      const imageRef = storage.refFromURL(imageURL);
+
+      imageRef.delete().catch(err => console.log(err));
+      eventRef.remove().catch(err => console.log(err));
     });
   }
 
-  return (
-    <div id="edit-event-list">
-      {eventList}
-    </div>
-  );
+  render() {
+    let eventList = null;
+
+    if (this.props.events) {
+      eventList = this.props.events.map((e) => {
+
+        const date = new Date(e.start);
+
+        return (
+          <tr key={e.id}>
+            <td>{date.toDateString()}</td>
+            <td className="edit-event-list-name">{e.name}</td>
+            <td>
+              <Link to={`/staff/edit-event/${e.id}`}>
+                <EditButton/>
+              </Link>
+              <DeleteButton onClick={() => this.handleDelete(e.id)}/>
+            </td>
+          </tr>
+        );
+      });
+    }
+
+    return (
+      <div id="edit-event-list">
+        <table>
+          <tbody>
+            {eventList}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+
 }
 
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 import { database } from './firebase';
+import moment from 'moment';
 import EditEventList from './EditEventList'
 import EditEventModule from './EditEventModule'
 
@@ -13,6 +14,7 @@ class EditEventPage extends Component {
   }
 
   componentDidMount() {
+    this._isMounted = true;
     // Get event data from firebase
     const today = new Date();
     const todayUnixStamp = today.getTime();
@@ -20,7 +22,6 @@ class EditEventPage extends Component {
 
     eventsRef.on('value', (snapshot) => {
       const eventsData = snapshot.val();
-
       let events = [];
 
       // Create array of keyed event objects
@@ -34,14 +35,18 @@ class EditEventPage extends Component {
         return a.start - b.start;
       });
 
-      this.setState({ events: events });
-
+      if (this._isMounted) {
+        this.setState({ events: events });
+      }
     });
-
   }
 
-  render() {
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
+
+  render() {
     return (
       <div id="edit-event-page">
         <Switch>
@@ -55,26 +60,21 @@ class EditEventPage extends Component {
             path='/staff/edit-event/:id'
             component={({ match }) => {
               const id = match.params.id;
-              let start = null;
-              let end = null;
 
               if (this.state.events) {
+
                 const event = this.state.events.find((event) => {
                   return event.id === id;
                 });
 
-                // Convert Unix Timestamps to UTC
-                start = new Date(event.start);
-                start = start.toJSON().slice(0, 16);
-
-                end = new Date(event.end);
-                end = end.toJSON().slice(0, 16);
+                const start = moment(event.start);
+                const end = moment(event.end);
 
                 return (
                   <EditEventModule
                     name={event.name}
-                    start={start}
-                    end={end}
+                    start={start._i}
+                    end={end._i}
                     artists={event.artists}
                     room={event.room}
                     price={event.price}

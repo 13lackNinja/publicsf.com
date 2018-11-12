@@ -1,11 +1,26 @@
-
-
-#edit-event-list a {
-  display: block;
-  font-family: 'Oswald';
-  font-size: 28px;
+#edit-event-list {
+  margin-top: 140px;
   color: #ededed;
+}
+
+#edit-event-list table {
+  margin: auto;
+}
+
+#edit-event-list td {
+  font-family: 'Oswald';
+  font-size: 24px;
+  padding: 20px;
+}
+
+.edit-event-list-name {
   text-transform: uppercase;
-  text-align: center;
+}
+
+.edit-event-list-button {
+  width: 40px;
+  height: 40px;
+  margin-left: 5px;
   cursor: pointer;
+  background: #e75e26;
 }
