@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { auth } from './firebase'
+import { auth, database } from './firebase'
 import Login from './Login'
 import StaffDashboard from './StaffDashboard'
 import Grit from './Grit'
@@ -12,9 +12,30 @@ class Staff extends Component {
     this.state = { user: null };
   }
 
-  render() {
-    // in this new render method, use a switch to display failed login attempt vs regular screen,
-    // keep the staff dashboard in its own condition
+  verifyUser(user) {
+    const usersRef = database.ref('authorizedUsers');
+    const email = user.email;
+    const uid = user.uid;
+    let userIsAuthorized = false;
+
+    usersRef.once('value', (snapshot) => {
+      const users = snapshot.val();
+
+      for (let userID in users) {
+        if (users[userID].email === email) {
+          usersRef.child(`${userID}/uid`).set(uid);
+          userIsAuthorized = true;
+        }
+      }
+
+      if (!userIsAuthorized) {
+        auth.signOut().then(() => {
+          this.setState({ loginFailed: true });
+        });
+      } else {
+        this.setState({ user: user });
+      }
+    });
   }
 
   render() {
@@ -33,19 +54,19 @@ class Staff extends Component {
         </div>
       )
     } else if (auth.currentUser) {
-      return (
-        <div id="staff">
-          <StaffDashboard/>
-          <Grit/>
-        </div>
-      );
-    }
+        return (
+          <div id="staff">
+            <StaffDashboard/>
+            <Grit/>
+          </div>
+        )
+      }
   }
 
   componentDidMount() {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ user: user });
+        this.verifyUser(user);
       }
     });
   }

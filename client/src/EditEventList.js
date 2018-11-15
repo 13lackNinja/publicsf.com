@@ -49,6 +49,7 @@ class EditEventList extends Component {
 
     return (
       <div id="edit-event-list">
+        <h2>Edit / Delete Event</h2>
         <table>
           <tbody>
             {eventList}

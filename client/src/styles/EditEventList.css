@@ -3,6 +3,14 @@
   color: #ededed;
 }
 
+#edit-event-list h2 {
+  font-family: 'Oswald';
+  font-size: 32px;
+  margin-bottom: 40px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 #edit-event-list table {
   margin: auto;
 }

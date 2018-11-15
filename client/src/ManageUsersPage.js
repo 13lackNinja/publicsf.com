@@ -42,7 +42,10 @@ class ManageUsersPage extends Component {
   render() {
     return (
       <div id="manage-users-page">
-        <h2>Authorized Users</h2>
+        <h2>Manage Users</h2>
+        <p>
+          Authorized users can sign in and use all features on the Staff Dashboard
+        </p>
         <div id="manage-users-wrapper">
           <div id="add-user-module">
             <input

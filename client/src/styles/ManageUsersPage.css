@@ -5,15 +5,24 @@
 }
 
 #manage-users-page h2 {
-  font-family: 'arial';
+  font-family: 'Oswald';
   font-size: 32px;
   margin-bottom: 40px;
   text-align: center;
   text-transform: uppercase;
 }
 
+#manage-users-page p {
+  display: block;
+  margin: auto;
+  width: 600px;
+  font-family: 'Rajdhani';
+  font-size: 16px;
+  text-align: center;
+}
+
 #manage-users-wrapper {
-  margin: 80px auto 0px auto;
+  margin: 40px auto 0px auto;
   width: 500px;
 }
 

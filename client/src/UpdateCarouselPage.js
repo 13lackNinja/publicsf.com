@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { database } from './firebase';
 import EditImageModule from './EditImageModule'
 
@@ -28,23 +27,14 @@ class UpdateCarouselPage extends Component {
   }
 
   render() {
-    const style = {
-      position: 'fixed',
-      top: '80px',
-      left: '40px',
-      fontFamily: 'Rajdhani',
-      color: '#ededed',
-      textTransform: 'uppercase'
-    }
-
     return(
       <div id="update-carousel-page">
-          <Link to="/staff" style={style}>Back</Link>
-          <div id="update-carousel-module">
-            {this.state.images.map((imageURL, i) => {
-              return <EditImageModule imageURL={imageURL} id={i + 1} key={i}/>
-            })}
-          </div>
+        <h2>Update Carousel</h2>
+        <div id="update-carousel-module">
+          {this.state.images.map((imageURL, i) => {
+            return <EditImageModule imageURL={imageURL} id={i + 1} key={i}/>
+          })}
+        </div>
       </div>
     )
   }

@@ -46,6 +46,7 @@ class UpdateMarqueePage extends Component {
   render() {
     return (
       <div id="update-marquee-page">
+        <h2>Update Marquee</h2>
         <div id="update-marquee-module">
           <input
             id="marquee-text-input"

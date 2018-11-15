@@ -1,10 +1,9 @@
-
-
 #login-failure-message {
   text-align: center;
+  text-transform: uppercase;
   margin-top: 20px;
   font-family: 'Oswald';
   color: #111111;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
 }

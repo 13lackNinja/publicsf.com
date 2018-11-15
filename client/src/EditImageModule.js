@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { storage, database } from './firebase'
+import firebase, { storage, database } from './firebase'
 
 import './styles/EditImageModule.css'
 
@@ -7,20 +7,60 @@ class EditEventModule extends Component {
   constructor(props) {
     super(props);
     this.handleReplace = this.handleReplace.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.state = {
       imageURL: this.props.imageURL
     }
+    this.buttonRef = React.createRef();
+    this.inputRef = React.createRef();
+    this.labelRef = React.createRef();
+    this.progressBarRef = React.createRef();
+  }
+
+  handleChange(e) {
+    this.buttonRef.current.style.visibility = 'visible';
+    this.labelRef.current.style.visibility = 'hidden';
   }
 
   handleReplace(e, imageURL) {
-    const fileInput = e.target.previousElementSibling;
+    const labelRef = this.labelRef.current;
+    const fileInput = this.inputRef.current;
+    const replaceButton = this.buttonRef.current;
+    const progressBar = this.progressBarRef.current;
     const imageRef = storage.refFromURL(imageURL);
     const newImage = fileInput.files[0];
     const urlRef = database.ref(`carousel/image${this.props.id}`);
 
-    imageRef.put(newImage).then(() => {
+    labelRef.style.visibility = 'hidden';
+    replaceButton.style.visibility = 'hidden';
+
+    const imageUploadTask = imageRef.put(newImage);
+
+    const next = (snapshot) => {
+      const uploadPercent = snapshot.bytesTransferred / snapshot.totalBytes * 100;
+      progressBar.style.width = `${uploadPercent}%`;
+      console.log(`${uploadPercent}% uploaded ...`);
+    }
+
+    const error = (error) => console.log(error.message);
+
+    const complete = () => {
+      progressBar.style.width = '0%';
+      labelRef.style.visibility = 'visible';
+      console.log('Upload complete');
+    }
+
+    imageUploadTask.on(
+      firebase.storage.TaskEvent.STATE_CHANGED,
+      next,
+      error,
+      complete
+    );
+
+    imageUploadTask.then(() => {
       imageRef.getDownloadURL().then((url) => {
         urlRef.set(url);
+        this.setState({ imageURL: url });
       });
     });
   }
@@ -29,8 +69,25 @@ class EditEventModule extends Component {
     return (
       <div className="edit-image-module">
         <img src={this.state.imageURL} alt={this.state.imageURL}/>
-        <input type="file"/>
-        <button onClick={(e) => this.handleReplace(e, this.state.imageURL)}>Replace</button>
+        <label
+          ref={this.labelRef}
+          className="edit-image-label">
+          Choose File
+          <input
+            ref={this.inputRef}
+            className="edit-image-input"
+            type="file"
+            onChange={this.handleChange}
+          />
+        </label>
+        <button
+          ref={this.buttonRef}
+          className="edit-image-replace-button"
+          onClick={(e) => this.handleReplace(e, this.state.imageURL)}
+        >
+          Replace
+        </button>
+        <div className="progress-bar" ref={this.progressBarRef}></div>
       </div>
     )
   }

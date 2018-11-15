@@ -52,8 +52,8 @@ input {
 }
 
 #logout-button-staff-dashboard {
-  position: fixed;
-  top: 80px;
+  position: absolute;
+  top: 40px;
   right: 40px;
-  z-index: 10;
+  z-index: 1;
 }

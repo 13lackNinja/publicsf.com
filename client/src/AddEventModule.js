@@ -107,13 +107,13 @@ class AddEventModule extends Component {
         progressBar.style.width = `${uploadPercent}%`;
       };
 
-      const error = (error) => { console.log(error) };
+      const error = (error) => { console.log(error.message) };
 
       const complete = () => {
         submitButton.style.display = 'initial';
         progressBar.style.width = '0px';
         form.reset();
-        console.log('upload complete');
+        console.log('Upload complete');
       };
 
       imageUploadTask.on(

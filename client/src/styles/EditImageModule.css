@@ -1,10 +1,58 @@
 .edit-image-module {
   display: block;
-  margin: 40px 0px;
+  margin-bottom: 10px;
 }
 
 .edit-image-module img {
   display: block;
   width: 400px;
   height: 200px;
+  margin-bottom: 10px;
+  border: 2px #ededed solid;
+  border-radius: 4px;
+}
+
+.edit-image-label {
+  font-family: 'Rajdhani';
+  color: #ededed;
+  font-size: 16px;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px #111111 solid;
+  transition: color .3s, border-bottom .3s;
+}
+
+.edit-image-label:hover {
+  color: #e75e26;
+  border-bottom: 1px #e75e26 solid;
+}
+
+.edit-image-input {
+  display: none;
+}
+
+.edit-image-replace-button {
+  display: inline-block;
+  visibility: hidden;
+  float: right;
+  font-family: 'Rajdhani';
+  color: #ededed;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px #111111 solid;
+  transition: color .3s, border-bottom .3s;
+  background: none;
+}
+
+.edit-image-replace-button:hover {
+  color: #e75e26;
+  border-bottom: 1px #e75e26 solid;
+}
+
+.progress-bar {
+  position: relative;
+  bottom: 20px;
+  width: 0;
+  height: 20px;
+  background: #e75e26;
 }

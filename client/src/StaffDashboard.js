@@ -35,8 +35,8 @@ class StaffDashboard extends Component {
 
   render() {
     const style = {
-      position: 'fixed',
-      top: '80px',
+      position: 'absolute',
+      top: '40px',
       left: '40px',
       fontFamily: 'Rajdhani',
       color: '#ededed',
@@ -51,7 +51,6 @@ class StaffDashboard extends Component {
           location="staff-dashboard"
           color="white" type="button"
           submit={this.logout}
-          style={{ zIndex: '1' }}
         />
         <Switch>
           <Route path="/staff/add-event" render={() => <Link to="/staff" style={style}>Back</Link>}/>
