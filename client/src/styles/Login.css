@@ -1,40 +1,10 @@
-#login {
-  background: #111111;
-  height: calc(100vh - 50px);
-  position: relative;
-  overflow: hidden;
-}
 
-#login h1 {
-  margin-top: 80px
-}
 
-#login form {
-  width: 350px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #ededed;
-}
-
-#login form input {
-  width: 100%;
-  height: 30px;
-  padding: 10px;
-}
-
-#login button {
-  width: 100%;
-  background: #e75e26;
-  padding: 10px;
-  border: none;
-  font-family: 'Rajdhani';
-  text-transform: uppercase;
-  font-weight: bold;
+#login-failure-message {
+  text-align: center;
+  margin-top: 20px;
+  font-family: 'Oswald';
+  color: #111111;
   font-size: 18px;
-}
-
-#login form ::placeholder {
-  color: #ededed;
+  font-weight: 600;
 }

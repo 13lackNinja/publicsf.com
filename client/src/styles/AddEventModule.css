@@ -27,12 +27,14 @@
 }
 
 #add-event-form input {
+  padding-left: 5px;
   font-size: 14px;
   width: 350px;
   margin: 10px 0px 20px 0px;
 }
 
 #add-event-form textarea {
+  padding-left: 5px;
   font-size: 14px;
   width: 350px;
   resize: vertical;

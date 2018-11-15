@@ -11,7 +11,7 @@
 
 .event-module-image {
   position: relative;
-  bottom: 40px;
+  bottom: 5px;
 
 }
 
@@ -29,6 +29,7 @@
   clear: both;
   padding: 0px 20px;
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 /* Text Formatting */

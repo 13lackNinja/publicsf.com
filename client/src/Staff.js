@@ -12,22 +12,26 @@ class Staff extends Component {
     this.state = { user: null };
   }
 
-  componentDidMount() {
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({ user: user });
-      }
-    });
+  render() {
+    // in this new render method, use a switch to display failed login attempt vs regular screen,
+    // keep the staff dashboard in its own condition
   }
 
   render() {
-    if (!auth.currentUser) {
+    if (!auth.currentUser && this.state.loginFailed) {
+      return (
+        <div id="staff">
+          <Login loginFailed={true}/>
+          <Grit/>
+        </div>
+      );
+    } else if (!auth.currentUser) {
       return (
         <div id="staff">
           <Login/>
           <Grit/>
         </div>
-      );
+      )
     } else if (auth.currentUser) {
       return (
         <div id="staff">
@@ -36,6 +40,14 @@ class Staff extends Component {
         </div>
       );
     }
+  }
+
+  componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user: user });
+      }
+    });
   }
 }
 

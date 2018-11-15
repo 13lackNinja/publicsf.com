@@ -5,7 +5,6 @@ import './styles/EventModule.css'
 
 const EventModule = (props) => {
   return (
-    <a href={props.url} target="_blank">
     <div className="event-module-container">
       <div className="event-module-image">
         <h3 className="event-module-date">
@@ -29,7 +28,6 @@ const EventModule = (props) => {
         <p className="event-module-price">{props.price}</p>
       </div>
     </div>
-    </a>
   )
 }
 

@@ -112,6 +112,7 @@ class AddEventModule extends Component {
       const complete = () => {
         submitButton.style.display = 'initial';
         progressBar.style.width = '0px';
+        form.reset();
         console.log('upload complete');
       };
 
@@ -122,7 +123,6 @@ class AddEventModule extends Component {
         complete
       );
 
-      form.reset();
       warningText.textContent = '';
       this.toggleButtonDisplay('none');
     }
@@ -170,6 +170,7 @@ class AddEventModule extends Component {
         <div>
           <label htmlFor="room">Room</label>
           <select name="room" id='room-dropdown' onChange={this.handleChange} required>
+            <option value=""></option>
             <option value="">Full Space</option>
             <option value="Main Room">Main Room</option>
             <option value="Loft">Loft</option>

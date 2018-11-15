@@ -7,7 +7,6 @@ class DeleteButton extends Component {
     this.state = { fill: '#111111' }
   }
 
-
   toggleColor(color) {
     this.setState({ fill: color });
   }

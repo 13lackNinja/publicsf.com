@@ -5,6 +5,7 @@ import AddEventPage from './AddEventPage'
 import EditEventPage from './EditEventPage'
 import UpdateCarouselPage from './UpdateCarouselPage'
 import UpdateMarqeePage from './UpdateMarqueePage';
+import ManageUsersPage from './ManageUsersPage';
 import ActionButton from './ActionButton'
 
 import './styles/StaffDashboard.css'
@@ -16,6 +17,7 @@ const MainMenu = () => (
     <Link to='/staff/edit-event'>Edit/Delete Event</Link>
     <Link to='/staff/update-carousel'>Update Carousel</Link>
     <Link to='/staff/update-marquee'>Update Marquee</Link>
+    <Link to='/staff/manage-users'>Manage Users</Link>
   </div>
 )
 
@@ -39,7 +41,7 @@ class StaffDashboard extends Component {
       fontFamily: 'Rajdhani',
       color: '#ededed',
       textTransform: 'uppercase',
-      zIndex: '10'
+      zIndex: '1'
     }
 
     return (
@@ -49,6 +51,7 @@ class StaffDashboard extends Component {
           location="staff-dashboard"
           color="white" type="button"
           submit={this.logout}
+          style={{ zIndex: '1' }}
         />
         <Switch>
           <Route path="/staff/add-event" render={() => <Link to="/staff" style={style}>Back</Link>}/>
@@ -56,6 +59,7 @@ class StaffDashboard extends Component {
           <Route path='/staff/edit-event/:id' render={() => (<Link to="/staff/edit-event" style={style}>Back</Link>)}/>
           <Route path='/staff/update-carousel' render={() => (<Link to="/staff" style={style}>Back</Link>)}/>
           <Route path='/staff/update-marquee' render={() => (<Link to="/staff" style={style}>Back</Link>)}/>
+          <Route path='/staff/manage-users' render={() => (<Link to="/staff" style={style}>Back</Link>)}/>
         </Switch>
         <Switch>
           <Route exact path="/staff" component={MainMenu}></Route>
@@ -63,6 +67,7 @@ class StaffDashboard extends Component {
           <Route path="/staff/edit-event" component={EditEventPage}></Route>
           <Route path="/staff/update-carousel" component={UpdateCarouselPage}></Route>
           <Route path="/staff/update-marquee" component={UpdateMarqeePage}></Route>
+          <Route path="/staff/manage-users" component={ManageUsersPage}></Route>
         </Switch>
       </div>
     )
