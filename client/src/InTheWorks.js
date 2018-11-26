@@ -45,8 +45,6 @@ class InTheWorks extends Component {
         images: images
       });
     });
-
-
   }
 
   render() {

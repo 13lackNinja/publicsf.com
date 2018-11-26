@@ -14,8 +14,6 @@ class DeleteButton extends Component {
   render () {
     return (
       <svg
-        width="40"
-        height="40"
         className="delete-button"
         version="1.1"
       	viewBox="0 0 774.266 774.266"

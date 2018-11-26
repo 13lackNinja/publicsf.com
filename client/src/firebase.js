@@ -4,12 +4,12 @@ import 'firebase/storage'
 import 'firebase/database'
 
 const config = {
-    apiKey: "AIzaSyBCiJulpMi4n3m3kNulL1h5tvvOjib2gNM",
-    authDomain: "publicsf-eab96.firebaseapp.com",
-    databaseURL: "https://publicsf-eab96.firebaseio.com",
-    projectId: "publicsf-eab96",
-    storageBucket: "publicsf-eab96.appspot.com",
-    messagingSenderId: "359880787134"
+    apiKey: "AIzaSyA9PA22LxDswjyMH03f9f4GiozZ_4JwMMA",
+    authDomain: "publicsf-ef5ca.firebaseapp.com",
+    databaseURL: "https://publicsf-ef5ca.firebaseio.com",
+    projectId: "publicsf-ef5ca",
+    storageBucket: "publicsf-ef5ca.appspot.com",
+    messagingSenderId: "272217516075"
   };
 
 firebase.initializeApp(config);

@@ -26,9 +26,17 @@
 }
 
 .edit-event-list-button {
-  width: 40px;
-  height: 40px;
   margin-left: 5px;
   cursor: pointer;
   background: #e75e26;
+}
+
+@media (max-width: 500px) {
+  #edit-event-list h2 {
+    font-size: 18px;
+  }
+
+  #edit-event-list td {
+    font-size: 16px;
+  }
 }

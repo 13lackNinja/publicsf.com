@@ -5,7 +5,8 @@ import './styles/Carousel.css'
 const Slide = (props) => (
   <div
     id="image-container"
-    style={{ backgroundImage: `url(${props.image})` }}>
+    style={{ backgroundImage: `url(${props.image})` }}
+  >
   </div>
 )
 

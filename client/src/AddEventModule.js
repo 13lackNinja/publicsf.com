@@ -68,8 +68,6 @@ class AddEventModule extends Component {
         warningText.textContent = `You might want to fill out ${key}`;
         isStateInit = true;
         return
-      } else {
-
       }
     }
 
@@ -159,7 +157,7 @@ class AddEventModule extends Component {
             onChange={this.handleEndChange}
             inputProps={{ name: "end", required: true }}
             utc
-            required={true}/>
+          />
         </div>
 
         <div>

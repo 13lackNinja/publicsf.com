@@ -14,5 +14,6 @@
 
 #update-carousel-module {
   margin: auto;
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
 }

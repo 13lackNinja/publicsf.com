@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <div id="app">
           <TopNav />
           <MainContent />
           <Footer />

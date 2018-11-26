@@ -1,4 +1,6 @@
 .delete-button {
+  height: 40px;
+  width: 40px;
   padding: 5px;
   background: #e75e26;
   margin-left: 5px;
@@ -12,4 +14,11 @@
 
 .path {
   transition: fill
+}
+
+@media (max-width: 500px) {
+  .delete-button {
+    height: 20px;
+    width: 20px;
+  }
 }

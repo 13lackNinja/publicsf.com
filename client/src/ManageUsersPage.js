@@ -37,6 +37,7 @@ class ManageUsersPage extends Component {
 
   deleteUser(id) {
     this.usersRef.child(id).remove();
+    this.usersRef.child(`uids/${id.uid}`).remove();
   }
 
   render() {
@@ -88,7 +89,9 @@ class ManageUsersPage extends Component {
 
       for (const user in users) {
         users[user].key = user;
-        userArray.push(users[user]);
+        if (users[user].key !== 'uids') {
+          userArray.push(users[user]);
+        }
       }
 
       this.setState({ users: userArray });

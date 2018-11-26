@@ -26,25 +26,29 @@ class Home extends Component {
     super(props);
     this.state = {
       events: [],
-      image1: '',
-      image2: '',
-      image3: ''
+      images: [],
+      marqueeText: '',
+      marqueeURL: ''
     }
   }
 
   componentDidMount() {
-    const carouselRef = database.ref('carousel');
-    carouselRef.once('value', (snapshot) => {
+    // const carouselRef = database.ref('carousel');
+    const eventsRef = database.ref('events').orderByChild('start').limitToLast(3);
+    const marqueeRef = database.ref('marquee');
+
+    database.ref('carousel').on('value', (snapshot) => {
       const images = snapshot.val();
+
       this.setState({
-        events: [],
-        image1: images.image1,
-        image2: images.image2,
-        image3: images.image3
+        images: [
+          images.image1,
+          images.image2,
+          images.image3
+        ]
       });
     });
 
-    const eventsRef = database.ref('events').orderByChild('start').limitToLast(3);
     eventsRef.once('value', (snapshot) => {
       const eventsData = snapshot.val()
       let events = [];
@@ -59,7 +63,6 @@ class Home extends Component {
       });
     });
 
-    const marqueeRef = database.ref('marquee');
     marqueeRef.once('value', (snapshot) => {
       this.setState({
         marqueeText: snapshot.val().text,
@@ -69,17 +72,9 @@ class Home extends Component {
   }
 
   render() {
-    let images = [
-      this.state.image1,
-      this.state.image2,
-      this.state.image3
-    ];
-
     return (
       <div id="home">
-        <Carousel
-          images={images}
-        />
+        <Carousel images={this.state.images}/>
         <Marquee
           text={this.state.marqueeText}
           url={this.state.marqueeURL}

@@ -10,16 +10,19 @@
   top: calc(50% - 50px);
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 400px;
+  padding: 0px 10px;
 }
 
 #main-menu a {
   position: relative;
   display: block;
-  width: 350px;
+  margin: 10px auto;
+  width: 100%;
   height: 50px;
   background: #e75e26;
   text-align: center;
-  margin: 10px 0px;
   cursor: pointer;
   font-family: 'Oswald';
   font-size: 24px;
@@ -56,4 +59,11 @@ input {
   top: 40px;
   right: 40px;
   z-index: 1;
+}
+
+@media (max-width: 400px) {
+  #main-menu h1 {
+    font-size: 46px;
+    letter-spacing: 0px;
+  }
 }

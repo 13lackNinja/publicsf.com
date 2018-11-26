@@ -32,7 +32,7 @@ class UpdateCarouselPage extends Component {
         <h2>Update Carousel</h2>
         <div id="update-carousel-module">
           {this.state.images.map((imageURL, i) => {
-            return <EditImageModule imageURL={imageURL} id={i + 1} key={i}/>
+            return <EditImageModule imageURL={imageURL} number={i + 1} key={i}/>
           })}
         </div>
       </div>

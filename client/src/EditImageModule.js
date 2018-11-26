@@ -23,18 +23,21 @@ class EditEventModule extends Component {
   }
 
   handleReplace(e, imageURL) {
-    const labelRef = this.labelRef.current;
     const fileInput = this.inputRef.current;
+    const newImage = fileInput.files[0];
+    const labelRef = this.labelRef.current;
     const replaceButton = this.buttonRef.current;
     const progressBar = this.progressBarRef.current;
-    const imageRef = storage.refFromURL(imageURL);
-    const newImage = fileInput.files[0];
-    const urlRef = database.ref(`carousel/image${this.props.id}`);
+    const oldImageRef = storage.refFromURL(imageURL);
+    const newImageRef = storage.ref('carousel-images').child(newImage.name);
+    const urlRef = database.ref(`carousel/image${this.props.number}`);
 
     labelRef.style.visibility = 'hidden';
     replaceButton.style.visibility = 'hidden';
 
-    const imageUploadTask = imageRef.put(newImage);
+    oldImageRef.delete();
+
+    const imageUploadTask = newImageRef.put(newImage);
 
     const next = (snapshot) => {
       const uploadPercent = snapshot.bytesTransferred / snapshot.totalBytes * 100;
@@ -58,9 +61,8 @@ class EditEventModule extends Component {
     );
 
     imageUploadTask.then(() => {
-      imageRef.getDownloadURL().then((url) => {
+      newImageRef.getDownloadURL().then((url) => {
         urlRef.set(url);
-        this.setState({ imageURL: url });
       });
     });
   }

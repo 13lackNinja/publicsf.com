@@ -24,6 +24,7 @@ class Staff extends Component {
       for (let userID in users) {
         if (users[userID].email === email) {
           usersRef.child(`${userID}/uid`).set(uid);
+          usersRef.child('uids').set({ [uid]: true });
           userIsAuthorized = true;
         }
       }

@@ -16,9 +16,7 @@ class EditButton extends Component {
   render () {
     return (
       <svg
-        height="40"
         viewBox="0 -1 401.52289 401"
-        width="40"
         xmlns="http://www.w3.org/2000/svg"
         className='edit-button'
         onMouseEnter={() => this.toggleColor('#e75e26')}
