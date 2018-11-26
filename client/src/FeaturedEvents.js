@@ -22,7 +22,7 @@ class FeaturedEvents extends Component {
       });
 
       return (
-        <div id="in-the-works">
+        <div id="featured-events">
           <h1>In the works</h1>
           <div id="featured-events-container">
             {featuredEvents}

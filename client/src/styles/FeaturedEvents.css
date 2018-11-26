@@ -1,3 +1,18 @@
+#featured-events {
+  background: #111111;
+  overflow: hidden;
+}
+
+#featured-events h1 {
+  margin-bottom: 40px;
+}
+
+@media (max-width: 500px) {
+  #featured-events h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+  }
+}
 
 #featured-events-container {
   background: #111111;
