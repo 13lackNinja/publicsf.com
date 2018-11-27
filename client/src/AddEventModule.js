@@ -144,7 +144,7 @@ class AddEventModule extends Component {
           <label htmlFor="start">Start</label>
           <DateTime
             placeholder="Start"
-            onChange={this.handleStartChange}
+            onBlur={this.handleStartChange}
             inputProps={{ name: "start", required: true }}
             utc
           />
@@ -154,7 +154,7 @@ class AddEventModule extends Component {
           <label htmlFor="end">End</label>
           <DateTime
             placeholder="End"
-            onChange={this.handleEndChange}
+            onBlur={this.handleEndChange}
             inputProps={{ name: "end", required: true }}
             utc
           />
@@ -162,7 +162,7 @@ class AddEventModule extends Component {
 
         <div>
           <label htmlFor="artists">Artists</label>
-          <input type="text" name="artists" placeholder="Artists" onChange={this.handleChange} required/>
+          <input type="text" name="artists" placeholder="Artists" onChange={this.handleChange}/>
         </div>
 
         <div>
@@ -177,7 +177,7 @@ class AddEventModule extends Component {
 
         <div>
           <label htmlFor="price">Price</label>
-          <input type="text" name="price" placeholder="Price" onChange={this.handleChange} required/>
+          <input type="text" name="price" placeholder="Price" onChange={this.handleChange}/>
         </div>
 
         <div>

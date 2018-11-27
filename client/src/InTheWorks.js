@@ -50,7 +50,7 @@ class InTheWorks extends Component {
   render() {
     return (
       <div id="in-the-works">
-        <Carousel images={this.state.images}/>
+        {/* <Carousel images={this.state.images}/> */}
         <EventList events={this.state.events}/>
         <NewsletterSignUp />
         <Grit/>
