@@ -6,7 +6,12 @@
 
 #event-list h1 {
   margin: 0px auto 80px auto;
-  text-shadow: 0 0 3px #ededed;
+}
+
+@media (max-width: 500px) {
+  #event-list h1 {
+    font-size: 50px;
+  }
 }
 
 #load-moar-events {

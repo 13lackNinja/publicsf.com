@@ -8,7 +8,7 @@ const EventModule = (props) => {
     <div className="event-module-container">
       <div className="event-module-image">
         <h3 className="event-module-date">
-          {props.date}
+          {props.start}
         </h3>
         <img src={props.image} alt="event"/>
       </div>
@@ -16,11 +16,11 @@ const EventModule = (props) => {
         <h3 className="event-module-date-mobile">
           {props.start}
         </h3>
-          <h2 className="event-module-artists">
-            {props.name.split(' @')[0]}
+          <h2 className="event-module-name">
+            {props.name}
           </h2>
           <p className="event-module-time">
-            {props.start}
+            {props.time}
           </p>
       </div>
       <div className="event-module-button">
