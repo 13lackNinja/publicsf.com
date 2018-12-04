@@ -14,6 +14,7 @@ class AddEventModule extends Component {
     this.handleStartChange = this.handleStartChange.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
+    this.isValidDate = this.isValidDate.bind(this);
     this.initState = {
       'name': null,
       'start': null,
@@ -36,6 +37,10 @@ class AddEventModule extends Component {
     this.toggleButtonDisplay('initial');
   }
 
+  isValidDate(date) {
+    return date instanceof Date && !isNaN(date);
+  }
+
   handleImageChange(e) {
     this.setState({
       imageURL: 'placeholder'
@@ -44,17 +49,25 @@ class AddEventModule extends Component {
   }
 
   handleStartChange(moment) {
-    this.setState({
-      start: moment.toDate().getTime()
-    });
-    this.toggleButtonDisplay('initial');
+    if (this.isValidDate(moment)) {
+      this.setState({
+        start: moment.toDate().getTime()
+      });
+      this.toggleButtonDisplay('initial');
+    } else {
+      console.log('Invalid date');
+    }
   }
 
   handleEndChange(moment) {
-    this.setState({
-      end: moment.toDate().getTime()
-    });
-    this.toggleButtonDisplay('initial');
+    if (this.isValidDate(moment)) {
+      this.setState({
+        end: moment.toDate().getTime()
+      });
+      this.toggleButtonDisplay('initial');
+    } else {
+      console.log('Invalid date');
+    }
   }
 
   handleSubmit(e) {
@@ -137,16 +150,22 @@ class AddEventModule extends Component {
         <h2>Add Event</h2>
         <div>
           <label htmlFor="name">Name</label>
-          <input type="text" name="name" placeholder="Name" onChange={this.handleChange} required/>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            onChange={this.handleChange}
+            required/>
         </div>
 
         <div>
           <label htmlFor="start">Start</label>
           <DateTime
-            placeholder="Start"
             onBlur={this.handleStartChange}
             inputProps={{ name: "start", required: true }}
             utc
+            disableCloseOnClickOutside={true}
+            closeOnSelect={true}
           />
         </div>
 
@@ -157,6 +176,8 @@ class AddEventModule extends Component {
             onBlur={this.handleEndChange}
             inputProps={{ name: "end", required: true }}
             utc
+            disableCloseOnClickOutside={true}
+            closeOnSelect={true}
           />
         </div>
 

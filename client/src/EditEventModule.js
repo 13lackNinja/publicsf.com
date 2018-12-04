@@ -12,6 +12,7 @@ class EditEventModule extends Component {
     this.handleStartChange = this.handleStartChange.bind(this);
     this.handleEndChange = this.handleEndChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.isValidDate = this.isValidDate.bind(this);
     this.state = {
       name: props.name,
       start: props.start,
@@ -33,18 +34,26 @@ class EditEventModule extends Component {
     this.toggleButtonDisplay('initial');
   }
 
+  isValidDate(date) {
+    return date instanceof Date && !isNaN(date);
+  }
+
   handleStartChange(moment) {
-    this.setState({
-      start: moment.toDate().getTime()
-    });
-    this.toggleButtonDisplay('initial');
+    if (this.isValidDate(moment)) {
+      this.setState({
+        start: moment.toDate().getTime()
+      });
+      this.toggleButtonDisplay('initial');
+    }
   }
 
   handleEndChange(moment) {
-    this.setState({
-      end: moment.toDate().getTime()
-    });
-    this.toggleButtonDisplay('initial');
+    if (this.isValidDate(moment)) {
+      this.setState({
+        end: moment.toDate().getTime()
+      });
+      this.toggleButtonDisplay('initial');
+    }
   }
 
   handleSubmit(e) {
@@ -119,7 +128,10 @@ class EditEventModule extends Component {
               onBlur={this.handleStartChange}
               inputProps={{ name: "start" }}
               utc
-              required/>
+              required
+              disableCloseOnClickOutside={true}
+              closeOnSelect={true}
+            />
           </div>
 
           <div>
@@ -129,7 +141,10 @@ class EditEventModule extends Component {
               onBlur={this.handleEndChange}
               inputProps={{ name: "end" }}
               utc
-              required/>
+              required
+              disableCloseOnClickOutside={true}
+              closeOnSelect={true}
+            />
           </div>
 
           <div>

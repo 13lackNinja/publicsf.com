@@ -34,7 +34,7 @@ class EditEventList extends Component {
 
         return (
           <tr key={e.id}>
-            <td>{date.toDateString()}</td>
+            <td className="edit-event-list-date">{date.toDateString().slice(4, 10)}</td>
             <td className="edit-event-list-name">{e.name}</td>
             <td>
               <Link to={`/staff/edit-event/${e.id}`}>
@@ -58,8 +58,6 @@ class EditEventList extends Component {
       </div>
     );
   }
-
 }
-
 
 export default EditEventList;

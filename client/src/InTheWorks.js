@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { database } from './firebase'
-import Carousel from './Carousel'
+// import Carousel from './Carousel'
 import EventList from './EventList'
 import NewsletterSignUp from './NewsletterSignUp'
 import Grit from './Grit'
