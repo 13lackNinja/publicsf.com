@@ -35,7 +35,8 @@ class EditEventModule extends Component {
   }
 
   isValidDate(date) {
-    return date instanceof Date && !isNaN(date);
+    const checkDate = new Date(date);
+    return checkDate instanceof Date && !isNaN(date);
   }
 
   handleStartChange(moment) {
@@ -44,6 +45,8 @@ class EditEventModule extends Component {
         start: moment.toDate().getTime()
       });
       this.toggleButtonDisplay('initial');
+    } else {
+      console.log('Invalid date');
     }
   }
 
@@ -53,6 +56,8 @@ class EditEventModule extends Component {
         end: moment.toDate().getTime()
       });
       this.toggleButtonDisplay('initial');
+    } else {
+      console.log('Invalid date');
     }
   }
 
@@ -118,18 +123,23 @@ class EditEventModule extends Component {
           <h2>Edit Event</h2>
           <div>
             <label htmlFor="name">Name</label>
-            <input type="text" name="name" defaultValue={this.props.name} onInput={this.handleChange} required/>
+            <input
+              type="text"
+              name="name"
+              value={this.state.name}
+              onChange={this.handleChange}
+              required/>
           </div>
 
           <div>
             <label htmlFor="start">Start</label>
             <DateTime
-              defaultValue={this.props.start}
+              value={this.state.start}
               onBlur={this.handleStartChange}
               inputProps={{ name: "start" }}
               utc
               required
-              disableCloseOnClickOutside={true}
+              // disableCloseOnClickOutside={true}
               closeOnSelect={true}
             />
           </div>
@@ -137,7 +147,7 @@ class EditEventModule extends Component {
           <div>
             <label htmlFor="end">End</label>
             <DateTime
-              defaultValue={this.props.end}
+              value={this.state.end}
               onBlur={this.handleEndChange}
               inputProps={{ name: "end" }}
               utc
@@ -149,12 +159,22 @@ class EditEventModule extends Component {
 
           <div>
             <label htmlFor="artists">Artists</label>
-            <input type="text" name="artists" defaultValue={this.props.artists} onChange={this.handleChange} required/>
+            <input
+              type="text"
+              name="artists"
+              value={this.state.artists}
+              onChange={this.handleChange}
+              required/>
           </div>
 
           <div>
             <label htmlFor="room">Room</label>
-            <select name="room" id='room-dropdown' onChange={this.handleChange} defaultValue={this.props.room}>
+            <select
+              name="room"
+              id='room-dropdown'
+              onChange={this.handleChange}
+              value={this.state.room}
+            >
               <option value="">Full Space</option>
               <option value="Main Room">Main Room</option>
               <option value="Loft">Loft</option>
@@ -163,12 +183,21 @@ class EditEventModule extends Component {
 
           <div>
             <label htmlFor="price">Price</label>
-            <input type="text" name="price" defaultValue={this.props.price} onChange={this.handleChange} required/>
+            <input
+              type="text"
+              name="price"
+              value={this.state.price} onChange={this.handleChange}
+              required/>
           </div>
 
           <div>
             <label htmlFor="ticketURL">Ticket URL</label>
-            <input type="text" name="ticketURL" defaultValue={this.props.ticketURL} onChange={this.handleChange} required/>
+            <input
+              type="text"
+              name="ticketURL"
+              value={this.state.ticketURL} onChange={this.handleChange}
+              required
+            />
           </div>
 
           <div>
@@ -183,7 +212,7 @@ class EditEventModule extends Component {
               cols="20"
               type="text"
               name="description"
-              defaultValue={this.props.description}
+              value={this.state.description}
               onChange={this.handleChange}
               required
             />

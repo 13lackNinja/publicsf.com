@@ -8,7 +8,7 @@ const Slide = (props) => (
     style={{ backgroundImage: `url(${props.image})` }}
   >
   </div>
-)
+);
 
 class Circle extends Component {
   constructor(props) {
@@ -74,7 +74,7 @@ class Carousel extends Component {
   render() {
     return (
       <div id="carousel-container">
-      <Slide image={this.props.images[this.state.position - 1]} />
+        <Slide image={this.props.images[this.state.position - 1]} />
         <div id="circle-container">
           <Circle index={1} position={this.state.position} onClick={() => this.jump(1)}/>
           <Circle index={2} position={this.state.position} onClick={() => this.jump(2)}/>

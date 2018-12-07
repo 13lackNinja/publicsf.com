@@ -15,16 +15,17 @@ class AddEventModule extends Component {
     this.handleEndChange = this.handleEndChange.bind(this);
     this.handleImageChange = this.handleImageChange.bind(this);
     this.isValidDate = this.isValidDate.bind(this);
+    this.resetForm = this.resetForm.bind(this);
     this.initState = {
-      'name': null,
-      'start': null,
-      'end': null,
-      'artists': null,
-      'description': null,
-      'room': null,
-      'price': null,
-      'ticketURL': null,
-      'imageURL': null
+      'name': '',
+      'start': '',
+      'end': '',
+      'artists': '',
+      'description': '',
+      'room': '',
+      'price': '',
+      'ticketURL': '',
+      'imageURL': ''
     };
     this.state = this.initState;
     this.firebasePromise = null;
@@ -38,7 +39,8 @@ class AddEventModule extends Component {
   }
 
   isValidDate(date) {
-    return date instanceof Date && !isNaN(date);
+    const checkDate = new Date(date);
+    return checkDate instanceof Date && !isNaN(date);
   }
 
   handleImageChange(e) {
@@ -70,7 +72,7 @@ class AddEventModule extends Component {
     }
   }
 
-  handleSubmit(e) {
+  handleSubmit(e, callback) {
     e.preventDefault();
 
     let isStateInit = false;
@@ -90,7 +92,6 @@ class AddEventModule extends Component {
     } else {
       console.log('submitting...');
 
-      const form = document.getElementById('add-event-form');
       const progressBar = document.getElementById('progress-bar');
       const submitButton = document.getElementById('submit-button-dashboard');
       const newData = this.state;
@@ -108,7 +109,6 @@ class AddEventModule extends Component {
           this.firebasePromise = eventRef.push(newData).then(() => {
             this.firebasePromise = null;
           });
-          this.setState(this.initState);
         });
       });
 
@@ -123,8 +123,9 @@ class AddEventModule extends Component {
       const complete = () => {
         submitButton.style.display = 'initial';
         progressBar.style.width = '0px';
-        form.reset();
         console.log('Upload complete');
+
+        callback();
       };
 
       imageUploadTask.on(
@@ -144,6 +145,10 @@ class AddEventModule extends Component {
     submitButton.style.display = option;
   }
 
+  resetForm() {
+    this.setState(this.initState);
+  }
+
   render() {
     return (
       <form id="add-event-form">
@@ -153,7 +158,7 @@ class AddEventModule extends Component {
           <input
             type="text"
             name="name"
-            placeholder="Name"
+            value={this.state.name}
             onChange={this.handleChange}
             required/>
         </div>
@@ -161,6 +166,7 @@ class AddEventModule extends Component {
         <div>
           <label htmlFor="start">Start</label>
           <DateTime
+            value={this.state.start}
             onBlur={this.handleStartChange}
             inputProps={{ name: "start", required: true }}
             utc
@@ -172,6 +178,7 @@ class AddEventModule extends Component {
         <div>
           <label htmlFor="end">End</label>
           <DateTime
+            value={this.state.end}
             placeholder="End"
             onBlur={this.handleEndChange}
             inputProps={{ name: "end", required: true }}
@@ -183,7 +190,12 @@ class AddEventModule extends Component {
 
         <div>
           <label htmlFor="artists">Artists</label>
-          <input type="text" name="artists" placeholder="Artists" onChange={this.handleChange}/>
+          <input
+            type="text"
+            name="artists"
+            value={this.state.artists}
+            onChange={this.handleChange}
+          />
         </div>
 
         <div>
@@ -198,12 +210,21 @@ class AddEventModule extends Component {
 
         <div>
           <label htmlFor="price">Price</label>
-          <input type="text" name="price" placeholder="Price" onChange={this.handleChange}/>
+          <input
+            type="text"
+            name="price"
+            value={this.state.price}
+            onChange={this.handleChange}/>
         </div>
 
         <div>
           <label htmlFor="ticketURL">Ticket URL</label>
-          <input type="text" name="ticketURL" placeholder="Ticket URL" onChange={this.handleChange} required/>
+          <input
+            type="text"
+            name="ticketURL"
+            value={this.state.ticketURL}
+            onChange={this.handleChange}
+            required/>
         </div>
 
         <div>
@@ -218,7 +239,7 @@ class AddEventModule extends Component {
             cols="20"
             type="text"
             name="description"
-            placeholder="Description"
+            value={this.state.description}
             onChange={this.handleChange}
             required
           />
@@ -231,7 +252,7 @@ class AddEventModule extends Component {
               location="dashboard"
               color="white"
               type="submit"
-              submit={this.handleSubmit}
+              submit={(e) => this.handleSubmit(e, this.resetForm)}
             />
           </div>
         </div>

@@ -20,7 +20,7 @@ class InTheWorks extends Component {
   componentDidMount() {
     const today = new Date();
     const todayUnixStamp = today.getTime();
-    const eventsRef = database.ref('events').orderByChild('start').startAt(todayUnixStamp);
+    const eventsRef = database.ref('events').startAt(todayUnixStamp);
 
     // Get Events
     eventsRef.on('value', (snapshot) => {
