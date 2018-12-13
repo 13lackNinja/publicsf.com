@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { database } from './firebase'
+import { database } from './firebase';
+import { lastEvents } from './Events';
 import Carousel from './Carousel'
 import Marquee from './Marquee'
 import FeaturedEvents from './FeaturedEvents'
@@ -33,8 +34,6 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    // const carouselRef = database.ref('carousel');
-    const eventsRef = database.ref('events').orderByChild('start').limitToLast(3);
     const marqueeRef = database.ref('marquee');
 
     database.ref('carousel').on('value', (snapshot) => {
@@ -49,21 +48,11 @@ class Home extends Component {
       });
     });
 
-    eventsRef.once('value', (snapshot) => {
-      const eventsData = snapshot.val()
-      let events = [];
-
-      for (let key in eventsData) {
-        eventsData[key].id = key;
-        events.push(eventsData[key]);
-      }
-
-      this.setState({
-        events: events
-      });
+    lastEvents(3).then((events) => {
+      this.setState({ events: events });
     });
 
-    marqueeRef.once('value', (snapshot) => {
+    marqueeRef.on('value', (snapshot) => {
       this.setState({
         marqueeText: snapshot.val().text,
         marqueeURL: snapshot.val().url

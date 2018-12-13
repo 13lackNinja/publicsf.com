@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 import firebase, { database, storage } from './firebase'
 import DateTime from 'react-datetime'
 import ActionButton from './ActionButton'
@@ -52,6 +53,7 @@ class AddEventModule extends Component {
 
   handleStartChange(moment) {
     if (this.isValidDate(moment)) {
+      console.log(moment.toDate());
       this.setState({
         start: moment.toDate().getTime()
       });
@@ -170,8 +172,6 @@ class AddEventModule extends Component {
             onBlur={this.handleStartChange}
             inputProps={{ name: "start", required: true }}
             utc
-            disableCloseOnClickOutside={true}
-            closeOnSelect={true}
           />
         </div>
 
@@ -179,12 +179,9 @@ class AddEventModule extends Component {
           <label htmlFor="end">End</label>
           <DateTime
             value={this.state.end}
-            placeholder="End"
             onBlur={this.handleEndChange}
             inputProps={{ name: "end", required: true }}
             utc
-            disableCloseOnClickOutside={true}
-            closeOnSelect={true}
           />
         </div>
 
@@ -230,6 +227,7 @@ class AddEventModule extends Component {
         <div>
           <label htmlFor="image">Upload Image</label>
           <input id="file-upload-button" type="file" onChange={this.handleImageChange} required/>
+          <p id="upload-warning">Please make sure that your images conform to the <Link to='/docs'>docs</Link></p>
         </div>
 
         <div>

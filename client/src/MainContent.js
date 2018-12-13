@@ -6,6 +6,7 @@ import About from './About'
 import PrivateEvents from './PrivateEvents'
 import Connect from './Connect'
 import Specs from './Specs'
+import Docs from './Docs'
 import Booking from './Booking'
 import Staff from './Staff'
 
@@ -20,6 +21,7 @@ const MainContent = () => (
       <Route path="/privateevents" component={PrivateEvents}></Route>
       <Route path="/connect" component={Connect}></Route>
       <Route path="/specs" component={Specs}></Route>
+      <Route path="/docs" component={Docs}></Route>
       <Route path="/booking" component={Booking}></Route>
       <Route path="/staff" component={Staff}></Route>
     </Switch>

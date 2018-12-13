@@ -40,6 +40,12 @@
   resize: vertical;
 }
 
+#add-event-form a {
+  text-transform: uppercase;
+  text-decoration: underline;
+  color: #e75e26;
+}
+
 #file-upload-button {
   border: none;
 }
@@ -62,6 +68,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
   margin: 0;
+}
+
+#upload-warning {
+  font-family: 'Rajdhani';
+  margin: 30px 0px;
 }
 
 #warning-text {

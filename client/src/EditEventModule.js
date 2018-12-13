@@ -135,12 +135,10 @@ class EditEventModule extends Component {
             <label htmlFor="start">Start</label>
             <DateTime
               value={this.state.start}
-              onBlur={this.handleStartChange}
+              onChange={this.handleStartChange}
               inputProps={{ name: "start" }}
               utc
               required
-              // disableCloseOnClickOutside={true}
-              closeOnSelect={true}
             />
           </div>
 
@@ -148,12 +146,10 @@ class EditEventModule extends Component {
             <label htmlFor="end">End</label>
             <DateTime
               value={this.state.end}
-              onBlur={this.handleEndChange}
+              onChange={this.handleEndChange}
               inputProps={{ name: "end" }}
               utc
               required
-              disableCloseOnClickOutside={true}
-              closeOnSelect={true}
             />
           </div>
 

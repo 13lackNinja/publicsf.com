@@ -32,6 +32,8 @@ class EditEventList extends Component {
 
         const date = new Date(e.start);
 
+        console.log(e.start);
+
         return (
           <tr key={e.id}>
             <td className="edit-event-list-date">{date.toDateString().slice(4, 10)}</td>

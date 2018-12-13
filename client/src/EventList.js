@@ -25,6 +25,7 @@ const EventList = (props) => {
         const hours = start.toString().slice(16, 18);
         const minutes = start.toString().slice(19, 21);
 
+        console.log(start);
 
         return (
           <EventModule

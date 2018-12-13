@@ -1,0 +1,17 @@
+#docs {
+  background: #111111;
+  min-height: 100vw;
+}
+
+#links {
+  padding: 60px;  
+}
+
+#links a {
+  font-family: 'Rajdhani';
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-transform: uppercase;
+  color: #e75e26;
+}
