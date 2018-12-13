@@ -20,7 +20,7 @@ class EditEventModule extends Component {
       artists: props.artists,
       room: props.room,
       price: props.price,
-      ticketURL: props.price,
+      ticketURL: props.ticketURL,
       imageURL: props.imageURL,
       description: props.description,
       id: props.id
