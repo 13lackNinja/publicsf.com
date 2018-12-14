@@ -63,6 +63,7 @@ class EditEventModule extends Component {
     imageUploadTask.then(() => {
       newImageRef.getDownloadURL().then((url) => {
         urlRef.set(url);
+        this.setState({ imageURL: url });
       });
     });
   }

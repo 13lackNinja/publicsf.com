@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { auth, database } from './firebase'
 import Login from './Login'
 import StaffDashboard from './StaffDashboard'
-import Grit from './Grit'
 
 import './styles/Staff.css'
 
@@ -44,21 +43,18 @@ class Staff extends Component {
       return (
         <div id="staff">
           <Login loginFailed={true}/>
-          <Grit/>
         </div>
       );
     } else if (!auth.currentUser) {
       return (
         <div id="staff">
           <Login/>
-          <Grit/>
         </div>
       )
     } else if (auth.currentUser) {
         return (
           <div id="staff">
             <StaffDashboard/>
-            <Grit/>
           </div>
         )
       }

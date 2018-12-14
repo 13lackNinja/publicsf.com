@@ -2,7 +2,6 @@ import React from 'react'
 import HeroImage from './HeroImage'
 import ContactForm from './ContactForm.js'
 import NewsletterSignUp from './NewsletterSignUp.js'
-import Grit from './Grit.js'
 
 import './styles/PrivateEvents.css'
 
@@ -89,7 +88,6 @@ const PrivateEvents = () => (
       initialFormType='privateevents'
     />
     <NewsletterSignUp />
-    <Grit />
   </div>
 )
 

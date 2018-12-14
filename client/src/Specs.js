@@ -1,5 +1,6 @@
 import React from 'react'
 import NewsletterSignUp from './NewsletterSignUp.js'
+import Grit from './Grit';
 
 import './styles/Specs.css'
 
@@ -149,6 +150,7 @@ const Specs = () => (
   <div id="specs">
     <SpecsInfo />
     <NewsletterSignUp />
+    <Grit></Grit>
   </div>
 )
 

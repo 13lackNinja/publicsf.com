@@ -5,7 +5,6 @@ import Carousel from './Carousel'
 import Marquee from './Marquee'
 import FeaturedEvents from './FeaturedEvents'
 import NewsletterSignUp from './NewsletterSignUp'
-import Grit from './Grit'
 import TypeLogo from './TypeLogo'
 
 import './styles/Home.css'
@@ -74,7 +73,6 @@ class Home extends Component {
             this.state.events : null
         }/>
         <NewsletterSignUp />
-        <Grit />
       </div>
     )
   }

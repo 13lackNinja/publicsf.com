@@ -2,7 +2,6 @@ import React from 'react'
 import HeroImage from './HeroImage.js'
 import FAQ from './FAQ.js'
 import ContactForm from './ContactForm.js'
-import Grit from './Grit.js'
 
 import './styles/Connect.css'
 
@@ -61,7 +60,6 @@ const Connect = () => (
       initialSelection='General'
       initialFormType='general'
     />
-    <Grit />
   </div>
 )
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import HeroImage from './HeroImage.js'
 import NewsletterSignUp from './NewsletterSignUp.js'
-import Grit from './Grit.js'
 import TypeLogo from './TypeLogo.js'
 
 import './styles/About.css'
@@ -60,7 +59,6 @@ const About = () => (
     <AboutDescription />
     <ClientLinks />
     <NewsletterSignUp />
-    <Grit />
   </div>
 )
 

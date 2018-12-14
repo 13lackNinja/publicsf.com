@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { currentEvents } from './Events';
 import EventList from './EventList'
 import NewsletterSignUp from './NewsletterSignUp'
-import Grit from './Grit'
 
 import './styles/InTheWorks.css'
 
@@ -27,7 +26,6 @@ class InTheWorks extends Component {
       <div id="in-the-works">
         <EventList events={this.state.events}/>
         <NewsletterSignUp />
-        <Grit/>
       </div>
     )
   }

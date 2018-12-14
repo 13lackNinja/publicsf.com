@@ -7,8 +7,9 @@ import pwWebImageSpecs from './images/pw_web_image_specs.pdf';
 
 const Docs = () => (
   <div id="docs">
+    <h1>Documentation</h1>
     <div id="links">
-      <a href={pwWebImageSpecs}>Public Works Web Images Specs</a>
+      <a href={pwWebImageSpecs} target="_blank">Web Images Specs</a>
     </div>
     <Grit></Grit>
   </div>
