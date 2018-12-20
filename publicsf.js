@@ -13,4 +13,4 @@ app.get(/^\/(?!api).*$/, (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(9001);
+app.listen(9001, () => console.log('Listening on port 9001...'));

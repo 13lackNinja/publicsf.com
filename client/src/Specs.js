@@ -4,9 +4,9 @@ import Grit from './Grit';
 
 import './styles/Specs.css'
 
-import soundSpecsDoc from './images/pw_sound_specs.pdf'
-import videoSpecsDoc from './images/pw_video_lighting_specs.pdf'
-import floorplan from './images/pw_floorplan.pdf'
+import soundSpecsDoc from './images/pw_sound_specs.jpg'
+import videoSpecsDoc from './images/pw_video_lighting_specs.jpg'
+import floorplan from './images/pw_floorplan.jpg'
 
 const SpecsInfo = () => (
   <div id="specs">

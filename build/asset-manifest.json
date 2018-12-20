@@ -1,8 +1,8 @@
 {
   "main.css": "static/css/main.e2765862.css",
   "main.css.map": "static/css/main.e2765862.css.map",
-  "main.js": "static/js/main.951a8992.js",
-  "main.js.map": "static/js/main.951a8992.js.map",
+  "main.js": "static/js/main.06676bb0.js",
+  "main.js.map": "static/js/main.06676bb0.js.map",
   "static/media/blue_bolt_dark.jpg": "static/media/blue_bolt_dark.80df0bb6.jpg",
   "static/media/corporate1_dark.jpg": "static/media/corporate1_dark.c5e7c5d2.jpg",
   "static/media/crowd3.jpg": "static/media/crowd3.aa9342a9.jpg",
@@ -16,10 +16,10 @@
   "static/media/loft.jpg": "static/media/loft.d2b36980.jpg",
   "static/media/mira.jpg": "static/media/mira.e91c3f02.jpg",
   "static/media/outside.jpg": "static/media/outside.0713ec2d.jpg",
-  "static/media/pw_floorplan.pdf": "static/media/pw_floorplan.d70f15e7.pdf",
+  "static/media/pw_floorplan.jpg": "static/media/pw_floorplan.748520dc.jpg",
   "static/media/pw_manhole_white.png": "static/media/pw_manhole_white.b8baf2c3.png",
-  "static/media/pw_sound_specs.pdf": "static/media/pw_sound_specs.7894d11c.pdf",
-  "static/media/pw_video_lighting_specs.pdf": "static/media/pw_video_lighting_specs.cd8ba20a.pdf",
-  "static/media/pw_web_image_specs.pdf": "static/media/pw_web_image_specs.ed32162f.pdf",
+  "static/media/pw_sound_specs.jpg": "static/media/pw_sound_specs.5d6b6c95.jpg",
+  "static/media/pw_video_lighting_specs.jpg": "static/media/pw_video_lighting_specs.cefe52bd.jpg",
+  "static/media/pw_web_image_specs.jpg": "static/media/pw_web_image_specs.def16c5c.jpg",
   "static/media/twitter_icon.svg": "static/media/twitter_icon.845d25ec.svg"
 }
