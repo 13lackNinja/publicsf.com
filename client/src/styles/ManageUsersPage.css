@@ -1,0 +1,44 @@
+#manage-users-page {
+  position: relative;
+  min-height: 100vh;
+  margin-top: 80px;
+  padding: 0px 10px;
+}
+
+#manage-users-page h2 {
+  font-family: 'Oswald';
+  font-size: 32px;
+  margin-bottom: 40px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+#manage-users-page p {
+  display: block;
+  margin: auto;
+  width: 100%;
+  max-width: 600px;
+  font-family: 'Rajdhani';
+  font-size: 16px;
+  text-align: center;
+}
+
+#manage-users-wrapper {
+  margin: 40px auto 0px auto;
+  width: 500px;
+}
+
+#manage-users-wrapper input {
+  display: inline-block;
+  border: 1px #ededed solid;
+  font-size: 14px;
+  padding-left: 5px;
+  margin-right: 10px;
+  background: none;
+  height: 30px;
+  width: 220px;
+}
+
+#add-user-module {
+  margin-bottom: 40px;
+}

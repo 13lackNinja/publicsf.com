@@ -1,0 +1,16 @@
+.plus-button {
+  position: relative;
+  top: 11px;
+  width: 30px;
+  background: #e75e26;
+  transition: background-color .3s;
+  cursor: pointer;
+}
+
+.plus-button:hover {
+  background: #111111;
+}
+
+.plus-button-path {
+  transition: fill .7s;
+}

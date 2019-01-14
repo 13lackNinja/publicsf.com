@@ -1,0 +1,16 @@
+.minus-button {
+  position: relative;
+  top: 11px;
+  width: 30px;
+  background: #e75e26;
+  transition: background-color .3s;
+  cursor: pointer;
+}
+
+.minus-button:hover {
+  background: #111111;
+}
+
+.minus-button-fill {
+  transition: fill .7s;
+}

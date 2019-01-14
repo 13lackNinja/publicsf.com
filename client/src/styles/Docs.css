@@ -1,0 +1,29 @@
+#docs {
+  background: #111111;
+  min-height: 100vw;
+  overflow: hidden;
+}
+
+#docs h1 {
+  margin: 80px 0px;
+}
+
+@media (max-width: 700px) {
+  #docs h1 {
+    font-size: 46px;
+    letter-spacing: -1px;
+  }
+}
+
+#links {
+  text-align: center;
+}
+
+#links a {
+  font-family: 'Rajdhani';
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-transform: uppercase;
+  color: #e75e26;
+}
