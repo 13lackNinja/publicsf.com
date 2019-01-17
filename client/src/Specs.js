@@ -141,7 +141,7 @@ const SpecsInfo = () => (
       Download all &nbsp;
       <DocLink
         text="Sound / Stage"
-        url="https://www.dropbox.com/s/feo5c8xqvr87uno/pw_sound_specs.jpg?dl=0"
+        url="https://www.dropbox.com/s/jy04qfc61a3x0y4/pw_sound_specs.pdf?dl=0"
       />
       &nbsp; and &nbsp;
       <DocLink
@@ -154,7 +154,7 @@ const SpecsInfo = () => (
       Download &nbsp;
       <DocLink
         text="Floorplan"
-        url="https://www.dropbox.com/s/pjw84i2nyq4pa7q/pw_floorplan.jpg?dl=0"
+        url="https://www.dropbox.com/s/8i5l8zav42h5l1a/pw_floorplan.pdf?dl=0"
       />
     </p>
   </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { auth } from './firebase'
+import { auth } from './utility/firebase'
 import { Switch, Route, Link } from 'react-router-dom'
 import UpdateCarouselPage from './UpdateCarouselPage'
 import UpdateMarqeePage from './UpdateMarqueePage';

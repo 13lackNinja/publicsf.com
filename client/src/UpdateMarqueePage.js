@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { database } from './firebase';
+import { database } from './utility/firebase';
 import Marquee from './Marquee';
 import ActionButton from './ActionButton'
 

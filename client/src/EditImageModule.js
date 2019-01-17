@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase, { storage, database } from './firebase'
+import firebase, { storage, database } from './utility/firebase'
 
 import './styles/EditImageModule.css'
 

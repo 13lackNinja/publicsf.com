@@ -17,7 +17,9 @@ class InTheWorks extends Component {
 
   componentDidMount() {
     getEvents()
-      .then(events => this.setState({ events: events }));
+      .then((events) => {
+        this.setState({ events: events });
+      });
   }
 
   render() {

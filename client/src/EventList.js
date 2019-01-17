@@ -18,12 +18,11 @@ const EventList = (props) => {
             }
             key={event.id}
             id={event.id}
-            name={event.name}
+            name={event.name.text}
             start={`${event.start.weekday} ${event.start.month} ${event.start.date}`}
             time={event.start.time}
-            image={event.promo_image_url}
-            url={event.external_url}
-            description={event.description}
+            image={event.logo.url}
+            url={event.url}
           />
         )
       })}

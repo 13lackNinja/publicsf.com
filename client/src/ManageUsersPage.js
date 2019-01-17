@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { database } from './firebase';
+import { database } from './utility/firebase';
 import PlusButton from './PlusButton';
 import MinusButton from './MinusButton';
 

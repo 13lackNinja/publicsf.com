@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { auth, provider } from './firebase';
+import { auth, provider } from './utility/firebase';
 import GoogleSignInButton from './GoogleSignInButton'
 import Grit from './Grit'
 

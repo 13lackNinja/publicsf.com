@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { database } from './firebase';
+import { database } from './utility/firebase';
 import EditImageModule from './EditImageModule'
 
 import './styles/UpdateCarouselPage.css'

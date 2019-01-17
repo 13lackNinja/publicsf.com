@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { database } from './firebase';
+import { database } from './utility/firebase';
 import getEvents from './utility/getEvents';
 import Carousel from './Carousel'
 import Marquee from './Marquee'
@@ -25,8 +25,8 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      events: [],
-      images: [],
+      featuredEvents: [],
+      carouselImages: [],
       marqueeText: '',
       marqueeURL: ''
     }
@@ -40,7 +40,7 @@ class Home extends Component {
       const images = snapshot.val();
 
       this.setState({
-        images: [
+        carouselImages: [
           images.image1,
           images.image2,
           images.image3
@@ -51,9 +51,8 @@ class Home extends Component {
     // Getting the last three events for Featured Events
     getEvents()
       .then((events) => {
-        return events.slice(0, 3);
-      })
-      .then(nextEvents => this.setState({ events: nextEvents }));
+        this.setState({ featuredEvents: events });
+      });
 
     // Getting the marquee text
     marqueeRef.on('value', (snapshot) => {
@@ -67,16 +66,13 @@ class Home extends Component {
   render() {
     return (
       <div id="home">
-        <Carousel images={this.state.images}/>
+        <Carousel images={this.state.carouselImages}/>
         <Marquee
           text={this.state.marqueeText}
           url={this.state.marqueeURL}
         />
         <AboutStatement />
-        <FeaturedEvents events={
-          this.state.events[0] ?
-            this.state.events : null
-        }/>
+        <FeaturedEvents events={this.state.featuredEvents} />
         <NewsletterSignUp />
       </div>
     )
