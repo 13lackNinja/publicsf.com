@@ -8,17 +8,17 @@ class FeaturedEvents extends Component {
   render() {
     if (this.props.events) {
         const featuredEvents = this.props.events.map((event) => {
-        return (
-          <FeaturedEventModule
-            key={event.id}
-            id={event.id}
-            name={event.name}
-            date={new Date(event.start).toDateString()}
-            image={event.imageURL}
-            url={event.ticketURL}
-            description={event.description}
-          />
-        )
+          return (
+            <FeaturedEventModule
+              key={event.id}
+              id={event.id}
+              name={event.name}
+              date={`${event.start.weekday} ${event.start.month} ${event.start.date}`}
+                image={event.promo_image_url}
+              url={event.external_url}
+              description={event.description}
+            />
+          )
       });
 
       return (

@@ -39,7 +39,7 @@ const Footer = () => (
       </div>
     </div>
     <div id="footer-byline">
-      <p id="copyright">PW &copy; 2018</p>
+      <p id="copyright">PW &copy; 2019</p>
     </div>
   </div>
 )

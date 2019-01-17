@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { database } from './firebase';
-import { lastEvents } from './Events';
+import getEvents from './utility/getEvents';
 import Carousel from './Carousel'
 import Marquee from './Marquee'
 import FeaturedEvents from './FeaturedEvents'
@@ -35,6 +35,7 @@ class Home extends Component {
   componentDidMount() {
     const marqueeRef = database.ref('marquee');
 
+    // Getting the carousel images
     database.ref('carousel').on('value', (snapshot) => {
       const images = snapshot.val();
 
@@ -47,10 +48,14 @@ class Home extends Component {
       });
     });
 
-    lastEvents(3).then((events) => {
-      this.setState({ events: events });
-    });
+    // Getting the last three events for Featured Events
+    getEvents()
+      .then((events) => {
+        return events.slice(0, 3);
+      })
+      .then(nextEvents => this.setState({ events: nextEvents }));
 
+    // Getting the marquee text
     marqueeRef.on('value', (snapshot) => {
       this.setState({
         marqueeText: snapshot.val().text,

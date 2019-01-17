@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { currentEvents } from './Events';
+import getEvents from './utility/getEvents'
 import EventList from './EventList'
 import NewsletterSignUp from './NewsletterSignUp'
 
@@ -16,9 +16,8 @@ class InTheWorks extends Component {
   }
 
   componentDidMount() {
-    currentEvents().then((events) => {
-      this.setState({ events: events });
-    });
+    getEvents()
+      .then(events => this.setState({ events: events }));
   }
 
   render() {

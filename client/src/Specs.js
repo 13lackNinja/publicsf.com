@@ -1,12 +1,8 @@
 import React from 'react'
 import NewsletterSignUp from './NewsletterSignUp.js'
-import Grit from './Grit';
+import DocLink from './DocLink';
 
 import './styles/Specs.css'
-
-import soundSpecsDoc from './images/pw_sound_specs.jpg'
-import videoSpecsDoc from './images/pw_video_lighting_specs.jpg'
-import floorplan from './images/pw_floorplan.jpg'
 
 const SpecsInfo = () => (
   <div id="specs">
@@ -141,8 +137,26 @@ const SpecsInfo = () => (
       </div>
     </ul>
 
-    <p class="download-links">Download all  <a href={soundSpecsDoc}>sound / stage</a> and <a href={videoSpecsDoc}>video / lighting</a> gear</p>
-    <p class="download-links">Download <a href={floorplan}>floorplan</a></p>
+    <p className="download-links">
+      Download all &nbsp;
+      <DocLink
+        text="Sound / Stage"
+        url="https://www.dropbox.com/s/feo5c8xqvr87uno/pw_sound_specs.jpg?dl=0"
+      />
+      &nbsp; and &nbsp;
+      <DocLink
+        text="Video / Lighting"
+        url="https://www.dropbox.com/s/ogwu6qesx2ruslp/pw_video_lighting_specs.pdf?dl=0"
+      />
+      &nbsp; gear &nbsp;
+    </p>
+    <p className="download-links">
+      Download &nbsp;
+      <DocLink
+        text="Floorplan"
+        url="https://www.dropbox.com/s/pjw84i2nyq4pa7q/pw_floorplan.jpg?dl=0"
+      />
+    </p>
   </div>
 )
 
@@ -150,7 +164,6 @@ const Specs = () => (
   <div id="specs">
     <SpecsInfo />
     <NewsletterSignUp />
-    <Grit></Grit>
   </div>
 )
 
