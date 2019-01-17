@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './utility/analytics';
 import { BrowserRouter } from 'react-router-dom'
 import TopNav from './TopNav.js'
 import MainContent from './MainContent.js'
