@@ -10,6 +10,7 @@ export default function parseDate(UTCString) {
   ];
 
   const months = [
+    null,
     'JAN', 'FEB', 'MAR',
     'APR', 'MAY', 'JUN',
     'JUL', 'AUG', 'SEP',
