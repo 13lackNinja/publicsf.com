@@ -33,9 +33,9 @@ export default function parseDate(UTCString) {
 
   if (hours >= 12) {
     hours -= 12;
-    meridiam = 'AM';
-  } else {
     meridiam = 'PM';
+  } else {
+    meridiam = 'AM';
   }
 
   const minutes = UTCString.slice(14, 16);
