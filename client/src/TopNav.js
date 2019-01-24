@@ -103,7 +103,7 @@ class TopNav extends Component {
             <MyNavLink path="connect" text="connect"></MyNavLink>
             <MyNavLink path="privateevents" text="private events"></MyNavLink>
             <MyNavLink path="about" text="about"></MyNavLink>
-            <MyNavLink path="intheworks" text="in the works"></MyNavLink>
+            <MyNavLink path="calendar" text="calendar"></MyNavLink>
           </div>
         </div>
       )
@@ -115,7 +115,7 @@ class TopNav extends Component {
             <Link to={"/"}>
               <TypeLogo type="nav"/>
             </Link>
-            <MyNavLink path="intheworks" text="in the works"></MyNavLink>
+            <MyNavLink path="calendar" text="calendar"></MyNavLink>
             <MyNavLink path="about" text="about"></MyNavLink>
             <MyNavLink path="privateevents" text="private events"></MyNavLink>
             <MyNavLink path="connect" text="connect"></MyNavLink>

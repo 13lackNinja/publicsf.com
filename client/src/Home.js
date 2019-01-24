@@ -51,7 +51,7 @@ class Home extends Component {
     // Getting the last three events for Featured Events
     getEvents()
       .then((events) => {
-        this.setState({ featuredEvents: events });
+        this.setState({ featuredEvents: events.slice(0, 3) });
       });
 
     // Getting the marquee text

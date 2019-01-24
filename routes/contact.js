@@ -113,7 +113,7 @@ router.post('/', upload.array(), (req, res) => {
     from: 'pwcontactbox@gmail.com',
     to: 'pwsfinfo@publicsf.com',
     replyTo: [req.body.email, 'pwsfinfo@publicsf.com'],
-    subject: `new ${formType} form submission: ${new Date().toLocaleString('en-GB')}`,
+    subject: `new ${formType} form submission: ${new Date().toDateString()}`,
     html: html
   };
 

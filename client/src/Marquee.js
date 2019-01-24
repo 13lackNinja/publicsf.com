@@ -52,7 +52,7 @@ class Marquee extends Component {
         m1.style.left = '100vw';
         return;
       }
-    }, 9);
+    }, 8);
   }
 
   move2() {
@@ -76,7 +76,7 @@ class Marquee extends Component {
         m2.style.left = '100vw';
         return;
       }
-    }, 9);
+    }, 8);
   }
 
 }

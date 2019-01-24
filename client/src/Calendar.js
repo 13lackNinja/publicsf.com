@@ -3,10 +3,10 @@ import getEvents from './utility/getEvents'
 import EventList from './EventList'
 import NewsletterSignUp from './NewsletterSignUp'
 
-import './styles/InTheWorks.css'
+import './styles/Calendar.css'
 
 
-class InTheWorks extends Component {
+class Calendar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,7 +24,7 @@ class InTheWorks extends Component {
 
   render() {
     return (
-      <div id="in-the-works">
+      <div id="calendar">
         <EventList events={this.state.events}/>
         <NewsletterSignUp />
       </div>
@@ -32,4 +32,4 @@ class InTheWorks extends Component {
   }
 }
 
-export default InTheWorks
+export default Calendar
