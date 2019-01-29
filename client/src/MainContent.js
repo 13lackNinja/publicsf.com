@@ -1,3 +1,5 @@
+// Renders all url-specific content for the website.
+
 import React from 'react'
 import {Switch, Route } from 'react-router-dom';
 import Home from './Home'

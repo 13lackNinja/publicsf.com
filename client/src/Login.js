@@ -1,3 +1,6 @@
+// Staff login page. Renders Google signin button, calls the firebase
+// signInWithPopup method. 
+
 import React, { Component } from 'react';
 import { auth, provider } from './utility/firebase';
 import GoogleSignInButton from './GoogleSignInButton'

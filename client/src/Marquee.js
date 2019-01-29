@@ -18,6 +18,8 @@ class Marquee extends Component {
     )
   }
 
+  // Uses custom events to nitialize scroll of next text when halfway point of
+  // previous text exits the screen.
   rotate() {
     this.move1();
     window.addEventListener('clear1', this.move2);

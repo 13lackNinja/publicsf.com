@@ -1,3 +1,5 @@
+// Content for Staff Dashboard page.
+
 import React, { Component } from 'react'
 import { auth } from './utility/firebase'
 import { Switch, Route, Link } from 'react-router-dom'

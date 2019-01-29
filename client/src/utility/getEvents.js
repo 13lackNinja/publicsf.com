@@ -1,3 +1,5 @@
+// Exports a funciton which uses the fetch API to retrieve event data from
+// Eventbrite API. Returns a promise resolving with the event data.
 
 import parseDate from './parseDate';
 import sortEvents from './sortEvents';
@@ -18,7 +20,7 @@ export default async function getEvents() {
     .then((resJSON) => {
       let eventData = resJSON.events;
 
-      // Sort events by their UTC Date string -> JS Date
+      // Sort events by their UTC Date string
       eventData = sortEvents(eventData);
 
       // Replace UTC Date with custom date object

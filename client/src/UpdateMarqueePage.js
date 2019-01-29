@@ -1,3 +1,6 @@
+// Content allowing staff to update the marquee text and click-out url,
+// both stored in Firebase.
+
 import React, { Component } from 'react';
 import { database } from './utility/firebase';
 import Marquee from './Marquee';

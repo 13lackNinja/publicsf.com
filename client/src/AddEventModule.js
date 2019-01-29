@@ -1,3 +1,6 @@
+// Currently not used in website. Designed as an ad-hoc solution to add event
+// data to Firebase Realtime Database.
+
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import firebase, { database, storage } from './firebase'

@@ -1,3 +1,5 @@
+// Content for the Private Events page.
+
 import React from 'react'
 import HeroImage from './HeroImage'
 import ContactForm from './ContactForm.js'

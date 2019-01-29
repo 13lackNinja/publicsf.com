@@ -1,3 +1,5 @@
+// Content for the about page at publicsf.com.
+
 import React from 'react'
 import HeroImage from './HeroImage.js'
 import NewsletterSignUp from './NewsletterSignUp.js'

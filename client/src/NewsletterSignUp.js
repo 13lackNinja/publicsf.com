@@ -1,3 +1,5 @@
+// Newlsetter signup module. Adds form submision to ticketfly email list.
+
 import React from 'react'
 import ActionButton from './ActionButton'
 

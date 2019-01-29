@@ -1,3 +1,7 @@
+// This component checks to see if user authenticated by Google sign-in is in the authorized
+// users database. If so, serves the staff menu. If not, logs them out and redirects
+// to login page with 'Unauthorized Login Attempt' warning.
+
 import React, { Component } from 'react'
 import { auth, database } from './utility/firebase'
 import Login from './Login'
@@ -60,6 +64,8 @@ class Staff extends Component {
       }
   }
 
+  // Listens for change in authorization state. On change, passes the authorized
+  // user to the veryfyUser function.
   componentDidMount() {
     auth.onAuthStateChanged((user) => {
       if (user) {

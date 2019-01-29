@@ -26,7 +26,7 @@ class FeaturedEvents extends Component {
           <div id="featured-events-container">
             {featuredEvents}
           </div>
-          <a href="/intheworks">
+          <a href="/calendar">
             <button className="button-underline" id="view-all-events">View all events</button>
           </a>
         </div>

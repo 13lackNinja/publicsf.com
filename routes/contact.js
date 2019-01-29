@@ -1,3 +1,7 @@
+// This module recieves a contact box form submission, and parses the JSON
+// request body into the markup string template literals in the below
+// express post handler. It then sends the generated email using gmail.
+
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
@@ -17,6 +21,7 @@ router.post('/', upload.array(), (req, res) => {
   let html;
   const formType = req.body.formSelected;
 
+  // Setting up the nodemailer transport service.
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     secure: false,
@@ -30,6 +35,8 @@ router.post('/', upload.array(), (req, res) => {
     }
   });
 
+  // Check the form type of submitted request, supply email formatted for each
+  // request type.
   if (formType === 'General') {
     html = `
       <p><b>Name:</b></p>
@@ -109,14 +116,16 @@ router.post('/', upload.array(), (req, res) => {
     `
   }
 
+  // Define nodemailer message options. Includes sender email in 'reply to' field.
   const mailerOptions = {
     from: 'pwcontactbox@gmail.com',
     to: 'pwsfinfo@publicsf.com',
     replyTo: [req.body.email, 'pwsfinfo@publicsf.com'],
-    subject: `new ${formType} form submission: ${new Date().toDateString()}`,
+    subject: `new ${formType} form submission`,
     html: html
   };
 
+  // Send the email.
   transporter.sendMail(mailerOptions, (err, info) => {
     if(err) {
       console.log(err.message);

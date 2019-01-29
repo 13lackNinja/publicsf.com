@@ -1,3 +1,5 @@
+// Page content for Calendar page.
+
 import React, { Component } from 'react'
 import getEvents from './utility/getEvents'
 import EventList from './EventList'

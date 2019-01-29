@@ -1,3 +1,4 @@
+// Sorts the given event array by date. Returns sorted array.
 export default function sortEvents(events) {
   events.sort((a, b) => {
     const dateA = new Date(a.start.local);

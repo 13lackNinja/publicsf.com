@@ -1,3 +1,5 @@
+// Page content for Booking page.
+
 import React from 'react'
 import ContactForm from './ContactForm'
 

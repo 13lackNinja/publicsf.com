@@ -1,3 +1,7 @@
+// Renders page allowing staff to add, edit, or delete users from the
+// authorized users list (allowed to log into /staff). Stores user info in
+// Firebase.
+
 import React, { Component } from 'react';
 import { database } from './utility/firebase';
 import PlusButton from './PlusButton';

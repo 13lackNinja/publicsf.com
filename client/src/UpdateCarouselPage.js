@@ -1,3 +1,6 @@
+// Content for page allowing staff to update carousel images, stored in firebase
+// storage.
+
 import React, { Component } from 'react';
 import { database } from './utility/firebase';
 import EditImageModule from './EditImageModule'

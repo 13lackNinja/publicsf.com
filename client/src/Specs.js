@@ -1,3 +1,5 @@
+// Content for Specs page.
+
 import React from 'react'
 import NewsletterSignUp from './NewsletterSignUp.js'
 import DocLink from './DocLink';
