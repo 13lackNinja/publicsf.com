@@ -1,8 +1,8 @@
 {
-  "main.css": "static/css/main.6b3a1143.css",
-  "main.css.map": "static/css/main.6b3a1143.css.map",
-  "main.js": "static/js/main.3bc97363.js",
-  "main.js.map": "static/js/main.3bc97363.js.map",
+  "main.css": "static/css/main.b9af2e73.css",
+  "main.css.map": "static/css/main.b9af2e73.css.map",
+  "main.js": "static/js/main.97ae454e.js",
+  "main.js.map": "static/js/main.97ae454e.js.map",
   "static/media/blue_bolt_dark.jpg": "static/media/blue_bolt_dark.80df0bb6.jpg",
   "static/media/corporate1_dark.jpg": "static/media/corporate1_dark.c5e7c5d2.jpg",
   "static/media/crowd3.jpg": "static/media/crowd3.aa9342a9.jpg",
@@ -17,5 +17,7 @@
   "static/media/mira.jpg": "static/media/mira.e91c3f02.jpg",
   "static/media/outside.jpg": "static/media/outside.0713ec2d.jpg",
   "static/media/pw_manhole_white.png": "static/media/pw_manhole_white.b8baf2c3.png",
+  "static/media/scan22.jpg": "static/media/scan22.08f334b2.jpg",
+  "static/media/splash.jpg": "static/media/splash.94f1ac96.jpg",
   "static/media/twitter_icon.svg": "static/media/twitter_icon.845d25ec.svg"
 }

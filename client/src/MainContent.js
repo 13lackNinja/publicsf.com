@@ -17,7 +17,12 @@ import './styles/MainContent.css'
 const MainContent = () => (
   <div id="main-content">
     <Switch>
-      <Route exact path="/" component={Home}></Route>
+      {/* For Testing */}
+      <Route exact path={"/a"} component={Home}></Route>
+      <Route exact path={"/b"} component={Home}></Route>
+      {/* For Testing */}
+
+      <Route exact path={"/"} component={Home}></Route>
       <Route path="/calendar" component={Calendar}></Route>
       <Route path="/about" component={About}></Route>
       <Route path="/privateevents" component={PrivateEvents}></Route>

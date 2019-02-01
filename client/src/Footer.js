@@ -39,7 +39,7 @@ const Footer = () => (
       </div>
     </div>
     <div id="footer-byline">
-      <p id="copyright">PW &copy; 2019</p>
+      <p id="copyright">Problems or feedback? Email us at web@publicsf.com</p>
     </div>
   </div>
 )

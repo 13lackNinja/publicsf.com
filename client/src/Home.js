@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { Route } from 'react-router-dom';
 import { database } from './utility/firebase';
 import getEvents from './utility/getEvents';
-import Carousel from './Carousel'
+import SplashA from './SplashA';
+import SplashB from './SplashB';
 import Marquee from './Marquee'
 import FeaturedEvents from './FeaturedEvents'
 import NewsletterSignUp from './NewsletterSignUp'
@@ -66,7 +68,8 @@ class Home extends Component {
   render() {
     return (
       <div id="home">
-        <Carousel images={this.state.carouselImages}/>
+        <Route path='/a' component={SplashA}></Route>
+        <Route path='/b' component={SplashB}></Route>
         <Marquee
           text={this.state.marqueeText}
           url={this.state.marqueeURL}

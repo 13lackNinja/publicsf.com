@@ -1,0 +1,23 @@
+#splash {
+  position: relative;
+  min-height: 50vw;
+  background-position: center;
+  background-size: cover;
+}
+
+#text {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  margin: 80px;
+}
+
+#text h2 {
+  font-family: 'Oswald';
+  font-size: 32px;
+  font-weight: bold;
+}
+
+#text h1, #text h2 {
+  color: #111111;
+}
