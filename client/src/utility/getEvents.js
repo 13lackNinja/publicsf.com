@@ -1,37 +1,28 @@
-// Exports a funciton which uses the fetch API to retrieve event data from
-// Eventbrite API. Returns a promise resolving with the event data.
+// This module exports a function which returns the Big Neon events as an array
+// of event objects.
 
-import parseDate from './parseDate';
 import sortEvents from './sortEvents';
+import parseDate from './parseDate';
+import setURL from './setURL';
 
 export default async function getEvents() {
-  const eventRequest = {
-    base: 'https://www.eventbriteapi.com/v3/events/search/?organizer.id=17405142071&expand=ticket_availability&include_unavailable_events=true&include_adult_events=true',
-    headers: {
-      headers: {
-        'Authorization': `Bearer BWOB5MWVVQUGFDHOKMY4`
-      }
-    }
-  }
+  const baseUrl = "https://www.bigneon.com/api/venues/35b31de5-dcd7-46b2-a657-8d3408748f75/events/?past_or_upcoming=upcoming/";
 
-  // Get all events
-  const events = await fetch(eventRequest.base, eventRequest.headers)
-    .then(res => res.json())
-    .then((resJSON) => {
-      let eventData = resJSON.events;
+  const events = await fetch(baseUrl)
+    .then((raw) => {
+      return raw.json(); // A promise
+    })
+    .then((eventIndex) => {
 
-      // Sort events by their UTC Date string
-      eventData = sortEvents(eventData);
-
-      // Replace UTC Date with custom date object
-      eventData.forEach((event) => {
-        event.start = parseDate(event.start.local);
+      // Parse dates and set urls
+      const eventData = eventIndex.data.map((event) => {
+        event.start = parseDate(event.event_start);
+        event.ticket_url = setURL(event);
+        return event;
       });
 
-      return eventData;
+      return sortEvents(eventData); // An array
     });
-
-
 
   return events;
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import FeaturedEventModule from './FeaturedEventModule'
+import FeaturedEvent from './FeaturedEvent'
 
 import './styles/index.css'
 import './styles/FeaturedEvents.css'
@@ -9,12 +9,12 @@ class FeaturedEvents extends Component {
     if (this.props.events) {
         const featuredEvents = this.props.events.map((event) => {
           return (
-            <FeaturedEventModule
+            <FeaturedEvent
               key={event.id}
               id={event.id}
               name={event.name.text}
               date={`${event.start.weekday} ${event.start.month} ${event.start.date}`}
-              image={event.logo.url}
+              image={event.promo_image_url}
               url={event.url}
             />
           )

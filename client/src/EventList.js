@@ -21,7 +21,7 @@ const EventList = (props) => {
             name={event.name.text}
             start={`${event.start.weekday} ${event.start.month} ${event.start.date}`}
             time={event.start.time}
-            image={event.logo.url}
+            image={event.promo_image_url}
             url={event.url}
           />
         )

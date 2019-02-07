@@ -20,7 +20,7 @@ const PrivateEventsInfo = () => (
     </p>
     <div
       className="private-events-image"
-      style={{ 'background-image': `url(${outsideImage})`}}
+      style={{ 'backgroundImage': `url(${outsideImage})`}}
     >
     </div>
     <h2>Our venue Features</h2>
@@ -57,7 +57,7 @@ const PrivateEventsInfo = () => (
     <FinalNote/>
     <div
       className="private-events-image"
-      style={{ 'background-image': `url(${loftImage})`}}
+      style={{ 'backgroundImage': `url(${loftImage})`}}
     >
     </div>
   </div>
