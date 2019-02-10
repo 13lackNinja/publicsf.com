@@ -1,0 +1,13 @@
+#update-call-to-action-page {
+  min-height: 100vh;
+  margin-top: 100px;
+}
+
+#update-call-to-action-page h1 {
+  font-family: 'Oswald';
+  font-size: 32px;
+  margin-bottom: 40px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}

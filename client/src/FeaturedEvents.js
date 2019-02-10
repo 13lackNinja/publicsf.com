@@ -12,10 +12,10 @@ class FeaturedEvents extends Component {
             <FeaturedEvent
               key={event.id}
               id={event.id}
-              name={event.name.text}
+              name={event.name}
               date={`${event.start.weekday} ${event.start.month} ${event.start.date}`}
               image={event.promo_image_url}
-              url={event.url}
+              url={event.ticket_url}
             />
           )
       });

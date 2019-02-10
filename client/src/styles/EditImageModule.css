@@ -1,14 +1,12 @@
 .edit-image-module {
   display: block;
-  margin: 0px 10px 10px 10px;
+  margin: auto;
+  width: 400px;
 }
 
 .edit-image-module img {
   display: block;
   max-width: 400px;
-  max-height: 200px;
-  width: 100%;
-  height: 50%;
   margin-bottom: 10px;
   border: 2px #ededed solid;
   border-radius: 4px;

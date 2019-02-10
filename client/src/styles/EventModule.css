@@ -90,18 +90,17 @@
 
 @media (max-width: 900px) {
   .event-module-container {
-    grid-template-columns: 100px 2fr 100px;
+    grid-template-columns: 1fr 100px;
     padding: 0px 20px;
     margin: 10px auto;
   }
 
   .event-module-image {
-    bottom: 0px;
     display: none;
   }
 
   .event-module-text {
-    grid-column: 1 / 3;
+    grid-column: 1 / 2;
   }
 
   .event-module-image img {
@@ -113,7 +112,7 @@
   }
 
   .event-module-name {
-    grid-column: 2 / 3;
+    /* grid-column: 1 / 2; */
     font-size: 20px;
   }
 
@@ -125,5 +124,9 @@
     font-weight: 400;
     text-transform: uppercase;
     margin-bottom: 10px;
+  }
+
+  .event-module-button {
+    /* grid-column: 2 / 3; */
   }
 }

@@ -3,7 +3,7 @@
 import React, { Component } from 'react'
 import { auth } from './utility/firebase'
 import { Switch, Route, Link } from 'react-router-dom'
-import UpdateCarouselPage from './UpdateCarouselPage'
+import UpdateCallToActionPage from './UpdateCallToActionPage';
 import UpdateMarqeePage from './UpdateMarqueePage';
 import ManageUsersPage from './ManageUsersPage';
 import ActionButton from './ActionButton'
@@ -13,7 +13,7 @@ import './styles/StaffDashboard.css'
 const MainMenu = () => (
   <div id="main-menu">
     <h1>Staff Only</h1>
-    <Link to='/staff/update-carousel'>Update Carousel</Link>
+    <Link to='/staff/update-call-to-action'>Update Call To Action</Link>
     <Link to='/staff/update-marquee'>Update Marquee</Link>
     <Link to='/staff/manage-users'>Manage Users</Link>
   </div>
@@ -50,14 +50,15 @@ class StaffDashboard extends Component {
           color="white" type="button"
           submit={this.logout}
         />
-        <Switch>
-          <Route path='/staff/update-carousel' render={() => (<Link to="/staff" style={style}>Back</Link>)}/>
+        <Link to="/staff" style={style}>Back</Link>
+        {/* <Switch>
+          <Route path='/staff/update-call-to-action' render={() => (<Link to="/staff" style={style}>Back</Link>)}/>
           <Route path='/staff/update-marquee' render={() => (<Link to="/staff" style={style}>Back</Link>)}/>
           <Route path='/staff/manage-users' render={() => (<Link to="/staff" style={style}>Back</Link>)}/>
-        </Switch>
+        </Switch> */}
         <Switch>
           <Route exact path="/staff" component={MainMenu}></Route>
-          <Route path="/staff/update-carousel" component={UpdateCarouselPage}></Route>
+          <Route path="/staff/update-call-to-action" component={UpdateCallToActionPage}></Route>
           <Route path="/staff/update-marquee" component={UpdateMarqeePage}></Route>
           <Route path="/staff/manage-users" component={ManageUsersPage}></Route>
         </Switch>

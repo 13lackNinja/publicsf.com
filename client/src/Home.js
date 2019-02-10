@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { database } from './utility/firebase';
 import getEvents from './utility/getEvents';
-import Carousel from './Carousel'
+import CallToAction from './CallToAction';
 import Marquee from './Marquee'
 import FeaturedEvents from './FeaturedEvents'
 import NewsletterSignUp from './NewsletterSignUp'
@@ -25,37 +25,34 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      callToActionImageURL: '',
+      callToActionTitle: '',
+      callToActionURL: '',
       featuredEvents: [],
-      carouselImages: [],
       marqueeText: '',
       marqueeURL: ''
     }
   }
 
   componentDidMount() {
-    const marqueeRef = database.ref('marquee');
-
-    // Getting the carousel images
-    database.ref('carousel').on('value', (snapshot) => {
-      const images = snapshot.val();
-
+    // I: Getting the call to action background image
+    database.ref('callToAction').on('value', (snapshot) => {
       this.setState({
-        carouselImages: [
-          images.image1,
-          images.image2,
-          images.image3
-        ]
+        callToActionImageURL: snapshot.val().imageURL,
+        callToActionTitle: snapshot.val().title,
+        callToActionDate: snapshot.val().date,
+        callToActionURL: snapshot.val().clickoutURL
       });
     });
 
-    // Getting the last three events for Featured Events
+    // II: Getting the last three events for Featured Events
     getEvents()
       .then((events) => {
         this.setState({ featuredEvents: events.slice(0, 3) });
       });
 
-    // Getting the marquee text
-    marqueeRef.on('value', (snapshot) => {
+    // III: Getting the marquee text
+    database.ref('marquee').on('value', (snapshot) => {
       this.setState({
         marqueeText: snapshot.val().text,
         marqueeURL: snapshot.val().url
@@ -66,7 +63,12 @@ class Home extends Component {
   render() {
     return (
       <div id="home">
-        <Carousel images={this.state.carouselImages}/>
+        <CallToAction
+          image={this.state.callToActionImageURL}
+          title={this.state.callToActionTitle}
+          date={this.state.callToActionDate}
+          clickoutURL={this.state.callToActionURL}
+        />
         <Marquee
           text={this.state.marqueeText}
           url={this.state.marqueeURL}

@@ -8,9 +8,7 @@ class EditEventModule extends Component {
     super(props);
     this.handleReplace = this.handleReplace.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.state = {
-      imageURL: this.props.imageURL
-    }
+    this.state = { imageURL: this.props.imageURL }
     this.buttonRef = React.createRef();
     this.inputRef = React.createRef();
     this.labelRef = React.createRef();
@@ -29,8 +27,8 @@ class EditEventModule extends Component {
     const replaceButton = this.buttonRef.current;
     const progressBar = this.progressBarRef.current;
     const oldImageRef = storage.refFromURL(imageURL);
-    const newImageRef = storage.ref('carousel-images').child(newImage.name);
-    const urlRef = database.ref(`carousel/image${this.props.number}`);
+    const newImageRef = storage.ref('call-to-action').child(newImage.name);
+    const urlRef = database.ref('callToAction/imageURL');
 
     labelRef.style.visibility = 'hidden';
     replaceButton.style.visibility = 'hidden';
@@ -71,7 +69,7 @@ class EditEventModule extends Component {
   render() {
     return (
       <div className="edit-image-module">
-        <img src={this.state.imageURL} alt={this.state.imageURL}/>
+        <img src={this.props.imageURL} alt={this.state.imageURL}/>
         <label
           ref={this.labelRef}
           className="edit-image-label">
@@ -86,7 +84,7 @@ class EditEventModule extends Component {
         <button
           ref={this.buttonRef}
           className="edit-image-replace-button"
-          onClick={(e) => this.handleReplace(e, this.state.imageURL)}
+          onClick={(e) => this.handleReplace(e, this.props.imageURL)}
         >
           Replace
         </button>
