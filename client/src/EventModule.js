@@ -25,7 +25,6 @@ const EventModule = (props) => {
       </div>
       <div className="event-module-button">
         <BuyButton class={'buy-button buy-button-module'} id={props.id} url={props.url}/>
-        <p className="event-module-price">{props.price}</p>
       </div>
     </div>
   )
