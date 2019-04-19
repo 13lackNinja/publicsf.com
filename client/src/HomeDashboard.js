@@ -35,6 +35,15 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    background-size: cover;
+    background-position: center;
+  }
+
+  @media (max-width: 767px) {
+    & .secondary {
+      min-height: 50vw;
+      width: 100vw;
+    }
   }
 
   & #upcoming {
