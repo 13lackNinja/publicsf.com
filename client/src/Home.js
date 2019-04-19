@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { database } from './utility/firebase';
 import getEvents from './utility/getEvents';
-import CallToAction from './CallToAction';
+// import CallToAction from './CallToAction';
+import HomeDashboard from './HomeDashboard';
 import Marquee from './Marquee'
 import FeaturedEvents from './FeaturedEvents'
 import NewsletterSignUp from './NewsletterSignUp'
@@ -63,12 +64,13 @@ class Home extends Component {
   render() {
     return (
       <div id="home">
-        <CallToAction
+        {/* <CallToAction
           image={this.state.callToActionImageURL}
           title={this.state.callToActionTitle}
           date={this.state.callToActionDate}
           clickoutURL={this.state.callToActionURL}
-        />
+        /> */}
+        <HomeDashboard/>
         <Marquee
           text={this.state.marqueeText}
           url={this.state.marqueeURL}
