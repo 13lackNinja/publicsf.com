@@ -18,17 +18,22 @@ const Wrapper = styled.div`
   }
 
   & #primary {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 50vw;
-      background-image: url(https://publicsf.com/static/media/dj15.257172c5.jpg);
-      background-size: cover;
-      background-position: center;
-    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vw;
+    background-image: url(https://publicsf.com/static/media/dj15.257172c5.jpg);
+    background-size: cover;
+    background-position: center;
+  }
 
   & #secondary {
     display: flex;
+    background: #111111;
+  }
+
+  & #row {
+    min-height: 50vw;
   }
 
   & .secondary {
@@ -69,7 +74,7 @@ const HomeDashboard = () => (
         <h1>Primary Event</h1>
       </div>
       <div className="col-md-4" id="secondary">
-        <div className="row">
+        <div className="row" id="row">
           <div className="col-sm-12 secondary" id="upcoming">
             <h2>Upcoming</h2>
           </div>
