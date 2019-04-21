@@ -3,10 +3,30 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   min-height: 50vw;
+  padding: 0;
+  background: #111111;
 
   & h1 {
     font-size: 42px;
     letter-spacing: -1px;
+  }
+
+  #ticket-button {
+    height: 30px;
+    width: 100%;
+    border: none;
+    background: #e75e26;
+    font-family: 'Rajdhani';
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+    color: #111111;
+    transition: background-color .3s, color .7s;
+  }
+
+  #ticket-button:hover {
+    background: #111111;
+    color: #e75e26
   }
 
   & h2 {
@@ -18,36 +38,62 @@ const Wrapper = styled.div`
   }
 
   & #primary {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 50vw;
+    cursor: pointer;
+  }
+
+  & #primary::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
     background-image: url(https://publicsf.com/static/media/dj15.257172c5.jpg);
     background-size: cover;
     background-position: center;
+    transition: filter .4s;
   }
 
-  & #secondary {
+  & #primary:hover::before {
+    filter: saturate(0);
+  }
+
+  & #primary-text {
+    position: relative;
+  }
+
+  & #secondary-container {
     display: flex;
-    background: #111111;
+    padding: 0;
   }
 
-  & #row {
+  & #secondary-row {
     min-height: 50vw;
+    width: 100%;
+    padding: 0;
   }
 
   & .secondary {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     background-size: cover;
     background-position: center;
+    cursor: pointer;
+    transition: filter .4s;
+  }
+
+  & .secondary:hover {
+    filter: saturate(0);
   }
 
   @media (max-width: 767px) {
     & .secondary {
-      min-height: 50vw;
-      width: 100vw;
+      height: 50vw;
     }
   }
 
@@ -71,10 +117,13 @@ const HomeDashboard = () => (
   <Wrapper className="container-fluid">
     <div className="row" id="wrapper">
       <div className="col-md-8" id="primary">
-        <h1>Primary Event</h1>
+        <div id="primary-text">
+          <h1>Primary Event</h1>
+          <button id="ticket-button">Tickets</button>
+        </div>
       </div>
-      <div className="col-md-4" id="secondary">
-        <div className="row" id="row">
+      <div className="col-md-4" id="secondary-container">
+        <div className="row" id="secondary-row">
           <div className="col-sm-12 secondary" id="upcoming">
             <h2>Upcoming</h2>
           </div>
