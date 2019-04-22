@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  min-height: 50vw;
+  min-height: 40vw;
   padding: 0;
   background: #111111;
 
@@ -42,7 +42,7 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 50vw;
+    height: 40vw;
     cursor: pointer;
   }
 
@@ -71,7 +71,7 @@ const Wrapper = styled.div`
   }
 
   & #secondary-row {
-    min-height: 50vw;
+    min-height: 40vw;
     width: 100%;
     padding: 0;
   }
@@ -129,9 +129,6 @@ const HomeDashboard = () => (
           </div>
           <div className="col-sm-12 secondary" id="corporate">
             <h2>Corporate</h2>
-          </div>
-          <div className="col-sm-12 secondary" id="private">
-            <h2>Private</h2>
           </div>
         </div>
       </div>
