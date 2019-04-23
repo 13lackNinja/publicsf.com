@@ -13,6 +13,10 @@ app.use('/api/contact', contactRouter);
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get(/^\/(?!api).*$/, (req, res) => {
+  res.set({
+    'Cache-Control': 'no-store',
+    'Pragma': 'no-cache'
+  });
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
