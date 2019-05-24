@@ -6,7 +6,7 @@ import parseDate from './parseDate';
 import setURL from './setURL';
 
 export default async function getEvents() {
-  const baseUrl = "https://www.bigneon.com/api/events?venue_id=35b31de5-dcd7-46b2-a657-8d3408748f75";
+  const baseUrl = "https://production.api.bigneon.com/events?organization_id=f010741a-713c-40a8-b9d0-41f08acdf8a0";
 
   const events = await fetch(baseUrl)
     .then((raw) => {
