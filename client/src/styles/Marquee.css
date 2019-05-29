@@ -1,11 +1,14 @@
+@import 'Theme.css';
+
 #marquee {
   position: relative;
   height: 140px;
-  background: #e75e26;
+  background: var(--pw-orange);
   white-space: nowrap;
   overflow: hidden;
   transition: background-color .3s;
   cursor: pointer;
+  margin-bottom: 80px;
 }
 
 .marquee-text {
@@ -15,7 +18,7 @@
   font-family: 'Oswald';
   font-size: 90px;
   letter-spacing: -4px;
-  color: #111111;
+  color: var(--pw-black);
   text-transform: uppercase;
   margin: 0;
   transform: translateY(-50%);
@@ -23,9 +26,9 @@
 }
 
 #marquee:hover {
-  background: #111111;
+  background: var(--pw-black);
 }
 
 #marquee:hover .marquee-text {
-  color: #e75e26;
+  color: var(--pw-orange);
 }

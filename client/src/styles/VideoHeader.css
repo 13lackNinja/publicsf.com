@@ -1,0 +1,10 @@
+@import 'Theme.css';
+
+/* VideoHeader */
+#video-header {
+  background: var(--pw-black);
+}
+
+#video-header video {
+  width: 100%;
+}

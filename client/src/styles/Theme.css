@@ -1,0 +1,12 @@
+/* PublicSF Main Theme File */
+
+
+:root {
+  /* Main Colors */
+  --pw-orange: #e75e26;
+  --pw-black: #111111;
+  --pw-white: #ededed;
+
+  /* Main Gutters */
+  --pw-side-margin: 60px
+}
