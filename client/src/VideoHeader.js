@@ -13,6 +13,7 @@ const VideoHeader = () => (
         type="video/mp4"
         autoPlay
         loop
+        muted
       >
       </video>
     </Link>
