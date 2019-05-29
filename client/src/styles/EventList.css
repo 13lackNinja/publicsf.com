@@ -4,16 +4,6 @@
   margin: auto;
 }
 
-#event-list h1 {
-  margin: 0px auto 40px auto;
-}
-
-@media (max-width: 500px) {
-  #event-list h1 {
-    font-size: 50px;
-  }
-}
-
 #load-moar-events {
   display: block;
   text-align: center;

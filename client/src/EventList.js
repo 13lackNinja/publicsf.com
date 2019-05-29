@@ -1,14 +1,11 @@
 import React from 'react'
 import EventModule from './EventModule'
-import Marquee from './Marquee';
 
 import './styles/EventList.css'
 
 const EventList = (props) => {
   return (
     <div id="event-list">
-      <h1>In The Works</h1>
-      <Marquee text='Mark Farina All Night Long'/>
       {props.events.map((event) => {
         return (
           <EventModule

@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react'
 import getEvents from './utility/getEvents'
+import Marquee from './Marquee';
 import EventList from './EventList'
 import NewsletterSignUp from './NewsletterSignUp'
 
@@ -27,6 +28,8 @@ class Calendar extends Component {
   render() {
     return (
       <div id="calendar">
+        <h1>In The Works</h1>
+        <Marquee text="placeholder"/>
         <EventList events={this.state.events}/>
         <NewsletterSignUp />
       </div>

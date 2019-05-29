@@ -1,3 +1,7 @@
+@import "Theme.css";
+
+/* App */
 #app {
   min-width: 320px;
+  background: var(--pw-black);
 }

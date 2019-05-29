@@ -1,4 +1,18 @@
+@import 'Theme.css';
+
+/* Calendar */
 #calendar {
-  background: #111111;
+  background: var(--pw-black);
   overflow: auto;
+  padding-top: 80px;
+}
+
+#calendar h1 {
+  margin: 0px auto 40px auto;
+}
+
+@media (max-width: 500px) {
+  #calendar h1 {
+    font-size: 50px;
+  }
 }
