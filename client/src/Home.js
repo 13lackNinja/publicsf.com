@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { database } from './utility/firebase';
 import getEvents from './utility/getEvents';
-import CallToAction from './CallToAction';
+// import CallToAction from './CallToAction';
 import VideoHeader from './VideoHeader';
 // import Marquee from './Marquee'
 import FeaturedEvents from './FeaturedEvents'
