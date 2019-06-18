@@ -88,7 +88,6 @@ class MenuDisplay extends React.Component {
   }
 
   render() {
-    console.log('rendered', this.state.currentDisplayURL);
     return (
       <div className="container-fluid" id="menu-display">
         <img
