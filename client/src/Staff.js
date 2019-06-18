@@ -5,7 +5,7 @@
 import React, { Component } from 'react'
 import { auth, database } from './utility/firebase'
 import Login from './Login'
-import StaffDashboard from './StaffDashboardBS'
+import StaffDashboard from './StaffDashboard'
 
 import './styles/Staff.css'
 
