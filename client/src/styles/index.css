@@ -1,3 +1,6 @@
+@import 'Theme.css';
+
+/* Index */
 * {
   margin: 0;
   padding: 0;
@@ -5,33 +8,34 @@
 }
 
 h1 {
-  font-family: 'Oswald';
-  font-size: 90px;
+  font-family: var(--pw-font-primary);
+  font-size: var(--pw-font-size-jumbo);
   font-weight: 600;
-  color: #ededed;
+  color: var(--pw-white);
   letter-spacing: -4px;
   text-transform: uppercase;
   text-align: center;
 }
 
 h2 {
-  color: #ededed;
-  line-height: 120%
+  font-family: var(--pw-font-primary);
+  font-size: var(--pw-font-size-primary);
+  color: var(--pw-white);
+  text-transform: uppercase;
 }
 
 h3 {
   font-size: 20px;
-
 }
 
 h4 {
-  font-family: 'Oswald';
-  color: #ededed;
+  font-family: var(--pw-font-primary);
+  color: var(--pw-white);
 }
 
 p {
-  font-family: arial;
-  color: #ededed;
+  font-family: var(--pw-font-tertiary);
+  color: var(--pw-white);
 }
 
 button {

@@ -1,10 +1,20 @@
+@import 'Theme.css';
+
+/* StaffDashboard */
 #staff-dashboard {
   position: relative;
   min-height: 100vh;
-  background: #111111;
+  background: var(--pw-black);
   overflow: hidden;
 }
 
+#dashboard-nav {
+  position: relative;
+  height: 50px;
+  margin: 0px var(--pw-side-margin);
+}
+
+/* MainMenu */
 #main-menu {
   position: absolute;
   top: calc(50% - 50px);
@@ -21,7 +31,7 @@
   margin: 10px auto;
   width: 100%;
   height: 50px;
-  background: #e75e26;
+  background: var(--pw-orange);
   text-align: center;
   cursor: pointer;
   font-family: 'Oswald';
@@ -34,8 +44,8 @@
 }
 
 #main-menu a:hover {
-  background: #111111;
-  color: #e75e26;
+  background: var(--pw-black);
+  color: var(--pw-orange);
 }
 
 .main-menu-button h2 {
@@ -45,19 +55,26 @@
   transform: translate(-50%, -50%);
   font-family: 'Oswald';
   text-transform: uppercase;
-  color: #111111;
+  color: var(--pw-black);
   font-size: 22px;
   width: 100%;
 }
 
-input {
-  color: white;
+#logout-button-staff-dashboard {
+  position:absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
 }
 
-#logout-button-staff-dashboard {
+#back-button {
   position: absolute;
-  top: 40px;
-  right: 40px;
+  left: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Rajdhani';
+  color: var(--pw-white);
+  text-transform: uppercase;
   z-index: 1;
 }
 

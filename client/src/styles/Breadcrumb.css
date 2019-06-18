@@ -1,0 +1,11 @@
+@import "Theme.css";
+
+/* Breadcrumb */
+#breadcrumb .breadcrumb {
+  padding: 0px;
+  background: var(--pw-black);
+}
+
+#breadcrumb li {
+  color: var(--pw-white);
+}

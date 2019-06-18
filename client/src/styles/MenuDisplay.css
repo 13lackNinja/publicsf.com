@@ -1,0 +1,12 @@
+@import "Theme.css";
+
+/* Menu */
+#menu-display {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+#menu-image {
+  width: 100vw;
+}
