@@ -16,9 +16,9 @@ import pwmanholeImage from './images/pw_manhole_white.png'
 
 const ClientLinks = () => (
   <div id="client-links">
-    <a href="/intheworks">
+    <a href="/calendar">
       <button style={{ backgroundImage: `url(${djImage})` }}>
-        <h1>In the works</h1>
+        <h1>Calendar</h1>
       </button>
     </a>
     <a href="/privateevents">

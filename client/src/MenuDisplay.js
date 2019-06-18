@@ -56,8 +56,6 @@ class MenuDisplay extends React.Component {
       if (sceneStart < sceneEnd) {
         if (sceneStart <= currentTime && currentTime <= sceneEnd) {
           this.setState({ currentDisplayURL: scene.imageURL });
-        } else {
-          this.setState({ currentDisplayURL: noMenuURL });
         }
       }
 
@@ -65,8 +63,6 @@ class MenuDisplay extends React.Component {
       if (sceneStart > sceneEnd) {
         if (sceneStart >= currentTime && currentTime >= sceneEnd) {
           this.setState({ currentDisplayURL: scene.imageURL });
-        } else {
-          this.setState({ currentDisplayURL: noMenuURL });
         }
       }
     });
@@ -92,6 +88,7 @@ class MenuDisplay extends React.Component {
   }
 
   render() {
+    console.log('rendered', this.state.currentDisplayURL);
     return (
       <div className="container-fluid" id="menu-display">
         <img

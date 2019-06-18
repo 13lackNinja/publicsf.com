@@ -14,7 +14,6 @@ h1 {
   color: var(--pw-white);
   letter-spacing: -4px;
   text-transform: uppercase;
-  text-align: center;
 }
 
 h2 {
@@ -25,7 +24,10 @@ h2 {
 }
 
 h3 {
+  font-family: var(--pw-font-secondary);
+  font-weight: bold;
   font-size: 20px;
+  text-transform: uppercase;
 }
 
 h4 {

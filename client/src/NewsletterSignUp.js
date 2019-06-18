@@ -1,43 +1,50 @@
-// Newlsetter signup module. Adds form submision to ticketfly email list.
+// NewsletterSignUp
+// Adds form submision to ticketfly email list.
 
 import React from 'react'
 import ActionButton from './ActionButton'
+import { database } from './utility/firebase'
 
 import './styles/NewsletterSignUp.css'
 
 class NewsletterSignUp extends React.Component {
-  componentDidMount() {
-    const form = document.getElementById('newsletter-signup-form');
-    const signup = document.getElementById('newsletter-sign-up')
-    const url = 'https://www.ticketfly.com/account/emailSignup?orgId=1499';
+  constructor(props) {
+    super(props);
+    this.state = {
+      input: 'enter email address',
+      isSuccessful: false
+    }
+  }
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+  handleChange(e) {
+    this.setState({ input: e.target.value });
+  }
 
-      const formData = new FormData(form);
-
-      const init = {
-        method: 'post',
-        body: formData,
-        mode: 'cors',
-      }
-
-      fetch(url, init)
-        .then(() => { signup.innerHTML = '<h1>Email Recieved!</h1>'; })
+  handleSubmit(e) {
+    database.ref('emails').push(e.target.value);
+    this.setState({
+      input: 'enter email address',
+      isSuccessful: true
     });
   }
 
   render() {
     return (
       <div id="newsletter-sign-up">
-        <h2>Join the ranks</h2>
-        <p>Members are eligible for free tickets, prizes, and more!</p>
+        <h1>Join the ranks</h1>
+        <h3>Members are eligible for free tickets, prizes, and more!</h3>
         <form id='newsletter-signup-form'>
-          <input type="text" name="email" placeholder="enter email address"/>
+          <input
+            type="text"
+            name="email"
+            placeholder={this.state.input}
+            onChange={this.handleChange}
+          />
           <ActionButton
             text='submit'
             color='black'
             location='newsletter'
+            onClick={this.handleSubmit}
           />
         </form>
       </div>

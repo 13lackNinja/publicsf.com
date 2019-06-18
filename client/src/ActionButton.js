@@ -7,6 +7,7 @@ const ActionButton = (props) => (
     className={`action-button-${props.color || 'white'}`}
     type={props.type}
     onClick={props.submit}
+    id={`${props.text}-button-${props.location}`}
   >
     {props.text}
   </button>
