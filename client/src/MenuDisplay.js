@@ -2,6 +2,7 @@ import React from 'react';
 import { database } from './utility/firebase';
 import snapshotToArray from './utility/snapshotToArray'
 import timeDataToNum from './utility/timeDataToNum'
+import noMenuURL from './utility/pwHomeImageURL'
 
 import './styles/MenuDisplay.css';
 
@@ -12,7 +13,7 @@ class MenuDisplay extends React.Component {
     this.checkScene = this.checkScene.bind(this);
     this.state = {
       activeScenes: [],
-      currentDisplayURL: ''
+      currentDisplayURL: noMenuURL
     };
   }
 
@@ -51,23 +52,28 @@ class MenuDisplay extends React.Component {
         'AM' // Passing AM because currentHours is already in 24 hour format
       );
 
-      // Condition 1
+      // Condition 1: Stop time is less that start time
       if (sceneStart < sceneEnd) {
         if (sceneStart <= currentTime && currentTime <= sceneEnd) {
           this.setState({ currentDisplayURL: scene.imageURL });
+        } else {
+          this.setState({ currentDisplayURL: noMenuURL });
         }
       }
 
-      // Condition 2
+      // Condition 2: Stop time is greater than start time
       if (sceneStart > sceneEnd) {
         if (sceneStart >= currentTime && currentTime >= sceneEnd) {
           this.setState({ currentDisplayURL: scene.imageURL });
+        } else {
+          this.setState({ currentDisplayURL: noMenuURL });
         }
       }
     });
   }
 
   componentDidMount() {
+    // Load the active set and grab the ID
     database.ref('menu/activeSet').on('value', (snapshot) => {
       const activeSetID = snapshot.val();
 
