@@ -1,0 +1,9 @@
+@import 'Theme.css';
+
+/* MenuSetsList */
+#menu-sets-list-title-bar {
+  color: var(--pw-white);
+  font-family: var(--pw-font-secondary);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}

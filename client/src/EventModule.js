@@ -1,5 +1,4 @@
 import React from 'react'
-import BuyButton from './BuyButton'
 
 import './styles/EventModule.css'
 
@@ -26,7 +25,7 @@ const EventModule = (props) => {
           </p>
       </div>
       <div className="event-module-button">
-        <BuyButton class={'buy-button buy-button-module'} id={props.id} url={props.url}/>
+        <a href={props.url} target="_blank" className="pw-orange-button event-module-button">Tickets</a>
       </div>
     </div>
   )

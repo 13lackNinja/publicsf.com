@@ -8,7 +8,7 @@ import './styles/Specs.css'
 
 const SpecsInfo = () => (
   <div id="specs">
-    <h1>Specifications</h1>
+    <h1 id="specs-header">Specifications</h1>
 
     <p className="spec-paragraph">Public Works is a diverse and adaptable event space in San Francisco’s Mission District. The venue features state of the art audio, video, and production capabilities suitable for all types of events.</p>
 

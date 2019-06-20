@@ -1,0 +1,14 @@
+@import 'Theme.css';
+
+/* UpdateMenu */
+#update-menu {
+  padding: 0px;
+  max-width: 600px;
+  min-height: 100vh;
+}
+
+#update-menu-title {
+  margin-top: 40px;
+  margin-bottom: 80px;
+  text-align: center;
+}

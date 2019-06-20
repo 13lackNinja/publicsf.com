@@ -32,7 +32,7 @@ class NewsletterText extends React.Component {
   render() {
     return(
       <div id="newsletter-text">
-        <h1>Join the ranks</h1>
+        <h1 id="newsletter-text-header">Join the ranks</h1>
         <p>
           Newsletter subscribers are a valued community of true PW fans.
         </p>

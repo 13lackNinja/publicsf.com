@@ -1,13 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import FeaturedEvent from './FeaturedEvent'
 
 import './styles/index.css'
 import './styles/FeaturedEvents.css'
 
-class FeaturedEvents extends Component {
-  render() {
-    if (this.props.events) {
-        const featuredEvents = this.props.events.map((event) => {
+const FeaturedEvents = (props) => (
+  <div id="featured-events">
+    <h1 id="featured-events-title">In the works</h1>
+    <div id="featured-events-container">
+        {props.events && props.events.map((event) => {
           return (
             <FeaturedEvent
               key={event.id}
@@ -18,23 +19,10 @@ class FeaturedEvents extends Component {
               url={event.ticket_url}
             />
           )
-      });
-
-      return (
-        <div id="featured-events">
-          <h1>In the works</h1>
-          <div id="featured-events-container">
-            {featuredEvents}
-          </div>
-          <a href="/calendar">
-            <button className="button-underline" id="view-all-events">View all events</button>
-          </a>
-        </div>
-      )
-
-    } else return null
-  }
-}
-
+      })}
+    </div>
+    <a href="/calendar" className="pw-action-button" id="featured-events-view-all-link">View all events</a>
+  </div>
+)
 
 export default FeaturedEvents

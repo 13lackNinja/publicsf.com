@@ -1,0 +1,44 @@
+@import 'Theme.css';
+
+/* Black Version */
+.action-link-black {
+  font-family: var(--pw-font-secondary);
+  font-size: var(-pw-font-size-tertiary);
+  text-transform: uppercase;
+  border: none;
+  background: none;
+  color: var(--pw-black);
+  letter-spacing: .1em;
+  border-top: 1px solid var(--pw-white);
+  border-bottom: 1px solid var(--pw-white);
+  transition: border-bottom .7s, color .3s;
+  text-decoration: none;
+}
+
+.action-link-black:hover {
+  color: var(--pw-orange);
+  border-top: 1px solid var(--pw-white);
+  border-bottom: 1px solid var(--pw-orange);
+}
+
+/* White Version */
+.action-link-white {
+  font-family: var(--pw-font-secondary);
+  font-size: var(--pw-font-size-teriary);
+  text-transform: uppercase;
+  border: none;
+  background: none;
+  color: var(--pw-white);
+  letter-spacing: .1em;
+  border-top: 1px solid var(--pw-black);
+  border-bottom: 1px solid var(--pw-black);
+  transition: color .3s, border-bottom .7s;
+  text-decoration: none;
+}
+
+.action-link-white:hover {
+  color: var(--pw-orange);
+  border-top: 1px solid var(--pw-black);
+  border-bottom: 1px solid var(--pw-orange);
+  text-decoration: none;
+}

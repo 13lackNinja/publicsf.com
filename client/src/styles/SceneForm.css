@@ -1,0 +1,45 @@
+@import 'Theme.css';
+
+/* SceneForm */
+#scene-form {
+  width: 300px;
+  margin: auto;
+}
+
+#scene-form label {
+  display: block;
+  color: #ededed;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-family: 'Rajdhani';
+}
+
+#scene-form button {
+  width: 100%;
+  height: 30px;
+  background: var(--pw-orange);
+  border: none;
+  color: var(--pw-black);
+  text-transform: uppercase;
+  font-family: var(--pw-font-secondary);
+  font-size: var(--pw-font-size-tertiary);
+  font-weight: bold;
+  margin-top: 20px;
+  transition: color .7s, background-color .3s;
+}
+
+#scene-form button:hover {
+  color: var(--pw-orange);
+  background: var(--pw-black);
+}
+
+#scene-image-input {
+  display: inline-block;
+  width: 200px;
+  border: none;
+}
+
+#scene-image-thumbnail {
+  display: inline-block;
+  width: 100px;
+}

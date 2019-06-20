@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 
-import './styles/ActionButton.css'
+import './styles/ActionButton.css';
 
 const ActionButton = (props) => (
   <button
-    id={`${props.text}-button-${props.location}`} className={`action-button-${props.color}`}
+    className={`action-button-${props.color || 'white'}`}
     type={props.type}
     onClick={props.submit}
-    style={props.style}
+    id={`${props.text}-button-${props.location}`}
   >
     {props.text}
   </button>
-)
+);
 
-export default ActionButton
+export default ActionButton;

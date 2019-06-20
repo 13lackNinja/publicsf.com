@@ -1,12 +1,11 @@
 import React from 'react'
-import BuyButton from './BuyButton'
 
-import './styles/FeaturedEventModule.css'
+import './styles/FeaturedEvent.css'
 
-const FeaturedEventModule = (props) => {
+const FeaturedEvent = (props) => {
   return (
-    <div className="featured-event-module">
-      <a href={props.url} target="_blank" rel="noopener noreferrer">
+    <div className="featured-event">
+      <a href={props.url} target="_blank" rel="noopener noreferrer" className="featured-event-link-wrapper">
         <img
           src={props.image}
           alt="event_image"
@@ -14,9 +13,9 @@ const FeaturedEventModule = (props) => {
         <h3>{props.date}</h3>
         <h2>{props.name}</h2>
       </a>
-      <BuyButton class={'buy-button buy-button-module'} id={props.id} url={props.url}/>
+      <a href={props.url} className="pw-orange-button featured-event-button">Tickets</a>
     </div>
   )
 }
 
-export default FeaturedEventModule
+export default FeaturedEvent

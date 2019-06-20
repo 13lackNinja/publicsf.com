@@ -1,0 +1,72 @@
+/* Main Theme File */
+
+/* Colors & Fonts */
+:root {
+  --pw-orange: #e75e26;
+  --pw-black: #111111;
+  --pw-white: #ededed;
+  --pw-color-transition: color .7s, background-color .3s;
+
+  --pw-font-primary: 'Oswald';
+  --pw-font-secondary: 'Rajdhani';
+  --pw-font-tertiary: 'Arial';
+
+  --pw-font-size-jumbo: 90px;
+  --pw-font-size-display: 48px;
+  --pw-font-size-primary: 24px;
+  --pw-font-size-secondary: 18px;
+  --pw-font-size-tertiary: 16px;
+}
+
+/* General */
+.pw-orange-button {
+  background: var(--pw-orange);
+  transition: var(--pw-color-transition);
+  border: none;
+  padding: 4px 25px;
+  font-family: var(--pw-font-primary);
+  text-transform: uppercase;
+  font-size: var(--pw-font-size-tertiary);
+  color: var(--pw-black);
+  cursor: pointer;
+  transition: color .7s, background-color .3s;
+  height: 30px;
+  text-decoration: none;
+}
+
+.pw-orange-button:hover {
+  color: var(--pw-orange);
+  background: var(--pw-black);
+}
+
+.pw-action-button {
+  border: 1px solid transparent;
+  background: none;
+  font-family: var(--pw-font-secondary);
+  font-size: var(--pw-font-size-secondary);
+  text-transform: uppercase;
+  transition: border .3s, color .3s;
+}
+
+.pw-action-button:hover {
+  color: var(--pw-orange);
+  border-bottom: 1px var(--pw-orange) solid;
+}
+
+/* Admin */
+.pw-input-field {
+  height: 40px;
+  background: var(--pw-white);
+  color: var(--pw-black);
+  margin-bottom: 20px;
+  padding-left: 10px;
+}
+
+.pw-list-item {
+  font-family: var(--pw-font-secondary);
+  color: var(--pw-black);
+  background: var(--pw-white);
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 20px;
+}

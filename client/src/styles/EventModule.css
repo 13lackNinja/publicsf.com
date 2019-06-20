@@ -28,6 +28,10 @@
   text-align: right;
 }
 
+.event-module-button:hover {
+  text-decoration: none;
+}
+
 .event-module-button button {
   display: block;
   clear: both;

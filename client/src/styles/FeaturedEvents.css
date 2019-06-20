@@ -1,102 +1,38 @@
+@import 'Theme.css';
+
+/* FeaturedEvents */
 #featured-events {
-  background: #111111;
+  background: var(--pw-black);
   overflow: hidden;
 }
 
-#featured-events h1 {
+#featured-events-title {
+  text-align: center;
   margin-bottom: 40px;
 }
 
 @media (max-width: 500px) {
-  #featured-events h1 {
+  #featured-events-title {
+    text-align: center;
     font-size: 48px;
     margin-bottom: 20px;
   }
 }
 
 #featured-events-container {
-  background: #111111;
+  background: var(--pw-black);
 }
 
-#view-all-events {
+#featured-events-view-all-link {
   display: block;
+  width: 280px;
   text-align: center;
   font-size: 36px;
-  margin: 40px auto 80px auto;
+  text-decoration: none;
+  margin: 0px auto 80px auto;
+  color: var(--pw-white);
 }
 
-/* FeaturedEvent */
-.featured-event {
-  position: relative;
-  width: 270px;
-  min-width: 270px;
-  height: 550px;
-  border-radius: 5px;
-  padding: 15px;
-  margin: 20px 15px;
-  color: #ededed;
-  text-align: center;
-  text-transform: uppercase;
-  cursor: pointer;
-  line-height: 150%;
-}
-
-.featured-event-image {
-  background-position: center;
-  background-size: cover;
-  width: 100%;
-  height: 200px;
-}
-
-.featured-event-artists {
-  font-family: 'Oswald';
-  letter-spacing: .06em;
-}
-
-.featured-event-date {
-  font-family: 'Rajdhani';
-  margin: 15px 0px ;
-}
-
-.event-button {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%);
-  background: #e75e26;
-  border: none;
-  width: calc(100% - 30px);
-  font-family: 'Rajdhani';
-  font-size: 18px;
-  font-weight: 600;
-  color: #111111;
-  text-transform: uppercase;
-  height: 30px;
-  margin: 15px auto;
-  transition: background-color .2s, color .7s;
-}
-
-.event-button:hover {
-  background-color: #111111;
-  color: #e75e26;
-}
-
-.button-underline {
-  font-family: 'Rajdhani';
-  font-size: 24px;
-  text-transform: uppercase;
-  border: none;
-  background: none;
-  color: #ededed;
-  margin: 20px auto;
-  letter-spacing: .1em;
-  border-top: 1px solid #111111;
-  border-bottom: 1px solid #111111;
-  transition: color .3s, border-bottom .7s;
-}
-
-.button-underline:hover {
-  color: #ff5524;
-  border-top: 1px solid #111111;
-  border-bottom: 1px solid #ff5524;
+#featured-events-view-all-link:hover {
+  color: var(--pw-orange);
 }

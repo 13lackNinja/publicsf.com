@@ -22,11 +22,9 @@ class UpdateCallToActionPage extends React.Component {
   }
 
   componentDidMount() {
-    // I: Get the image url for the background image
     database.ref('callToAction/imageURL').on('value', (snapshot) => {
       this.setState({ callToActionImageURL: snapshot.val()});
     });
-    // II: Get the call to action text
   }
 }
 

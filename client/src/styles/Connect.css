@@ -8,13 +8,15 @@
   overflow: hidden;
 }
 
-#newsletter-text h1 {
+#newsletter-text-header {
+  text-align: center;
   margin: 40px;
   color: #111111;
 }
 
 @media (max-width: 700px) {
-  #newsletter-text h1 {
+  #newsletter-text-header {
+    text-align: center;
     font-size: 46px;
   }
 }

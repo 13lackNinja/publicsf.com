@@ -1,0 +1,38 @@
+.featured-event {
+  display: block;
+  width: 600px;
+  max-width: 100vw;
+  margin: 0px auto 80px auto;
+  padding: 0px 20px;
+}
+
+.featured-event-link-wrapper:hover {
+  text-decoration: none;
+}
+
+.featured-event img {
+  margin-bottom: 10px;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+}
+
+.featured-event h3 {
+  color: #ededed;
+  font-family: 'Oswald';
+}
+
+.featured-event h2 {
+  font-family: 'Oswald';
+  text-transform: uppercase;
+}
+
+.featured-event-button {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.featured-event-button:hover {
+  text-decoration: none;
+}

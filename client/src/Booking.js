@@ -7,7 +7,7 @@ import './styles/Booking.css'
 
 const Booking = () => (
   <div id="booking">
-    <h1>Booking</h1>
+    <h1 id="booking-header">Booking</h1>
     <ContactForm
       initialSelection='Booking'
       initialFormType='booking'

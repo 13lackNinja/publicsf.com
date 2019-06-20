@@ -1,0 +1,17 @@
+@import 'Theme.css';
+
+/* UpdateMenuToolbar */
+#update-menu-toolbar {
+  margin-bottom: 40px;
+}
+
+#update-menu-toolbar h3 {
+  color: var(--pw-white);
+  font-size: var(--pw-font-size-secondary);
+  font-family: var(--pw-font-primary);
+}
+
+#update-menu-toolbar-button {
+  line-height: 30px;
+  text-decoration: none;
+}

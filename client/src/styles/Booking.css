@@ -3,6 +3,7 @@
   padding-top: 80px;
 }
 
-#booking h1 {
+#booking-header {
+  text-align: center;
   margin-bottom: 40px;
 }

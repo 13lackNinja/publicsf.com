@@ -2,22 +2,16 @@
 
 import React, { Component } from 'react'
 import { auth } from './utility/firebase'
-import { Switch, Route, Link } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import UpdateCallToActionPage from './UpdateCallToActionPage';
 import UpdateMarqeePage from './UpdateMarqueePage';
 import ManageUsersPage from './ManageUsersPage';
-import ActionButton from './ActionButton'
+import UpdateMenuPage from './UpdateMenuPage';
+import ActionButton from './ActionButton';
+import ActionLink from './ActionLink';
+import MainMenu from './MainMenu'
 
-import './styles/StaffDashboard.css'
-
-const MainMenu = () => (
-  <div id="main-menu">
-    <h1>Staff Only</h1>
-    <Link to='/staff/update-call-to-action'>Update Call To Action</Link>
-    <Link to='/staff/update-marquee'>Update Marquee</Link>
-    <Link to='/staff/manage-users'>Manage Users</Link>
-  </div>
-)
+import './styles/StaffDashboard.css';
 
 class StaffDashboard extends Component {
   constructor(props) {
@@ -32,34 +26,28 @@ class StaffDashboard extends Component {
   }
 
   render() {
-    const style = {
-      position: 'absolute',
-      top: '40px',
-      left: '40px',
-      fontFamily: 'Rajdhani',
-      color: '#ededed',
-      textTransform: 'uppercase',
-      zIndex: '1'
-    }
-
     return (
-      <div id="staff-dashboard">
-        <ActionButton
-          text="logout"
-          location="staff-dashboard"
-          color="white" type="button"
-          submit={this.logout}
-        />
-        <Link to="/staff" style={style}>Back</Link>
-        {/* <Switch>
-          <Route path='/staff/update-call-to-action' render={() => (<Link to="/staff" style={style}>Back</Link>)}/>
-          <Route path='/staff/update-marquee' render={() => (<Link to="/staff" style={style}>Back</Link>)}/>
-          <Route path='/staff/manage-users' render={() => (<Link to="/staff" style={style}>Back</Link>)}/>
-        </Switch> */}
+      <div id="staff-dashboard" className="container-fluid">
+        <div className="row" id="staff-dashboard-nav">
+          <div className="col-auto mr-auto">
+            <ActionLink
+              text="back"
+              href="/staff"
+            />
+          </div>
+          <div className="col-auto">
+            <ActionButton
+              text="logout"
+              type="button"
+              submit={this.logout}
+            />
+          </div>
+        </div>
         <Switch>
           <Route exact path="/staff" component={MainMenu}></Route>
           <Route path="/staff/update-call-to-action" component={UpdateCallToActionPage}></Route>
           <Route path="/staff/update-marquee" component={UpdateMarqeePage}></Route>
+          <Route path="/staff/update-menu" component={UpdateMenuPage}></Route>
           <Route path="/staff/manage-users" component={ManageUsersPage}></Route>
         </Switch>
       </div>
