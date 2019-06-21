@@ -29,8 +29,6 @@ const EventList = (props) => {
         } else {
           return null;
         }
-
-
       })}
     </div>
   )
