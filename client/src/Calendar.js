@@ -9,10 +9,15 @@ import './styles/Calendar.css'
 class Calendar extends Component {
   constructor(props) {
     super(props);
+    this.updateSearch = this.updateSearch.bind(this);
     this.state = {
       events: [],
-      images: [],
+      searchPattern: ''
     }
+  }
+
+  updateSearch(e) {
+    this.setState({ searchPattern: e.target.value });
   }
 
   componentDidMount() {
@@ -23,9 +28,14 @@ class Calendar extends Component {
   }
 
   render() {
+    // console.log(this.state.events);
     return (
       <div id="calendar">
-        <EventList events={this.state.events}/>
+        <EventList
+          events={this.state.events}
+          searchPattern={this.state.searchPattern}
+          updateSearch={this.updateSearch}
+        />
         <NewsletterSignUp />
       </div>
     )
