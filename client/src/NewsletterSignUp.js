@@ -2,7 +2,6 @@
 // Adds form submision to ticketfly email list.
 
 import React from 'react'
-import { database } from './utility/firebase'
 
 import './styles/NewsletterSignUp.css'
 
@@ -24,11 +23,7 @@ class NewsletterSignUp extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    database.ref('emails').push(this.state.input);
-    this.setState({
-      input: 'email recieved!',
-      isSuccessful: true
-    });
+
   }
 
   render() {
