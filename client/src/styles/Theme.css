@@ -30,7 +30,6 @@
   color: var(--pw-black);
   cursor: pointer;
   transition: color .7s, background-color .3s;
-  height: 30px;
   text-decoration: none;
 }
 
