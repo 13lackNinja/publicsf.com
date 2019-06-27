@@ -30,6 +30,8 @@ class MenuDisplay extends React.Component {
   checkScene() { // Every minute, check scene against current time
     const activeScenes = this.state.activeScenes;
 
+    console.log(activeScenes);
+
     activeScenes.forEach(scene => {
       const sceneStart = timeDataToNum(
         scene.startHours,
@@ -54,6 +56,8 @@ class MenuDisplay extends React.Component {
 
       // Condition 1: Stop time is less that start time
       if (sceneStart < sceneEnd) {
+        console.log('Condition 1 Met');
+
         if (sceneStart <= currentTime && currentTime <= sceneEnd) {
           this.setState({ currentDisplayURL: scene.imageURL });
         }
@@ -61,7 +65,15 @@ class MenuDisplay extends React.Component {
 
       // Condition 2: Stop time is greater than start time
       if (sceneStart > sceneEnd) {
-        if (sceneStart >= currentTime && currentTime >= sceneEnd) {
+        console.log('Condition 2 Met');
+        console.log('Current Time: ' + currentTime);
+        console.log('Scene Start: ' + sceneStart);
+        console.log('Scene End: ' + sceneEnd);
+        if (
+          (currentTime >= 0 && currentTime <= sceneEnd)
+          ||
+          (currentTime >= sceneStart && currentTime <= 1400)
+        ) {
           this.setState({ currentDisplayURL: scene.imageURL });
         }
       }
@@ -70,17 +82,19 @@ class MenuDisplay extends React.Component {
 
   componentDidMount() {
     // Load the active set and grab the ID
-    database.ref('menu/activeSet').on('value', (snapshot) => {
-      const activeSetID = snapshot.val();
+    if (!this.state.activeScenes[0]) {
+      database.ref('menu/activeSet').on('value', (snapshot) => {
+        const activeSetID = snapshot.val();
 
-      database.ref(`menu/sets/${activeSetID}/scenes`).on('value', (snapshot) => {
-        const activeScenes = snapshotToArray(snapshot);
+        database.ref(`menu/sets/${activeSetID}/scenes`).on('value', (snapshot) => {
+          const activeScenes = snapshotToArray(snapshot);
 
-        this.setState({ activeScenes: activeScenes });
+          this.setState({ activeScenes: activeScenes });
 
-        this._interval = setInterval(this.checkScene, 3000);
+          this._interval = setInterval(this.checkScene, 3000);
+        });
       });
-    });
+    }
   }
 
   componentWillUnmount() {

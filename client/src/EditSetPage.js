@@ -65,16 +65,9 @@ class EditSetPage extends React.Component {
       scene.endMeridiam
     );
 
-    // console.log('input scene hours: ' + scene.startHours);
-    // console.log('input scene minutes: ' + scene.startMinutes);
-    // console.log('input scene meridiam: ' + scene.startMeridiam);
-    // console.log('input scene start: ' + sceneStart);
-
     // Loop through existing scenes, set sceneIsValid to false if time overlap exists
     if (currentScenes.length) {
       currentScenes.forEach((currentScene) => {
-        // console.log('verifySceen foreach ran');
-
         if (scene.sceneID !== currentScene.sceneID) {
 
           const currentSceneStart = timeDataToNum(
@@ -95,20 +88,32 @@ class EditSetPage extends React.Component {
 
           // Condition 1
           if (currentSceneStart < currentSceneEnd) {
+            console.log('Condition 1 Ran');
             if (
               currentSceneStart <= sceneStart && sceneStart <= currentSceneEnd
-            ) { sceneIsValid = false; console.log('Scene Start Overlapped'); } else if (
+            ) { sceneIsValid = false; console.log('Input Scene Start Overlapped'); } else if (
               currentSceneStart <= sceneEnd && sceneEnd <= currentSceneEnd
-            ) { sceneIsValid = false; console.log('Scene End Overlapped'); }
+            ) { sceneIsValid = false; console.log('Input Scene End Overlapped'); }
           }
 
           // Condition 2
           if (currentSceneStart > currentSceneEnd) {
+            console.log('Condition 2 Ran');
             if (
-              currentSceneStart >= sceneStart && sceneStart >= currentSceneEnd
-            ) { sceneIsValid = false; console.log('Scene Start Overlapped'); } else if (
-              currentSceneStart >= sceneEnd && sceneEnd >= currentSceneEnd
-            ) { sceneIsValid = false; console.log('Scene End Overlapped'); }
+              (0 >= sceneStart && sceneStart >= currentSceneStart)
+              ||
+              (currentSceneEnd <= sceneStart && sceneStart <= 1440)
+            ) {
+              sceneIsValid = false;
+              console.log('Input Scene Start Overlapped');
+            } else if (
+              (0 >= sceneEnd && sceneEnd >= currentSceneStart)
+              ||
+              (currentSceneEnd <= sceneEnd && sceneEnd <= 1400)
+            ) {
+              sceneIsValid = false;
+              console.log('Input Scene End Overlapped');
+            }
           }
         }
       })
