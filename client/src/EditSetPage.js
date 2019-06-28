@@ -100,16 +100,16 @@ class EditSetPage extends React.Component {
           if (currentSceneStart > currentSceneEnd) {
             console.log('Condition 2 Ran');
             if (
-              (0 <= sceneStart && sceneStart <= currentSceneStart)
+              (0 <= sceneStart && sceneStart <= currentSceneEnd)
               ||
-              (currentSceneEnd <= sceneStart && sceneStart <= 1440)
+              (currentSceneStart <= sceneStart && sceneStart <= 1440)
             ) {
               sceneIsValid = false;
               console.log('Input Scene Start Overlapped');
             } else if (
-              (0 <= sceneEnd && sceneEnd <= currentSceneStart)
+              (0 <= sceneEnd && sceneEnd <= currentSceneEnd)
               ||
-              (currentSceneEnd <= sceneEnd && sceneEnd <= 1400)
+              (currentSceneStart <= sceneEnd && sceneEnd <= 1400)
             ) {
               sceneIsValid = false;
               console.log('Input Scene End Overlapped');
@@ -142,7 +142,7 @@ class EditSetPage extends React.Component {
   }
 
   componentWillUnmount() {
-    this._isMounted = true;
+    this._isMounted = false;
   }
 
   render() {
