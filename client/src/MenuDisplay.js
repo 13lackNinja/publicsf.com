@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { database } from './utility/firebase';
 import snapshotToArray from './utility/snapshotToArray'
 import timeDataToNum from './utility/timeDataToNum'
@@ -13,7 +14,8 @@ class MenuDisplay extends React.Component {
     this.checkScene = this.checkScene.bind(this);
     this.state = {
       activeScenes: [],
-      currentDisplayURL: noMenuURL
+      leftDisplayURL: noMenuURL,
+      rightDisplayURL: noMenuURL
     };
   }
 
@@ -59,7 +61,10 @@ class MenuDisplay extends React.Component {
         console.log('Condition 1 Met');
 
         if (sceneStart <= currentTime && currentTime <= sceneEnd) {
-          this.setState({ currentDisplayURL: scene.imageURL });
+          this.setState({
+            leftDisplayURL: scene.leftImageURL,
+            rightDisplayURL: scene.rightImageURL
+          });
         }
       }
 
@@ -74,7 +79,10 @@ class MenuDisplay extends React.Component {
           ||
           (currentTime >= sceneStart && currentTime <= 1400)
         ) {
-          this.setState({ currentDisplayURL: scene.imageURL });
+          this.setState({
+            leftDisplayURL: scene.leftImageURL,
+            rightDisplayURL: scene.rightImageURL
+          });
         }
       }
     });
@@ -104,12 +112,31 @@ class MenuDisplay extends React.Component {
   render() {
     return (
       <div className="container-fluid" id="menu-display">
-        <img
-          src={this.state.currentDisplayURL}
-          alt={this.state.currentDisplayURL}
-          id="menu-image"
-          onDoubleClick={this.toggleFullScreen}
-        />
+        <Switch>
+          <Route
+            path='/menu/left'
+            render={() => (
+              <img
+                src={this.state.leftDisplayURL}
+                alt={this.state.leftDisplayURL}
+                id="menu-image"
+                onDoubleClick={this.toggleFullScreen}
+              />
+            )}
+          />
+          <Route
+            path='/menu/right'
+            render={() => (
+              <img
+                src={this.state.rightDisplayURL}
+                alt={this.state.rightDisplayURL}
+                id="menu-image"
+                onDoubleClick={this.toggleFullScreen}
+              />
+            )}
+          />
+        </Switch>
+
       </div>
     )
   }
