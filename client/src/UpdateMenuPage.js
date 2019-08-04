@@ -71,8 +71,7 @@ class UpdateMenuPage extends React.Component {
         <Switch>
           <Route
             exact path="/staff/update-menu"
-            render={() => (
-              <MenuSetsPage setLocation={this.setLocation} />)}
+            render={() => (<MenuSetsPage setLocation={this.setLocation} />)}
           />
           <Route
             path="/staff/update-menu/add-set"

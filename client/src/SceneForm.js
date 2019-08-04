@@ -1,5 +1,5 @@
-import React from 'react'
-import ProgressBar from './ProgressBar'
+import React from 'react';
+import ImageChooser from './ImageChooser';
 
 import './styles/SceneForm.css'
 
@@ -41,18 +41,22 @@ class SceneForm extends React.Component {
   render() {
     return (
       <form id="scene-form">
+
+        {/* Scene Name Input */}
         <div className="form-group">
           <label htmlFor="sceneName">Scene Name</label>
           <input
             type="text"
             name="name"
             className="form-control"
-            value={this.props.name}
-            onChange={this.props.handleChange}
+            defaultValue={this.props.name}
+            onChange={this.props.handleInputChange}
             maxLength="15"
             required
           />
         </div>
+
+        {/* Start Time Input */}
         <div className="form-group">
           <label htmlFor="startTime">Start Time</label>
           <div className="form-row" id="startTime">
@@ -61,8 +65,8 @@ class SceneForm extends React.Component {
                 className="form-control"
                 id="startHours"
                 name="startHours"
-                value={this.props.startHours}
-                onChange={this.props.handleChange}
+                defaultValue={this.props.startHours}
+                onChange={this.props.handleInputChange}
                 required
               >
                 { this.hoursList(12) }
@@ -73,8 +77,8 @@ class SceneForm extends React.Component {
                 className="form-control"
                 id="startMinutes"
                 name="startMinutes"
-                value={this.props.startMinutes}
-                onChange={this.props.handleChange}
+                defaultValue={this.props.startMinutes}
+                onChange={this.props.handleInputChange}
                 required
               >
                 { this.minutesList(60) }
@@ -85,8 +89,8 @@ class SceneForm extends React.Component {
                 className="form-control"
                 id="startMeridiam"
                 name="startMeridiam"
-                value={this.props.startMeridiam}
-                onChange={this.props.handleChange}
+                defaultValue={this.props.startMeridiam}
+                onChange={this.props.handleInputChange}
                 required
               >
                 <option>AM</option>
@@ -95,7 +99,9 @@ class SceneForm extends React.Component {
             </div>
           </div>
         </div>
-        <div className="form-group">
+
+        {/* End Time Input */}
+        <div className="form-group" id="end-time-group">
           <label htmlFor="endTime">End Time</label>
           <div className="form-row" id="endTime">
             <div className="col">
@@ -104,7 +110,7 @@ class SceneForm extends React.Component {
                 className="form-control"
                 name="endHours"
                 value={this.props.endHours}
-                onChange={this.props.handleChange}
+                onChange={this.props.handleInputChange}
                 required
               >
                 { this.hoursList(12) }
@@ -116,7 +122,7 @@ class SceneForm extends React.Component {
                 id="endMinutes"
                 name="endMinutes"
                 value={this.props.endMinutes}
-                onChange={this.props.handleChange}
+                onChange={this.props.handleInputChange}
                 required
               >
                 { this.minutesList(60) }
@@ -128,7 +134,7 @@ class SceneForm extends React.Component {
                 id="endMeridiam"
                 name="endMeridiam"
                 value={this.props.endMeridiam}
-                onChange={this.props.handleChange}
+                onChange={this.props.handleInputChange}
                 required
               >
                 <option>AM</option>
@@ -137,21 +143,25 @@ class SceneForm extends React.Component {
             </div>
           </div>
         </div>
+
+        {/* Image Chooser Input*/}
         <div className="form-group">
-          <label htmlFor="sceneImage">Choose Image</label>
-          <input
-            type="file"
-            className="form-control-file"
-            id="scene-image-input"
-            name="file"
-            required={this.props.imageRequired}
+          <label>Choose Left Image</label>
+          <ImageChooser
+            file={this.props.leftImageChooserFile}
+            thumbnail={this.props.leftImageChooserURL}
+            handleImageFileChange={this.props.handleImageFileChange}
+            side='L'
           />
-          <img
-            id="scene-image-thumbnail"
-            src={this.props.imageURL}
-            alt={this.props.imageURL}
+          <label>Choose Right Image</label>
+          <ImageChooser
+            file={this.props.rightImageChooserFile}
+            thumbnail={this.props.rightImageChooserURL}
+            handleImageFileChange={this.props.handleImageFileChange}
+            side='R'
           />
         </div>
+
         {!this.props.submitInProgress &&
           <button
             type="submit"
@@ -162,7 +172,7 @@ class SceneForm extends React.Component {
           </button>
         }
         {this.props.submitInProgress &&
-          <ProgressBar percent={this.props.uploadPercent}/>
+          <p>Uploading...</p>
         }
       </form>
     )

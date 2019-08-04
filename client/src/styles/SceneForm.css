@@ -33,6 +33,10 @@
   background: var(--pw-black);
 }
 
+#end-time-group {
+  margin-bottom: 40px;
+}
+
 #scene-image-input {
   display: inline-block;
   width: 200px;

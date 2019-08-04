@@ -6,8 +6,11 @@ class EditScenePage extends React.Component {
   constructor(props) {
     super(props);
     this._isMounted = false;
-    this.handleChange = this.handleChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleImageFileChange = this.handleImageFileChange.bind(this);
+    this.deleteImages = this.deleteImages.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateScene = this.updateScene.bind(this);
     this.state = { // Current Scene Loaded
       name: '',
       startHours: '',
@@ -16,105 +19,111 @@ class EditScenePage extends React.Component {
       endHours: '',
       endMinutes: '',
       endMeridiam: '',
-      imageURL: '',
       uploadPercent: 0,
-      submitInProgress: false
+      submitInProgress: false,
+      leftImageChooserFile: null,
+      leftImageChooserURL: null,
+      rightImageChooserFile: null,
+      rightImageChooserURL: null
     }
   }
 
-  handleChange(e) {
+  deleteImages() {
+    if (this.state.leftImageChooserFile) {
+      storage.refFromURL(this.state.leftImageChooserURL).delete();
+    }
+
+    if (this.state.rightImageChooserFile) {
+      storage.refFromURL(this.state.rightImageChooserURL).delete();
+    }
+  }
+
+  uploadImages() {
+    const ref = storage.ref('menu-images');
+    const leftImage = this.state.leftImageChooserFile;
+    const rightImage = this.state.rightImageChooserFile;
+
+    if (leftImage || rightImage) this.setState({ submitInProgress: true });
+
+    let uploadPromises = [];
+
+    if (leftImage) {
+      const uploadTaskL = ref.put(leftImage);
+      uploadPromises.push(uploadTaskL);
+
+      uploadTaskL.on(
+        firebase.storage.TaskEvent.STATE_CHANGED,
+        (snapshot) => {},
+        (error) => console.log(error),
+        () => console.log('Left Upload Complete')
+      );
+
+      uploadTaskL.then((uploadTaskSnapshot) => {
+        uploadTaskSnapshot.ref.getDownloadURL().then((url) => {
+          this.setState({ leftImageChooserURL: url });
+        });
+      });
+    }
+
+    if (rightImage) {
+      const uploadTaskR = ref.put(rightImage);
+      uploadPromises.push(uploadTaskR);
+
+      uploadTaskR.on(
+        firebase.storage.TaskEvent.STATE_CHANGED,
+        (snapshot) => {},
+        (error) => console.log(error),
+        () => console.log('Right Upload Complete')
+      );
+
+      uploadTaskR.then((uploadTaskSnapshot) => {
+        uploadTaskSnapshot.ref.getDownloadURL().then((url) => {
+          this.setState({ rightImageChooserURL: url });
+        });
+      });
+    }
+
+    Promise.all(uploadPromises).then(() => this.setState({ submitInProgress: false }));
+  }
+
+  handleInputChange(e) {
     this.setState({ [e.target.name]: e.target.value });
+  }
+
+  handleImageFileChange(e) {
+    const file = e.target.files[0];
+
+    if (e.target.id === 'imageChooserL') {
+      this.setState({ leftImageChooserFile: file });
+    }
+
+    if (e.target.id === 'imageChooserR') {
+      this.setState({ rightImageChooserFile: file });
+    }
+  }
+
+  updateScene() {
+    const setID = this.props.location.currentSetID;
+    const sceneID = this.props.location.currentSceneID;
+
+    const updatedScene = {
+      name: this.state.name,
+      startHours: this.state.startHours,
+      endHours: this.state.endHours,
+      startMinutes: this.state.startMinutes,
+      endMinutes: this.state.endMinutes,
+      startMeridiam: this.state.startMeridiam,
+      endMeridiam: this.state.endMeridiam
+    }
+
+    database.ref(`menu/sets/${setID}/scenes/${sceneID}`).update(updatedScene);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-
-
-    const setID = this.props.location.currentSetID;
-    const sceneID = this.props.location.currentSceneID;
-    const sceneRef = database.ref(`/menu/sets/${setID}/scenes/${sceneID}`);
-    const imagesRef = storage.ref('/menu-images');
-    const newImage = document.getElementById('scene-image-input').files[0];
-    const updatedScene = {
-      name: this.state.name,
-      startHours: this.state.startHours,
-      startMinutes: this.state.startMinutes,
-      startMeridiam: this.state.startMeridiam,
-      endHours: this.state.endHours,
-      endMinutes: this.state.endMinutes,
-      endMeridiam: this.state.endMeridiam,
-      sceneID: this.state.sceneID
-    }
-
-
-    if (!this.props.verifyScene(updatedScene)) {
-      window.alert('Scene must not overlap with existing scene');
-      return;
-    }
-
-
-    // If no new image, only update data
-    if (!newImage) {
-      sceneRef.update(updatedScene).then(() => {
-        this.props.setLocation(
-          `Edit ${updatedScene.name}`,
-          this.props.location.currentSetName,
-          setID,
-          updatedScene.name,
-          sceneID
-        );
-      });
-    } else {
-      // 1. Delete existing image
-      // 2. Upload a new image
-      // 3. Update the image url
-
-      const currentImageRef = storage.refFromURL(this.state.imageURL);
-      const newImageRef = imagesRef.child(`/${newImage.name}`);
-
-      currentImageRef.delete();
-
-      const imageUploadTask = newImageRef.put(newImage);
-
-      const next = (snapshot) => {
-        const uploadPercent = snapshot.bytesTransferred / snapshot.totalBytes * 100;
-        this.setState({ uploadPercent: uploadPercent });
-      }
-
-      const error = error => console.log(error.message);
-
-      const complete = () => {
-        this.setState({
-          uploadPercent: 0,
-          submitInProgress: false
-        });
-        console.log('Upload Complete');
-      }
-
-      this.setState({ submitInProgress: true });
-
-      imageUploadTask.on(
-        firebase.storage.TaskEvent.STATE_CHANGED,
-        next,
-        error,
-        complete
-      );
-
-      imageUploadTask.then(() => {
-        newImageRef.getDownloadURL().then((url) => {
-          updatedScene.imageURL = url;
-          sceneRef.update(updatedScene).then(() => {
-            this.props.setLocation(
-              `Edit ${updatedScene.name}`,
-              this.props.location.currentSetName,
-              setID,
-              updatedScene.name,
-              sceneID
-            )
-          });
-        });
-      });
-    }
+    this.deleteImages();
+    this.uploadImages();
+    this.updateScene();
   }
 
   componentDidMount() {
@@ -135,11 +144,11 @@ class EditScenePage extends React.Component {
         endHours: scene.endHours,
         endMinutes: scene.endMinutes,
         endMeridiam: scene.endMeridiam,
-        imageURL: scene.imageURL,
-        sceneID: sceneID
-
-      })
-    })
+        sceneID: sceneID,
+        leftImageChooserURL: scene.leftImageURL,
+        rightImageChooserURL: scene.rightImageURL
+      });
+    });
   }
 
   componentWillUnmount() {
@@ -157,12 +166,15 @@ class EditScenePage extends React.Component {
           endHours={this.state.endHours}
           endMinutes={this.state.endMinutes}
           endMeridiam={this.state.endMeridiam}
-          handleChange={this.handleChange}
+          handleInputChange={this.handleInputChange}
+          handleImageFileChange={this.handleImageFileChange}
           handleSubmit={this.handleSubmit}
-          imageURL={this.state.imageURL}
+          leftImageChooserFile={this.state.leftImageChooserFile}
+          leftImageChooserURL={this.state.leftImageChooserURL}
+          rightImageChooserFile={this.state.rightImageChooserFile}
+          rightImageChooserURL={this.state.rightImageChooserURL}
           imageRequired={false}
           submitInProgress={this.state.submitInProgress}
-          uploadPercent={this.state.uploadPercent}
           setID={this.props.setID}
         />
       </div>
