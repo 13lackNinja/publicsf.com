@@ -43,8 +43,13 @@ class EditScenePage extends React.Component {
     const leftImage = this.state.leftImageChooserFile;
     const rightImage = this.state.rightImageChooserFile;
 
+    if (leftImage || rightImage) this.setState({ submitInProgress: true });
+
+    let uploadPromises = [];
+
     if (leftImage) {
       const uploadTaskL = ref.put(leftImage);
+      uploadPromises.push(uploadTaskL);
 
       uploadTaskL.on(
         firebase.storage.TaskEvent.STATE_CHANGED,
@@ -62,6 +67,7 @@ class EditScenePage extends React.Component {
 
     if (rightImage) {
       const uploadTaskR = ref.put(rightImage);
+      uploadPromises.push(uploadTaskR);
 
       uploadTaskR.on(
         firebase.storage.TaskEvent.STATE_CHANGED,
@@ -76,6 +82,8 @@ class EditScenePage extends React.Component {
         });
       });
     }
+
+    Promise.all(uploadPromises).then(() => this.setState({ submitInProgress: false }));
   }
 
   handleInputChange(e) {
