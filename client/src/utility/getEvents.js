@@ -37,7 +37,7 @@ export default async function getEvents() {
         return event;
 
       }).filter((event) => {
-        const eventDate = new Date(event.localized_times.event_start);
+        const eventDate = new Date(event.localized_times.event_end);
         const today = new Date();
 
         return eventDate > today;
