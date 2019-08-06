@@ -1,7 +1,3 @@
-// This module recieves a contact box form submission, and parses the JSON
-// request body into the markup string template literals in the below
-// express post handler. It then sends the generated email using gmail.
-
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
