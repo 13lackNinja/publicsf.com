@@ -1,6 +1,6 @@
 import React from 'react'
 import SceneForm from './SceneForm'
-import firebase, { database, storage } from './utility/firebase'
+import { database, storage } from './utility/firebase'
 
 class EditScenePage extends React.Component {
   constructor(props) {
@@ -39,51 +39,52 @@ class EditScenePage extends React.Component {
   }
 
   uploadImages() {
-    const ref = storage.ref('menu-images');
+    this.setState({ submitInProgress: true });
+
+    const setID = this.props.location.currentSetID;
+    const sceneID = this.props.location.currentSceneID;
     const leftImage = this.state.leftImageChooserFile;
     const rightImage = this.state.rightImageChooserFile;
-
-    if (leftImage || rightImage) this.setState({ submitInProgress: true });
-
-    let uploadPromises = [];
+    const databaseRef = database.ref(`menu/sets/${setID}/scenes/${sceneID}`);
+    let leftUploadPromise = this.state.leftImageChooserURL;
+    let rightUploadPromise = this.state.rightImageChooserURL;
 
     if (leftImage) {
-      const uploadTaskL = ref.put(leftImage);
-      uploadPromises.push(uploadTaskL);
-
-      uploadTaskL.on(
-        firebase.storage.TaskEvent.STATE_CHANGED,
-        (snapshot) => {},
-        (error) => console.log(error),
-        () => console.log('Left Upload Complete')
-      );
-
-      uploadTaskL.then((uploadTaskSnapshot) => {
-        uploadTaskSnapshot.ref.getDownloadURL().then((url) => {
-          this.setState({ leftImageChooserURL: url });
-        });
+      const storageRefLeft = storage.ref(`menu-images/${leftImage.name}`);
+      const leftUploadTask = storageRefLeft.put(leftImage);
+      leftUploadPromise = leftUploadTask.then((uploadTaskSnapshot) => {
+        return uploadTaskSnapshot.ref.getDownloadURL();
       });
     }
 
     if (rightImage) {
-      const uploadTaskR = ref.put(rightImage);
-      uploadPromises.push(uploadTaskR);
-
-      uploadTaskR.on(
-        firebase.storage.TaskEvent.STATE_CHANGED,
-        (snapshot) => {},
-        (error) => console.log(error),
-        () => console.log('Right Upload Complete')
-      );
-
-      uploadTaskR.then((uploadTaskSnapshot) => {
-        uploadTaskSnapshot.ref.getDownloadURL().then((url) => {
-          this.setState({ rightImageChooserURL: url });
-        });
+      const storageRefRight = storage.ref(`menu-images/${rightImage.name}`);
+      const rightUploadTask = storageRefRight.put(rightImage);
+      rightUploadPromise = rightUploadTask.then((uploadTaskSnapshot) => {
+        return uploadTaskSnapshot.ref.getDownloadURL();
       });
     }
 
-    Promise.all(uploadPromises).then(() => this.setState({ submitInProgress: false }));
+    Promise.all([leftUploadPromise, rightUploadPromise]).then((urls) => {
+      const updatedScene = {
+        name: this.state.name,
+        startHours: this.state.startHours,
+        endHours: this.state.endHours,
+        startMinutes: this.state.startMinutes,
+        endMinutes: this.state.endMinutes,
+        startMeridiam: this.state.startMeridiam,
+        endMeridiam: this.state.endMeridiam,
+        leftImageURL: urls[0],
+        rightImageURL: urls[1]
+      }
+
+      databaseRef.set(updatedScene)
+        .then(() => this.setState({
+          submitInProgress: false,
+          leftImageChooserURL: urls[0],
+          rightImageChooserURL: urls[1]
+        }));
+    });
   }
 
   handleInputChange(e) {
@@ -113,7 +114,9 @@ class EditScenePage extends React.Component {
       startMinutes: this.state.startMinutes,
       endMinutes: this.state.endMinutes,
       startMeridiam: this.state.startMeridiam,
-      endMeridiam: this.state.endMeridiam
+      endMeridiam: this.state.endMeridiam,
+      leftImageURL: this.state.leftImageChooserURL,
+      rightImageURL: this.state.rightImageChooserURL
     }
 
     database.ref(`menu/sets/${setID}/scenes/${sceneID}`).update(updatedScene);
@@ -123,7 +126,6 @@ class EditScenePage extends React.Component {
     e.preventDefault();
     this.deleteImages();
     this.uploadImages();
-    this.updateScene();
   }
 
   componentDidMount() {

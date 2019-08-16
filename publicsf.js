@@ -2,14 +2,9 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const contactRouter = require('./routes/contact');
-const weeklyRouter = require('./routes/weekly');
-
-app.set('views', './views');
-app.set('view-engine', 'pug');
 
 app.use(express.static(path.join(__dirname, 'build')));
 app.use('/contact', contactRouter);
-app.use('/weekly', weeklyRouter);
 
 app.get('/', (req, res) => {
   res.set({

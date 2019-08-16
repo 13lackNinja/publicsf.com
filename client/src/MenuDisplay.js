@@ -32,8 +32,6 @@ class MenuDisplay extends React.Component {
   checkScene() { // Every minute, check scene against current time
     const activeScenes = this.state.activeScenes;
 
-    console.log(activeScenes);
-
     activeScenes.forEach(scene => {
       const sceneStart = timeDataToNum(
         scene.startHours,
@@ -58,8 +56,6 @@ class MenuDisplay extends React.Component {
 
       // Condition 1: Stop time is less that start time
       if (sceneStart < sceneEnd) {
-        console.log('Condition 1 Met');
-
         if (sceneStart <= currentTime && currentTime <= sceneEnd) {
           this.setState({
             leftDisplayURL: scene.leftImageURL,
@@ -70,10 +66,6 @@ class MenuDisplay extends React.Component {
 
       // Condition 2: Stop time is greater than start time
       if (sceneStart > sceneEnd) {
-        console.log('Condition 2 Met');
-        console.log('Current Time: ' + currentTime);
-        console.log('Scene Start: ' + sceneStart);
-        console.log('Scene End: ' + sceneEnd);
         if (
           (currentTime >= 0 && currentTime <= sceneEnd)
           ||

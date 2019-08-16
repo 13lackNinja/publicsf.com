@@ -93,9 +93,6 @@ class AddScenePage extends React.Component {
     const leftImage = this.state.leftImageChooserFile;
     const rightImage = this.state.rightImageChooserFile;
 
-    console.log(leftImage);
-    console.log(rightImage);
-
     if (!leftImage || !rightImage) {
       window.alert('Both images required');
       return false;
@@ -107,13 +104,14 @@ class AddScenePage extends React.Component {
   uploadImages() {
     this.setState({ submitInProgress: true });
 
-    const databaseRef = database.ref(`menu/sets/${this.props.setID}/scenes`);
-    const storageRef = storage.ref('menu-images');
     const leftImage = this.state.leftImageChooserFile;
     const rightImage = this.state.rightImageChooserFile;
+    const databaseRef = database.ref(`menu/sets/${this.props.setID}/scenes`);
+    const storageRefLeft = storage.ref(`menu-images/${leftImage.name}`);
+    const storageRefRight = storage.ref(`menu-images/${rightImage.name}`);
 
-    const leftUploadTask = storageRef.put(leftImage);
-    const rightUploadTask = storageRef.put(rightImage);
+    const leftUploadTask = storageRefLeft.put(leftImage);
+    const rightUploadTask = storageRefRight.put(rightImage);
 
     const leftURLPromise = leftUploadTask.then((uploadTaskSnapshot) => {
       return uploadTaskSnapshot.ref.getDownloadURL();
@@ -133,11 +131,15 @@ class AddScenePage extends React.Component {
         startMeridiam: this.state.startMeridiam,
         endMeridiam: this.state.endMeridiam,
         leftImageURL: urls[0],
-        rightImageURL: urls[0]
+        rightImageURL: urls[1]
       }
 
       databaseRef.push(newScene)
-        .then(() => this.setState({ submitInProgress: false }));
+        .then(() => this.setState({
+          submitInProgress: false,
+          leftImageChooserURL: urls[0],
+          rightImageChooserURL: urls[1]
+        }));
     });
   }
 
