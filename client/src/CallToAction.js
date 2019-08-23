@@ -11,7 +11,7 @@ const CallToAction = (props) => (
       <div id="call-to-action-text">
         <h1>{props.title}</h1>
         <h2>{props.date}</h2>
-        <button>Get Tickets</button>
+        {/* <button>Get Tickets</button> */}
       </div>
     </div>
   </a>
