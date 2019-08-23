@@ -1,4 +1,4 @@
 /node_modules
 /public
+/archive
 .env
-service_account.json

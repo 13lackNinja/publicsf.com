@@ -6,7 +6,7 @@ const contactRouter = require('./routes/contact');
 app.use(express.static(path.join(__dirname, 'build')));
 app.use('/contact', contactRouter);
 
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
   res.set({
     'Cache-Control': 'no-store',
     'Pragma': 'no-cache'
