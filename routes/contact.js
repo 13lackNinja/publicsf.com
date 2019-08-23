@@ -15,6 +15,7 @@ router.use((req, res, next) => {
 
 router.post('/', upload.array(), (req, res) => {
   let html;
+  let recipient;
   const formType = req.body.formSelected;
 
   // Setting up the nodemailer transport service.
@@ -41,7 +42,8 @@ router.post('/', upload.array(), (req, res) => {
       <p>${req.body.email}</p>
       <p><b>Message</b></p>
       <p>${req.body.message}</p>
-    `
+    `;
+    recipient = 'pwsfinfo@publicsf.com';
   } else if (formType === 'Private Events') {
     html = `
       <p><b>Name:</b></p>
@@ -62,7 +64,8 @@ router.post('/', upload.array(), (req, res) => {
       <p>${req.body.food}</p>
       <p><b>Audio Visual:</b></p>
       <p>${req.body.audioVisual}</p>
-    `
+    `;
+    recipient = 'pwsfspecialevents@publicsf.com'
   } else if (formType === 'Booking') {
     html = `
       <p><b>Name:</b></p>
@@ -79,7 +82,8 @@ router.post('/', upload.array(), (req, res) => {
       <p>${req.body.acts}</p>
       <p><b>Previous Shows:</b></p>
       <p>${req.body.previousShows}</p>
-    `
+    `;
+    recipient = 'pwsfbooking@publicsf.com';
   } else if (formType === 'Roll Up Gallery') {
     html = `
     <p><b>Name:</b></p>
@@ -94,7 +98,8 @@ router.post('/', upload.array(), (req, res) => {
     <p>${req.body.attendance}</p>
     <p><b>Message:</b></p>
     <p>${req.body.message}</p>
-    `
+    `;
+    recipient = 'pwsfgallery@publicsf.com';
   } else if (formType === 'Lost and Found') {
     html = `
       <p><b>Name:</b></p>
@@ -109,14 +114,15 @@ router.post('/', upload.array(), (req, res) => {
       <p>${req.body.description}</p>
       <p><b>Contact Info:</b></p>
       <p>${req.body.contactInfo}</p>
-    `
+    `;
+    recipient = 'pwsfinfo@publicsf.com';
   }
 
   // Define nodemailer message options. Includes sender email in 'reply to' field.
   const mailerOptions = {
     from: 'PW Contact Box',
     to: 'pwsfinfo@publicsf.com',
-    replyTo: [req.body.email, 'pwsfinfo@publicsf.com'],
+    replyTo: [req.body.email, recipient],
     subject: `${formType} Form: ${req.body.email}`,
     html: html
   };
@@ -128,6 +134,7 @@ router.post('/', upload.array(), (req, res) => {
     } else {
       console.log(info);
     }
+
     res.send(info);
   });
 });
