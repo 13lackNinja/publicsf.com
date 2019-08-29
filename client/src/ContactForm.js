@@ -176,12 +176,18 @@ class ContactForm extends Component {
         form.lastChild.style.display = 'none';
         dropdown.style.display = 'none';
         form.innerHTML = '<h2>Message Received!</h2>';
+        form.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
         console.log(this.responseText);
       }
     }
 
     xhttp.open('POST', '/contact');
     xhttp.send(formData);
+
+    console.log('submit clicked');
   }
 
   render() {
