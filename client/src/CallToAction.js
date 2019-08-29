@@ -3,7 +3,7 @@ import React from 'react';
 import './styles/CallToAction.css';
 
 const CallToAction = (props) => (
-  <a href={props.clickoutURL}>
+  <a href={props.clickoutURL} target="_blank">
     <div
       id="call-to-action"
       style={{ "backgroundImage": `url(${props.image})` }}
@@ -11,7 +11,6 @@ const CallToAction = (props) => (
       <div id="call-to-action-text">
         <h1>{props.title}</h1>
         <h2>{props.date}</h2>
-        {/* <button>Get Tickets</button> */}
       </div>
     </div>
   </a>
