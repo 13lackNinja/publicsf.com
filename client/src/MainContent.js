@@ -10,6 +10,7 @@ import Docs from './Docs'
 import Booking from './Booking'
 import Staff from './Staff'
 import MenuDisplay from './MenuDisplay'
+import NotFound from './NotFound'
 
 import './styles/MainContent.css'
 
@@ -26,6 +27,7 @@ const MainContent = () => (
       <Route path="/booking" component={Booking}></Route>
       <Route path="/staff" component={Staff}></Route>
       <Route path="/menu" component={MenuDisplay}></Route>
+      <Route component={NotFound}></Route>
     </Switch>
   </div>
 )

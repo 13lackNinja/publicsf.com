@@ -1,0 +1,24 @@
+@import 'Theme.css';
+
+#not-found {
+  min-height: 100vh;
+  background: var(--pw-orange);
+  position: relative;
+}
+
+#text-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#text-container h1 {
+  color: var(--pw-black);
+}
+
+#text-container h3 {
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+}
