@@ -9,7 +9,7 @@ const Docs = () => (
     <div id="links">
       <DocLink
         text="Web Image Specs"
-        url="https://www.dropbox.com/s/08ga1ehjy5jae2f/pw_web_image_specs.pdf?dl=0"
+        url="https://firebasestorage.googleapis.com/v0/b/publicsf-ef5ca.appspot.com/o/docs%2Fpw_web_image_specs.pdf?alt=media&token=ac337e2d-678e-4b31-b265-dfc851e70698"
       />
     </div>
   </div>

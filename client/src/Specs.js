@@ -143,12 +143,12 @@ const SpecsInfo = () => (
       Download all &nbsp;
       <DocLink
         text="Sound / Stage"
-        url="https://www.dropbox.com/s/jy04qfc61a3x0y4/pw_sound_specs.pdf?dl=0"
+        url="https://firebasestorage.googleapis.com/v0/b/publicsf-ef5ca.appspot.com/o/docs%2Fpw_sound_specs.pdf?alt=media&token=3e5c62dd-8655-4e96-8ac5-06ae87c0b569"
       />
       &nbsp; and &nbsp;
       <DocLink
         text="Video / Lighting"
-        url="https://www.dropbox.com/s/ogwu6qesx2ruslp/pw_video_lighting_specs.pdf?dl=0"
+        url="https://firebasestorage.googleapis.com/v0/b/publicsf-ef5ca.appspot.com/o/docs%2Fpw_video_lighting_specs.pdf?alt=media&token=e8e66d8e-f6b9-4e70-8510-39eebe8c9a60"
       />
       &nbsp; gear &nbsp;
     </p>
@@ -156,7 +156,7 @@ const SpecsInfo = () => (
       Download &nbsp;
       <DocLink
         text="Floorplan"
-        url="https://www.dropbox.com/s/8i5l8zav42h5l1a/pw_floorplan.pdf?dl=0"
+        url="https://firebasestorage.googleapis.com/v0/b/publicsf-ef5ca.appspot.com/o/docs%2Fpw_floorplan.jpg?alt=media&token=9c7e9ee5-8b09-411e-9a08-aac28b72f833"
       />
     </p>
   </div>
