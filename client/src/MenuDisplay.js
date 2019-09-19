@@ -15,7 +15,8 @@ class MenuDisplay extends React.Component {
     this.state = {
       activeScenes: [],
       leftDisplayURL: noMenuURL,
-      rightDisplayURL: noMenuURL
+      rightDisplayURL: noMenuURL,
+      loftDisplayURL: noMenuURL
     };
   }
 
@@ -59,7 +60,8 @@ class MenuDisplay extends React.Component {
         if (sceneStart <= currentTime && currentTime <= sceneEnd) {
           this.setState({
             leftDisplayURL: scene.leftImageURL,
-            rightDisplayURL: scene.rightImageURL
+            rightDisplayURL: scene.rightImageURL,
+            loftDisplayURL: scene.loftImageURL
           });
         }
       }
@@ -73,7 +75,8 @@ class MenuDisplay extends React.Component {
         ) {
           this.setState({
             leftDisplayURL: scene.leftImageURL,
-            rightDisplayURL: scene.rightImageURL
+            rightDisplayURL: scene.rightImageURL,
+            loftDisplayURL: scene.loftImageURL
           });
         }
       }
@@ -122,6 +125,17 @@ class MenuDisplay extends React.Component {
               <img
                 src={this.state.rightDisplayURL}
                 alt={this.state.rightDisplayURL}
+                id="menu-image"
+                onDoubleClick={this.toggleFullScreen}
+              />
+            )}
+          />
+          <Route
+            path='/menu/loft'
+            render={() => (
+              <img
+                src={this.state.loftDisplayURL}
+                alt={this.state.loftDisplayURL}
                 id="menu-image"
                 onDoubleClick={this.toggleFullScreen}
               />

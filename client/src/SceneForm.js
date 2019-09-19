@@ -160,6 +160,13 @@ class SceneForm extends React.Component {
             handleImageFileChange={this.props.handleImageFileChange}
             side='R'
           />
+          <label>Choose Loft Image</label>
+          <ImageChooser
+            file={this.props.loftImageChooserFile}
+            thumbnail={this.props.loftImageChooserURL}
+            handleImageFileChange={this.props.handleImageFileChange}
+            side='Loft'
+          />
         </div>
 
         {!this.props.submitInProgress &&
