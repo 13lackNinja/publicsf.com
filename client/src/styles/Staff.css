@@ -1,3 +1,8 @@
+#staff {
+  min-height: 100vh;
+  position: relative;
+}
+
 #login {
   min-height: calc(100vh - 50px);
   background: #e75e26;

@@ -122,7 +122,7 @@ router.post('/', upload.array(), (req, res) => {
   const mailerOptions = {
     from: 'PW Contact Box',
     to: recipient,
-    replyTo: [req.body.email, recipient],
+    replyTo: [recipient, req.body.email],
     subject: `${formType} Form: ${req.body.email}`,
     html: html
   };
