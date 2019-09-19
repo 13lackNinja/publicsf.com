@@ -30,7 +30,9 @@ class AddScenePage extends React.Component {
       leftImageChooserFile: null,
       leftImageChooserURL: noMenuURL,
       rightImageChooserFile: null,
-      rightImageChooserURL: noMenuURL
+      rightImageChooserURL: noMenuURL,
+      loftImageChooserFile: null,
+      loftImageChooserURL: noMenuURL
     }
     this.state = this.init;
   }
@@ -48,6 +50,10 @@ class AddScenePage extends React.Component {
 
     if (e.target.id === 'imageChooserR') {
       this.setState({ rightImageChooserFile: file });
+    }
+
+    if (e.target.id === 'imageChooserLoft') {
+      this.setState({ loftImageChooserFile: file });
     }
   }
 
@@ -92,9 +98,10 @@ class AddScenePage extends React.Component {
   hasImages() {
     const leftImage = this.state.leftImageChooserFile;
     const rightImage = this.state.rightImageChooserFile;
+    const loftImage = this.state.loftImageChooserFile;
 
-    if (!leftImage || !rightImage) {
-      window.alert('Both images required');
+    if (!leftImage || !rightImage || !loftImage) {
+      window.alert('All images required');
       return false;
     } else {
       return true;
@@ -106,12 +113,15 @@ class AddScenePage extends React.Component {
 
     const leftImage = this.state.leftImageChooserFile;
     const rightImage = this.state.rightImageChooserFile;
+    const loftImage = this.state.loftImageChooserFile;
     const databaseRef = database.ref(`menu/sets/${this.props.setID}/scenes`);
     const storageRefLeft = storage.ref(`menu-images/${leftImage.name}`);
     const storageRefRight = storage.ref(`menu-images/${rightImage.name}`);
+    const storageRefLoft = storage.ref(`menu-images/${loftImage.name}`);
 
     const leftUploadTask = storageRefLeft.put(leftImage);
     const rightUploadTask = storageRefRight.put(rightImage);
+    const loftUploadTask = storageRefLoft.put(loftImage);
 
     const leftURLPromise = leftUploadTask.then((uploadTaskSnapshot) => {
       return uploadTaskSnapshot.ref.getDownloadURL();
@@ -121,7 +131,11 @@ class AddScenePage extends React.Component {
       return uploadTaskSnapshot.ref.getDownloadURL();
     });
 
-    Promise.all([leftURLPromise, rightURLPromise]).then((urls) => {
+    const loftURLPromise = loftUploadTask.then((uploadTaskSnapshot) => {
+      return uploadTaskSnapshot.ref.getDownloadURL();
+    });
+
+    Promise.all([leftURLPromise, rightURLPromise, loftURLPromise]).then((urls) => {
       const newScene = {
         name: this.state.name,
         startHours: this.state.startHours,
@@ -131,14 +145,16 @@ class AddScenePage extends React.Component {
         startMeridiam: this.state.startMeridiam,
         endMeridiam: this.state.endMeridiam,
         leftImageURL: urls[0],
-        rightImageURL: urls[1]
+        rightImageURL: urls[1],
+        loftImageURL: urls[2]
       }
 
       databaseRef.push(newScene)
         .then(() => this.setState({
           submitInProgress: false,
           leftImageChooserURL: urls[0],
-          rightImageChooserURL: urls[1]
+          rightImageChooserURL: urls[1],
+          loftImageChooserURL: urls[2]
         }));
     });
   }
@@ -183,6 +199,8 @@ class AddScenePage extends React.Component {
           leftImageChooserURL={this.state.leftImageChooserURL}
           rightImageChooserFile={this.state.rightImageChooserFile}
           rightImageChooserURL={this.state.rightImageChooserURL}
+          loftImageChooserFile={this.state.loftImageChooserFile}
+          loftImageChooserURL={this.state.loftImageChooserURL}
         />
       </div>
     )

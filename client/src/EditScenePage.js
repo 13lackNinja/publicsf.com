@@ -24,7 +24,9 @@ class EditScenePage extends React.Component {
       leftImageChooserFile: null,
       leftImageChooserURL: null,
       rightImageChooserFile: null,
-      rightImageChooserURL: null
+      rightImageChooserURL: null,
+      loftImageChooserFile: null,
+      loftImageChooserURL: null
     }
   }
 
@@ -36,6 +38,10 @@ class EditScenePage extends React.Component {
     if (this.state.rightImageChooserFile) {
       storage.refFromURL(this.state.rightImageChooserURL).delete();
     }
+
+    if (this.state.loftImageChooserFile) {
+      storage.refFromURL(this.state.rightImageChooserURL).delete();
+    }
   }
 
   uploadImages() {
@@ -45,9 +51,13 @@ class EditScenePage extends React.Component {
     const sceneID = this.props.location.currentSceneID;
     const leftImage = this.state.leftImageChooserFile;
     const rightImage = this.state.rightImageChooserFile;
+    const loftImage = this.state.loftImageChooserFile;
     const databaseRef = database.ref(`menu/sets/${setID}/scenes/${sceneID}`);
+
+    // Promise.all() below requires values
     let leftUploadPromise = this.state.leftImageChooserURL;
     let rightUploadPromise = this.state.rightImageChooserURL;
+    let loftUploadPromise = this.state.loftImageChooserURL;
 
     if (leftImage) {
       const storageRefLeft = storage.ref(`menu-images/${leftImage.name}`);
@@ -65,7 +75,15 @@ class EditScenePage extends React.Component {
       });
     }
 
-    Promise.all([leftUploadPromise, rightUploadPromise]).then((urls) => {
+    if (loftImage) {
+      const storageRefLoft = storage.ref(`menu-images/${loftImage.name}`);
+      const loftUploadTask = storageRefLoft.put(loftImage);
+      loftUploadPromise = loftUploadTask.then((uploadTaskSnapshot) => {
+        return uploadTaskSnapshot.ref.getDownloadURL();
+      });
+    }
+
+    Promise.all([leftUploadPromise, rightUploadPromise, loftUploadPromise]).then((urls) => {
       const updatedScene = {
         name: this.state.name,
         startHours: this.state.startHours,
@@ -75,14 +93,16 @@ class EditScenePage extends React.Component {
         startMeridiam: this.state.startMeridiam,
         endMeridiam: this.state.endMeridiam,
         leftImageURL: urls[0],
-        rightImageURL: urls[1]
+        rightImageURL: urls[1],
+        loftImageURL: urls[2]
       }
 
       databaseRef.set(updatedScene)
         .then(() => this.setState({
           submitInProgress: false,
           leftImageChooserURL: urls[0],
-          rightImageChooserURL: urls[1]
+          rightImageChooserURL: urls[1],
+          loftImageChooserURL: urls[2]
         }));
     });
   }
@@ -101,6 +121,10 @@ class EditScenePage extends React.Component {
     if (e.target.id === 'imageChooserR') {
       this.setState({ rightImageChooserFile: file });
     }
+
+    if (e.target.id === 'imageChooserLoft') {
+      this.setState({ loftImageChooserFile: file });
+    }
   }
 
   updateScene() {
@@ -116,7 +140,8 @@ class EditScenePage extends React.Component {
       startMeridiam: this.state.startMeridiam,
       endMeridiam: this.state.endMeridiam,
       leftImageURL: this.state.leftImageChooserURL,
-      rightImageURL: this.state.rightImageChooserURL
+      rightImageURL: this.state.rightImageChooserURL,
+      loftImageURL: this.state.loftImageChooserURL
     }
 
     database.ref(`menu/sets/${setID}/scenes/${sceneID}`).update(updatedScene);
@@ -129,28 +154,31 @@ class EditScenePage extends React.Component {
   }
 
   componentDidMount() {
-    this._isMounted = true;
+    if (this._isMounted === false) {
+      this._isMounted = true;
 
-    const setID = this.props.location.currentSetID;
-    const sceneID = this.props.location.currentSceneID;
-    const sceneURL = `menu/sets/${setID}/scenes/${sceneID}`;
+      const setID = this.props.location.currentSetID;
+      const sceneID = this.props.location.currentSceneID;
+      const sceneURL = `menu/sets/${setID}/scenes/${sceneID}`;
 
-    database.ref(sceneURL).on('value', (snapshot) => {
-      const scene = snapshot.val();
+      database.ref(sceneURL).on('value', (snapshot) => {
+        const scene = snapshot.val();
 
-      this.setState({
-        name: scene.name,
-        startHours: scene.startHours,
-        startMinutes: scene.startMinutes,
-        startMeridiam: scene.startMeridiam,
-        endHours: scene.endHours,
-        endMinutes: scene.endMinutes,
-        endMeridiam: scene.endMeridiam,
-        sceneID: sceneID,
-        leftImageChooserURL: scene.leftImageURL,
-        rightImageChooserURL: scene.rightImageURL
+        this.setState({
+          name: scene.name,
+          startHours: scene.startHours,
+          startMinutes: scene.startMinutes,
+          startMeridiam: scene.startMeridiam,
+          endHours: scene.endHours,
+          endMinutes: scene.endMinutes,
+          endMeridiam: scene.endMeridiam,
+          sceneID: sceneID,
+          leftImageChooserURL: scene.leftImageURL,
+          rightImageChooserURL: scene.rightImageURL,
+          loftImageChooserURL: scene.loftImageURL
+        });
       });
-    });
+    }
   }
 
   componentWillUnmount() {
@@ -175,6 +203,8 @@ class EditScenePage extends React.Component {
           leftImageChooserURL={this.state.leftImageChooserURL}
           rightImageChooserFile={this.state.rightImageChooserFile}
           rightImageChooserURL={this.state.rightImageChooserURL}
+          loftImageChooserFile={this.state.loftImageChooserFile}
+          loftImageChooserURL={this.state.loftImageChooserURL}
           imageRequired={false}
           submitInProgress={this.state.submitInProgress}
           setID={this.props.setID}
