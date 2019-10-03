@@ -180,7 +180,7 @@ class ContactForm extends Component {
       }
     }
 
-    xhttp.open('POST', '/api/contact');
+    xhttp.open('POST', '/contact');
     xhttp.send(formData);
   }
 
