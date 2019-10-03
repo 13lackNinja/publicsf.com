@@ -6,6 +6,7 @@ import './styles/Footer.css'
 import facebookIcon from './images/facebook_icon.svg'
 import instagramIcon from './images/instagram_icon.svg'
 import twitterIcon from './images/twitter_icon.svg'
+import spotifyIcon from './images/spotify_icon.svg'
 
 const Footer = () => {
   const date = new Date();
@@ -39,6 +40,9 @@ const Footer = () => {
           </a>
           <a href="https://www.instagram.com/publicworkssf/?hl=en">
             <img width="25px" className="social-icon" id="instagram-icon" src={instagramIcon} alt="instagram_icon.svg" />
+          </a>
+          <a href="https://open.spotify.com/playlist/58VTXTN8NMcj0FDkk1XEz3?si=O0V5-KzRRByU-QDeEhhxcQ">
+            <img width="25px" className="social-icon" id="spotify-icon" src={spotifyIcon} alt="spotify_icon.svg" />
           </a>
         </div>
       </div>
