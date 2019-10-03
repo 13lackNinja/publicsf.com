@@ -121,7 +121,8 @@ router.post('/', upload.array(), (req, res) => {
   // Define nodemailer message options. Includes sender email in 'reply to' field.
   const mailerOptions = {
     from: req.body.email,
-    to: ['jonathan@publicsf.com', req.body.email],
+    to: 'jonathan@publicsf.com',
+    cc: req.body.email,
     subject: `${formType} Form: ${req.body.email}`,
     html: html
   };
