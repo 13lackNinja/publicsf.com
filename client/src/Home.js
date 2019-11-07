@@ -9,7 +9,9 @@ import TypeLogo from './TypeLogo'
 
 import './styles/Home.css'
 
-import manholeImage from './images/pw_manhole_white.png'
+import manholeImage from './images/pw_manhole_white.png';
+
+const trackingParams = "?utm_source=publicworks&utm_medium=venuewebsite";
 
 const AboutStatement = () => (
   <div id="about-statement">
@@ -41,7 +43,7 @@ class Home extends Component {
         callToActionImageURL: snapshot.val().imageURL,
         callToActionTitle: snapshot.val().title,
         callToActionDate: snapshot.val().date,
-        callToActionURL: snapshot.val().clickoutURL
+        callToActionURL: snapshot.val().clickoutURL + trackingParams
       });
     });
 
@@ -55,7 +57,7 @@ class Home extends Component {
     database.ref('marquee').on('value', (snapshot) => {
       this.setState({
         marqueeText: snapshot.val().text,
-        marqueeURL: snapshot.val().url
+        marqueeURL: snapshot.val().url + trackingParams
       });
     });
   }
