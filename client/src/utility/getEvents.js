@@ -6,9 +6,9 @@ import parseDate from './parseDate';
 import setURL from './setURL';
 
 export default async function getEvents() {
-  const baseUrl = "https://production.api.bigneon.com/events?organization_id=f010741a-713c-40a8-b9d0-41f08acdf8a0";
+  const baseURL = "https://production.api.bigneon.com/events?organization_id=f010741a-713c-40a8-b9d0-41f08acdf8a0";
 
-  const events = await fetch(baseUrl)
+  const events = await fetch(baseURL)
     .then((raw) => {
       return raw.json(); // A promise
     })
