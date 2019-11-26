@@ -140,23 +140,10 @@ const SpecsInfo = () => (
     </ul>
 
     <p className="download-links">
-      Download all &nbsp;
+      Download our &nbsp;
       <DocLink
-        text="Sound / Stage"
-        url="https://firebasestorage.googleapis.com/v0/b/publicsf-ef5ca.appspot.com/o/docs%2Fpw_sound_specs.pdf?alt=media&token=3e5c62dd-8655-4e96-8ac5-06ae87c0b569"
-      />
-      &nbsp; and &nbsp;
-      <DocLink
-        text="Video / Lighting"
-        url="https://firebasestorage.googleapis.com/v0/b/publicsf-ef5ca.appspot.com/o/docs%2Fpw_video_lighting_specs.pdf?alt=media&token=e8e66d8e-f6b9-4e70-8510-39eebe8c9a60"
-      />
-      &nbsp; gear &nbsp;
-    </p>
-    <p className="download-links">
-      Download &nbsp;
-      <DocLink
-        text="Floorplan"
-        url="https://firebasestorage.googleapis.com/v0/b/publicsf-ef5ca.appspot.com/o/docs%2Fpw_floorplan.jpg?alt=media&token=9c7e9ee5-8b09-411e-9a08-aac28b72f833"
+        text="PW EQUIPMENT AND SPECIFICATIONS DOCUMENT"
+        url="https://docs.google.com/document/d/e/2PACX-1vSVbbEDpodouhFAQH3w7nKKIFBNqDATc9ST-KP_Tu2QFQ2qrcpuID6rMEAROCac1_F7elcoDr_CJov5/pub"
       />
     </p>
   </div>
