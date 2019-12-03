@@ -1,53 +1,36 @@
 @import "Theme.css";
 
 #newsletter-sign-up {
+  padding: 50px;
   background: var(--pw-white);
-  overflow: hidden;
-  padding: 40px 0px;
 }
 
-#newsletter-sign-up h1 {
+#newsletter-sign-up label {
   color: var(--pw-black);
-  font-size: var(--pw-font-size-display);
-  text-align: center;
+  font-size: 32px;
 }
 
-#newsletter-sign-up h3 {
-  text-align: center;
+#newsletter-sign-up h2 {
+  color: var(--pw-black);
+  font: var(--pw-font-secondary);
 }
 
-#newsletter-sign-up input {
-  display: block;
-  margin: 20px auto;
-  width: 60%;
-  height: 30px;
-  border: 1px #111111 solid;
-  background: none;
-  text-align: center;
-  font-family: 'Rajdhani';
+#mc_embed_signup {
+  background: var(--pw-white);
+  clear: left;
+  font: 14px;
+  width: 100%;
+}
+
+#mc-embedded-subscribe.button {
   text-transform: uppercase;
-  font-size: 18px;
-  color: #111111;
-}
-
-@media (max-width: 700px) {
-  #newsletter-sign-up h1 {
-    font-size: 36px;
-  }
-
-  #newsletter-sign-up input {
-    width: calc(100% - 80px);
-    margin: 20px 40px;
-  }
-}
-
-#newsletter-sign-up-submit-button {
-  display: block;
-  margin: auto;
-}
-
-#newsletter-sign-up-success-message {
-  font-family: var(--pw-font-secondary);
   color: var(--pw-black);
-  text-align: center;
+  font: 'Rajdhani';
+  background: var(--pw-orange);
+  border-radius: 0;
+}
+
+#mc-embedded-subscribe.button:hover {
+  background: var(--pw-black);
+  color: var(--pw-orange);
 }
