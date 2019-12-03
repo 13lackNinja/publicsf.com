@@ -143,7 +143,7 @@ const SpecsInfo = () => (
       Download our &nbsp;
       <DocLink
         text="PW EQUIPMENT AND SPECIFICATIONS DOCUMENT"
-        url="https://docs.google.com/document/d/e/2PACX-1vSVbbEDpodouhFAQH3w7nKKIFBNqDATc9ST-KP_Tu2QFQ2qrcpuID6rMEAROCac1_F7elcoDr_CJov5/pub"
+        url="https://firebasestorage.googleapis.com/v0/b/publicsf-ef5ca.appspot.com/o/docs%2Fpw_equipment.pdf?alt=media&token=851a0018-dd0c-4079-99fb-f8743f4e737f"
       />
     </p>
   </div>
