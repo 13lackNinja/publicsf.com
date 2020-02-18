@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "config": "^2.0.2",
-    "firebase": "^5.7.3",
+    "firebase": "^5.11.1",
     "form-serializer": "^2.5.0",
     "jquery": "^3.3.1",
     "react": "^16.7.0",
