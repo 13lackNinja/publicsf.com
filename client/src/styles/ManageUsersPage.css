@@ -45,3 +45,11 @@
 #add-user-module {
   margin-bottom: 40px;
 }
+
+.plus-button, .minus-button {
+  top: 0;
+}
+
+.manage-users-list-item {
+  margin-bottom: 10px;
+}

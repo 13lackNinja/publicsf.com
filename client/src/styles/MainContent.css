@@ -1,12 +1,11 @@
 #main-content {
   position: relative;
-  margin-top: 50px;
 }
 
 #grit {
   position: fixed;
-  top: 50px;
-  height: calc(100vh - 50px);
+  top: 0px;
+  height: 100vh;
   width: 100vw;
   z-index: 2;
   background-size: cover;

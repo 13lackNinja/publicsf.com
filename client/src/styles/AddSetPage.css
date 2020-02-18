@@ -8,6 +8,16 @@
   margin-top: 80px;
 }
 
+#add-set-page label {
+  color: var(--pw-white);
+}
+
+#add-set-page input {
+  width: 100%;
+  display: block;
+  border: none;
+}
+
 #add-set-page button {
   width: 100%;
   height: 40px;

@@ -48,9 +48,6 @@ class ManageUsersPage extends Component {
     return (
       <div id="manage-users-page">
         <h2>Manage Users</h2>
-        <p>
-          Authorized users can sign in and use all features on the Staff Dashboard
-        </p>
         <div id="manage-users-wrapper">
           <div id="add-user-module">
             <input
@@ -66,16 +63,16 @@ class ManageUsersPage extends Component {
               onChange={this.handleChange}
             />
             <PlusButton onClick={this.addUser}
-          />
+            />
           </div>
           <div id="manage-users-list">
             {
               this.state.users.map((user, index) => {
                 return (
                   <div className="manage-users-list-item" key={user.key}>
-                    <input type="text" value={user.name} readOnly/>
-                    <input type="text" value={user.email} readOnly/>
-                    <MinusButton onClick={() => this.deleteUser(user.key)}/>
+                    <input type="text" value={user.name} readOnly />
+                    <input type="text" value={user.email} readOnly />
+                    <MinusButton onClick={() => this.deleteUser(user.key)} />
                   </div>
                 )
               })

@@ -4,7 +4,7 @@
 }
 
 #login {
-  min-height: calc(100vh - 50px);
+  min-height: 100vh;
   background: #e75e26;
 }
 

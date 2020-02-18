@@ -3,8 +3,6 @@
 import React, { Component } from 'react'
 import { auth } from './utility/firebase'
 import { Switch, Route } from 'react-router-dom'
-import UpdateCallToActionPage from './UpdateCallToActionPage';
-import UpdateMarqeePage from './UpdateMarqueePage';
 import ManageUsersPage from './ManageUsersPage';
 import UpdateMenuPage from './UpdateMenuPage';
 import ActionButton from './ActionButton';
@@ -21,7 +19,7 @@ class StaffDashboard extends Component {
 
   logout() {
     auth.signOut().then(() => {
-      window.location.href = '/staff';
+      window.location.href = '/';
     });
   }
 
@@ -45,8 +43,6 @@ class StaffDashboard extends Component {
         </div>
         <Switch>
           <Route exact path="/staff" component={MainMenu}></Route>
-          <Route path="/staff/update-call-to-action" component={UpdateCallToActionPage}></Route>
-          <Route path="/staff/update-marquee" component={UpdateMarqeePage}></Route>
           <Route path="/staff/update-menu" component={UpdateMenuPage}></Route>
           <Route path="/staff/manage-users" component={ManageUsersPage}></Route>
         </Switch>
