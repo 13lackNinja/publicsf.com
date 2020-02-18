@@ -9,7 +9,7 @@ const UpdateMenuToolbar = (props) => (
     <Link
       className="pw-orange-button"
       id="update-menu-toolbar-button"
-      to={`/staff/update-menu/${props.url}`}
+      to={`/update-menu/${props.url}`}
       onClick={props.setLocation}
     >
       {props.buttonText}

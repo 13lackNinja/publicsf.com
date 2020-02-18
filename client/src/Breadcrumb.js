@@ -18,7 +18,7 @@ export default function Breadcrumb(props) {
           aria-current="page"
         >
           <Link
-            to='/staff/update-menu'
+            to='/update-menu'
             onClick={() => props.setLocation('Update Menu', null, null, '')}
           >
             Sets
@@ -32,7 +32,7 @@ export default function Breadcrumb(props) {
             aria-current="page"
           >
             <Link
-              to="/staff/update-menu/add-set"
+              to="/update-menu/add-set"
               onClick={() => {
                 props.setLocation(
                   'Add Set',
@@ -53,7 +53,7 @@ export default function Breadcrumb(props) {
             aria-current="page"
           >
             <Link
-              to="/staff/update-menu/edit-set"
+              to="/update-menu/edit-set"
               onClick={() => {
                 props.setLocation(
                   `Edit ${currentSetName}`,

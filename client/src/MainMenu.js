@@ -7,8 +7,8 @@ const MainMenu = () => (
   <div className="jumbotron jumbotron-fluid" id="main-menu">
     <div className="container">
       <ul className="list-group">
-        <Link className="list-group-item-action" to="/staff/update-menu">Update Menu</Link>
-        <Link className="list-group-item-action" to="/staff/manage-users">Manage Users</Link>
+        <Link className="list-group-item-action" to="/update-menu">Update Menu</Link>
+        <Link className="list-group-item-action" to="/manage-users">Manage Users</Link>
       </ul>
     </div>
   </div>

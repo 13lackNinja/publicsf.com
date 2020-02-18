@@ -45,7 +45,7 @@ const EditSetListItem = (props) => (
         aria-labelledby="dropdownMenuButton"
       >
         <Link
-          to={'/staff/update-menu/edit-set/edit-scene'}
+          to={'/update-menu/edit-set/edit-scene'}
           className="dropdown-item"
           onClick={() => {
             props.setLocation(

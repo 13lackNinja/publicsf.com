@@ -150,7 +150,7 @@ class EditSetPage extends React.Component {
       <div id="edit-set-page">
         <Switch>
           <Route
-            exact path="/staff/update-menu/edit-set"
+            exact path="/update-menu/edit-set"
             render={() => (
               <EditSetUI
                 setLocation={this.props.setLocation}
@@ -161,7 +161,7 @@ class EditSetPage extends React.Component {
             )}
           />
           <Route
-            path="/staff/update-menu/edit-set/add-scene"
+            path="/update-menu/edit-set/add-scene"
             render={() => (
               <AddScenePage
                 setID={this.props.location.currentSetID}
@@ -170,7 +170,7 @@ class EditSetPage extends React.Component {
             )}
           />
           <Route
-            path="/staff/update-menu/edit-set/edit-scene"
+            path="/update-menu/edit-set/edit-scene"
             render={() => (
               <EditScenePage
                 location={this.props.location}

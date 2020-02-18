@@ -30,7 +30,7 @@ class StaffDashboard extends Component {
           <div className="col-auto mr-auto">
             <ActionLink
               text="back"
-              href="/staff"
+              href="/"
             />
           </div>
           <div className="col-auto">
@@ -42,9 +42,9 @@ class StaffDashboard extends Component {
           </div>
         </div>
         <Switch>
-          <Route exact path="/staff" component={MainMenu}></Route>
-          <Route path="/staff/update-menu" component={UpdateMenuPage}></Route>
-          <Route path="/staff/manage-users" component={ManageUsersPage}></Route>
+          <Route exact path="/" component={MainMenu}></Route>
+          <Route path="/update-menu" component={UpdateMenuPage}></Route>
+          <Route path="/manage-users" component={ManageUsersPage}></Route>
         </Switch>
       </div>
     )

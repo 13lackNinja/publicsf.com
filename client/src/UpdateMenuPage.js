@@ -70,15 +70,15 @@ class UpdateMenuPage extends React.Component {
         <h2 id="update-menu-title">{this.state.location.currentTitle}</h2>
         <Switch>
           <Route
-            exact path="/staff/update-menu"
+            exact path="/update-menu"
             render={() => (<MenuSetsPage setLocation={this.setLocation} />)}
           />
           <Route
-            path="/staff/update-menu/add-set"
+            path="/update-menu/add-set"
             component={AddSetPage}
           />
           <Route
-            path="/staff/update-menu/edit-set"
+            path="/update-menu/edit-set"
             render={() => (
               <EditSetPage
                 location={this.state.location}

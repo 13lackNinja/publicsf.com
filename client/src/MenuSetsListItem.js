@@ -10,7 +10,7 @@ const MenuSetsListItem = (props) => (
     <div className="col-4">
       {props.isActive &&
         <svg viewBox="0 0 10 10" id="active-circle">
-          <circle cx="5" cy="5" r="5" fill="#4eb561"/>
+          <circle cx="5" cy="5" r="5" fill="#4eb561" />
         </svg>
       }
     </div>
@@ -36,7 +36,7 @@ const MenuSetsListItem = (props) => (
           Activate
         </button>
         <Link
-          to={`/staff/update-menu/edit-set`}
+          to={`/update-menu/edit-set`}
           className="dropdown-item"
           onClick={() => {
             props.setLocation(
@@ -46,7 +46,7 @@ const MenuSetsListItem = (props) => (
               null,
               null,
               'edit-set')
-            }}
+          }}
         >
           Edit
         </Link>
