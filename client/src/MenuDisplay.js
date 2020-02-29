@@ -109,7 +109,7 @@ class MenuDisplay extends React.Component {
       <div className="container-fluid" id="menu-display">
         <Switch>
           <Route
-            path='/menu/left'
+            exact path='/menu/left'
             render={() => (
               <img
                 src={this.state.leftDisplayURL}
@@ -120,7 +120,7 @@ class MenuDisplay extends React.Component {
             )}
           />
           <Route
-            path='/menu/right'
+            exact path='/menu/right'
             render={() => (
               <img
                 src={this.state.rightDisplayURL}
@@ -131,7 +131,7 @@ class MenuDisplay extends React.Component {
             )}
           />
           <Route
-            path='/menu/loft'
+            exact path='/menu/loft'
             render={() => (
               <img
                 src={this.state.loftDisplayURL}
